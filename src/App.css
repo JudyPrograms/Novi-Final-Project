@@ -132,9 +132,13 @@ body {
     width: 900px;
     background-color: var(--light-yellow-20);
     background-image: url("./assets/wind.png");
+    background-size: cover;
     background-repeat: no-repeat;
     box-shadow: 0 4px 15px 4px hsla(0,0%,0%,0.25);
 }
+
+/*#### TWEEDE BG-IMG LUKT NIET MET FLEX ####*/
+/*url("./assets/mountain.png")*/
 
 .title-bar {
     display: flex;
@@ -158,6 +162,8 @@ body {
 }
 
 .card-content {
+    display: flex;
+    justify-content: space-between;
     margin-top: 40px;
     padding-left: 10rem;
 }
@@ -171,7 +177,6 @@ body {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    margin-top: 1rem;
     gap: 1rem;
 }
 
@@ -190,9 +195,9 @@ body {
 .card-image {
     filter: saturate(40%) opacity(30%);
     height: 240px;
-    margin: auto 0 5px auto;
+    align-self: flex-end;
+    margin-bottom: -15px;
 }
-
 
 /***** BUTTONS *****/
 

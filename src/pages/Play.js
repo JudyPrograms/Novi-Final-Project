@@ -3,8 +3,8 @@ import {useHistory, Link} from 'react-router-dom';
 import avatar from "../assets/blanco-avatar.png";
 import logo from "../assets/app-logo.png";
 import target from "../assets/target.png";
-import mountain from "../assets/mountain.png";
 import arch from "../assets/arch.png";
+import mountain from "../assets/mountain.png";
 
 
 const subtasks = [
@@ -58,17 +58,17 @@ function Play() {
                         <h1 className="title-bar__title">Pick a Challenge</h1>
                     </div>
                     <div className="card-content">
-                        <ul>
-                            {subtasks.map((item) => {
-                                return (
-                                <li>
-                                    <img src={arch} alt="arch" className="card-content__link-img"/>
-                                    <h2><a href="">{item.task}</a></h2>
-                                </li>)
-                            })}
-                        </ul>
+                            <ul>
+                                {subtasks.map((item) => {
+                                    return (
+                                        <li>
+                                            <img src={arch} alt="arch" className="card-content__link-img"/>
+                                            <h2><a href="">{item.task}</a></h2>
+                                        </li>)
+                                })}
+                            </ul>
+                        <img src={mountain} alt="mountain" className="card-image"/>
                     </div>
-                    <img src={mountain} alt="mountain" className="card-image"/>
                 </div>
 
                 <div className="button-box">
