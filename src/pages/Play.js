@@ -1,6 +1,7 @@
 import React from 'react';
 import arch from "../assets/arch.png";
 import mountain from "../assets/mountain.png";
+import target from "../assets/target.png";
 import CardContent from "../components/CardContent/CardContent";
 
 
@@ -29,11 +30,14 @@ function Play() {
         <div className="page-container">
             <div className="play-container">
 
-                <CardContent>
+                <CardContent
+                    title="Pick a Challenge"
+                    titleImg={target}
+                    cardImg={mountain}>
                 <ul>
                     {subtasks.map((item) => {
                         return (
-                            <li>
+                            <li key={item.task}>
                                 <img src={arch} alt="arch" className="card-section__link-img"/>
                                 <h2><a href="">{item.task}</a></h2>
                             </li>)

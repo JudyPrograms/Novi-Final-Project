@@ -1,13 +1,12 @@
 import React from 'react';
 import styles from "./TitleBar.module.css";
-import target from "../../assets/target.png";
 
 
-function TitleBar() {
+function TitleBar({title, titleImg}) {
     return (
         <div className={styles["title-bar"]}>
-            <img src={target} alt="target" className={styles["title-bar__title-icon"]}/>
-            <h1 className={styles["title-bar__title"]}>Pick a Challenge</h1>
+            <img src={titleImg} alt={titleImg.toString()} className={styles["title-bar__title-icon"]}/>
+            <h1 className={styles["title-bar__title"]}>{title}</h1>
         </div>
     );
 }

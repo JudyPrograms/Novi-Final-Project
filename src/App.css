@@ -35,8 +35,6 @@
     --accent-red-L35: hsl(338, 40%, 35%);
 }
 
-
-
 body {
     margin: 0 5vw 0 5vw;
     padding: 0;
@@ -55,8 +53,8 @@ body {
     align-items: center;
 }
 
-/*##### CSS VOOR (CARD-CONTENT) STAAT NU DEELS IN PLAYCARD.CSS OM HET TE LATEN WERKEN, TERWIJL
-ELEMENTEN IN PLAY.JS STAAN, KAN DIT BETER/NETTER? #####*/
+/*##### CSS VOOR (CARD-CONTENT) STAAT NU GROTENDEELS IN PLAYCARD.CSS OM HET TE LATEN WERKEN, TERWIJL
+DIT ELEMENT + CSS IN PLAY.JS/CSS STAAT, KAN DIT BETER/NETTER? #####*/
 
 .card-section__link-img {
     filter: saturate(40%);
