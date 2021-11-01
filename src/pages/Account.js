@@ -2,7 +2,7 @@ import React from 'react';
 
 function Account(props) {
     return (
-        <div></div>
+        <div>ACCOUNT</div>
     );
 }
 

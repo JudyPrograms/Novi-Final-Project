@@ -1,11 +1,12 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
-import logo from './logo.svg';
 import './App.css';
 import Play from "./pages/Play";
 import Account from "./pages/Account";
 import Dashboard from "./pages/Dashboard";
 import Settings from "./pages/Settings";
+import Header from "./components/Header/Header";
+import Navbar from "./components/Navbar/Navbar";
 
 
 
@@ -13,6 +14,8 @@ function App() {
   return (
     <div>
         {/*<img src={logo} className="App-logo" alt="logo" />*/}
+        <Header/>
+        <Navbar/>
         <Switch>
             <Route exact path="/">
                 <Play/>

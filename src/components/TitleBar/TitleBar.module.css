@@ -1,0 +1,22 @@
+/***** TITLE-BAR *****/
+
+.title-bar {
+    display: flex;
+    align-items: center;
+    padding-left: 10rem;
+    height: 70px;
+    margin-top: 40px;
+    font-family: "Ubuntu", sans-serif;
+    background-color: var(--light-yellow-80);
+    color: var(--dark-red-L25);
+    gap: 20px;
+}
+
+.title-bar__title-icon {
+    height: 60px;
+    filter: saturate(40%);
+}
+
+.title-bar__title {
+    padding: 0;
+}

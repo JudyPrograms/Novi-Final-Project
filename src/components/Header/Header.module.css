@@ -1,0 +1,43 @@
+/***** HEADER *****/
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 90px;
+
+    /*dashed line:*/
+    background-image: linear-gradient(to right, var(--dark-blue) 50%, var(--light-yellow-20) 0%);
+    background-position: bottom;
+    background-size: 20px 2px;
+    background-repeat: repeat-x;
+}
+
+.header__app-logo {
+    width: 320px;
+}
+
+.header__player {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-basis: 50%;
+    gap: 40px;
+}
+
+.header__avatar {
+    width: 60px;
+}
+
+.header__progress-bar {
+    flex-basis: 420px;
+    background-color: var(--dark-blue);
+    border-radius: 15px;
+}
+
+.header__progress {
+    width: 65%;
+    height: 20px;
+    background-color: var(--accent-yellow-L70);
+    border-radius: 15px;
+}
