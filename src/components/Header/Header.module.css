@@ -15,29 +15,18 @@
 
 .header__app-logo {
     width: 320px;
+    flex: 0 1 auto;
 }
 
 .header__player {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    flex-basis: 50%;
+    flex: 0 1 50%;
     gap: 40px;
 }
 
 .header__avatar {
     width: 60px;
-}
-
-.header__progress-bar {
-    flex-basis: 420px;
-    background-color: var(--dark-blue);
-    border-radius: 15px;
-}
-
-.header__progress {
-    width: 65%;
-    height: 20px;
-    background-color: var(--accent-yellow-L70);
-    border-radius: 15px;
+    flex: 0 0 auto;
 }

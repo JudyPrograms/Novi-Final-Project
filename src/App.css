@@ -45,12 +45,34 @@ body {
     color: var(--dark-grey);
 }
 
-/***** CARD *****/
+/***** PAGES *****/
 
 .play-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.dashboard-middle {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.dashboard-container h2 {
+    font-family: "Ubuntu", sans-serif;
+}
+
+.badges__content-box {
+    display: flex;
+    gap: 10px;
 }
 
 /*##### CSS VOOR (CARD-CONTENT) STAAT NU GROTENDEELS IN PLAYCARD.CSS OM HET TE LATEN WERKEN, TERWIJL
@@ -93,6 +115,7 @@ button:active {
     transform: translateY(1px);
     background-color: hsl(42, 69%, 75%);
 }
+
 
 
 

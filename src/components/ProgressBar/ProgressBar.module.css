@@ -1,0 +1,20 @@
+.progress-bar {
+    flex: 0.5 0 320px;
+    background-color: var(--dark-blue);
+    border-radius: 15px;
+}
+
+.progress {
+    /*width: 65%;*/
+    height: 20px;
+    line-height: 20px;
+    background-color: var(--accent-yellow-L70);
+    border-radius: 15px;
+}
+
+.percentage {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--light-yellow-100);
+    margin-left: 10px;
+}

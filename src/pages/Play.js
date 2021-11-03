@@ -1,31 +1,13 @@
 import React from 'react';
-import arch from "../assets/arch.png";
+import arch from "../assets/before-icons/arch.png";
 import mountain from "../assets/mountain.png";
-import target from "../assets/target.png";
+import target from "../assets/before-icons/target.png";
+import {gameInfo} from "../context/data";
 import CardContent from "../components/CardContent/CardContent";
 
 
-const subtasks = [
-    {
-        "task": "Paperwork",
-        "slices": ["pay bills", "slice2", "slice3"]
-    },
-    {
-        "task": "Declutter",
-        "slices": ["wash clothes", "clean dishes", "tidy closet", "tidy room"]
-    },
-    {
-        "task": "Socialize",
-        "slices": ["call a friend", "slice2", "slice3"]
-    },
-    {
-        "task": "Selfcare",
-        "slices": ["shop groceries", "slice2", "slice3"]
-    },
-]
-
-
 function Play() {
+
     return (
         <div className="page-container">
             <div className="play-container">
@@ -35,11 +17,11 @@ function Play() {
                     titleImg={target}
                     cardImg={mountain}>
                 <ul>
-                    {subtasks.map((item) => {
+                    {gameInfo.tasks.map((item) => {
                         return (
-                            <li key={item.task}>
+                            <li key={item.taskName}>
                                 <img src={arch} alt="arch" className="card-section__link-img"/>
-                                <h2><a href="">{item.task}</a></h2>
+                                <h2><a href="">{item.taskName}</a></h2>
                             </li>)
                     })}
                 </ul>
