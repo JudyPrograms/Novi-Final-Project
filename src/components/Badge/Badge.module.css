@@ -1,44 +1,44 @@
 .badge {
-    height: 110px;
-    width: 110px;
-    /*position: relative;*/
-    border: var(--dark-grey) dashed 1px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+            ". I I I ."
+            ". I I I ."
+            ". I I I ."
+            "T T T T T"
+            "B B B B B";
+    height: 120px;
+    width: 100px;
+    flex: 0 0 auto;
+    background-color: var(--dark-blue);
+    border: var(--accent-blue-L85) dashed 5px;
     border-radius: 100%;
     padding: 4px;
+    filter: drop-shadow(0px 15px 30px hsla(0, 0%, 0%, 0.25));
 }
 
-.badge img {
+.badge__image {
+    grid-area: I;
+    justify-self: center;
+    align-self: end;
     filter: saturate(40%);
-    width: 50px;
-    margin: 5px;
+    width: 110%;
 }
 
-.badge h5 {
-    margin-top: 5px;
+.badge__text {
+    grid-area: T;
+    justify-self: center;
+    align-self: end;
+    font-size: 0.8rem;
+    margin: 2px 0 2px 0;
+    font-weight: bold;
+    color: var(--accent-yellow-L85);
+}
+
+.badge__bar {
+    grid-area: B;
+    align-self: start;
 }
 
 
-/*.badge__inner {*/
-/*    position: absolute;*/
-/*    z-index: 6;*/
-/*    top: 50%;*/
-/*    left: 50%;*/
-/*    height: 80px;*/
-/*    width: 80px;*/
-/*    margin: -40px 0 0 -40px;*/
-/*    background: red;*/
-/*    border-radius: 100%;*/
-/*}*/
-
-/*.badge__circle {*/
-
-/*}*/
-
-.badge .progress-bar {
-    /*position: absolute;*/
-    /*height: 100%;*/
-    /*width: 100%;*/
-    /*background: #fff;*/
-    /*-webkit-border-radius: 100%;*/
-    /*clip: rect(0px, 100px, 100px, 50px);*/
-}

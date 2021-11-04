@@ -14,7 +14,7 @@
 
 .title-bar__title-icon {
     height: 60px;
-    filter: saturate(40%);
+    filter: saturate(40%) drop-shadow(0px 4px 4px hsla(0, 0%, 0%, 0.25));
 }
 
 .title-bar__title {

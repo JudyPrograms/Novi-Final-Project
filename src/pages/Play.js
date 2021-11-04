@@ -3,40 +3,44 @@ import arch from "../assets/before-icons/arch.png";
 import mountain from "../assets/mountain.png";
 import target from "../assets/before-icons/target.png";
 import {gameInfo} from "../context/data";
-import CardContent from "../components/CardContent/CardContent";
+import CardSection from "../components/CardSection/CardSection";
+import Card from "../components/Card/Card";
 
 
 function Play() {
 
+
     return (
-        <div className="page-container">
-            <div className="play-container">
+        <div className="play-container">
 
-                <CardContent
-                    title="Pick a Challenge"
-                    titleImg={target}
-                    cardImg={mountain}>
-                <ul>
-                    {gameInfo.tasks.map((item) => {
-                        return (
-                            <li key={item.taskName}>
-                                <img src={arch} alt="arch" className="card-section__link-img"/>
-                                <h2><a href="">{item.taskName}</a></h2>
-                            </li>)
-                    })}
-                </ul>
-                </CardContent>
+            <Card
+                title="Pick a Challenge"
+                titleImg={target}
+                cardImg={mountain}>
 
-                <div className="button-box">
-                    <button type="button" onClick={""}>
-                        BACK
-                    </button>
-                    <button type="button" onClick={""}>
-                        NEXT
-                    </button>
-                </div>
+                <CardSection>
+                    <ul>
+                        {gameInfo.tasks.map((item) => {
+                            return (
+                                <li key={item.taskName}>
+                                    <img src={arch} alt="arch" className="card-section__link-img"/>
+                                    <h2><a href="">{item.taskName}</a></h2>
+                                </li>)
+                        })}
+                    </ul>
+                </CardSection>
 
+            </Card>
+
+            <div className="button-box">
+                <button type="button" onClick={""}>
+                    BACK
+                </button>
+                <button type="button" onClick={""}>
+                    NEXT
+                </button>
             </div>
+
         </div>
     );
 }

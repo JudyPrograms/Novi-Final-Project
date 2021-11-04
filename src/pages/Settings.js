@@ -1,8 +1,11 @@
 import React from 'react';
+import Card from "../components/Card/Card";
 
-function Settings(props) {
+function Settings() {
     return (
-        <div>SETTINGS</div>
+        <Card>
+            SETTINGS
+        </Card>
     );
 }
 

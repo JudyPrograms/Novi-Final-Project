@@ -25,7 +25,9 @@
     --light-yellow-100: hsl(51, 40%, 98%);
     --light-yellow-80: hsla(45, 40%, 98%, 0.8);
     --light-yellow-20: hsla(45, 40%, 98%, 0.2);
+    --light-yellow-S70-10: hsla(45, 70%, 75%, 0.1);
     --light-red-10: hsla(338, 40%, 25%, 0.1);
+    --light-blue-40: hsla(213, 40%, 85%, 0.4);
     --dark-grey: hsl(0, 0%, 14%);
     --dark-blue: hsl(216, 40%, 39%);
     --dark-red-L25: hsl(338, 40%, 25%);
@@ -47,48 +49,148 @@ body {
 
 /***** PAGES *****/
 
-.play-container {
+.page-container {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+.play-container {
+    padding-bottom: 80px;
+}
+
 .dashboard-container {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 80px;
+}
+
+.dashboard {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 40px;
+    padding-bottom: 80px;
 }
 
-.dashboard-middle {
+.dashboard__upper {
+    width: 120%;
+    background-color: var(--light-yellow-S70-10);
+    padding: 20px;
+}
+
+.dashboard__middle {
+    width: 120%;
     display: flex;
     justify-content: space-between;
     gap: 40px;
 }
 
-.dashboard-container h2 {
+.dashboard__badge-section {
+    width: 50%;
+    background-color: var(--light-blue-40);
+    padding: 20px;
+    text-align: center;
+}
+
+.dashboard__badges-box {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.dashboard__leaderboard {
+    width: 30%;
+    background-color: var(--light-yellow-80);
+    padding: 30px;
+}
+
+.leader-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.leader-img {
+    width: 20px;
+}
+
+.dashboard__subtitle {
     font-family: "Ubuntu", sans-serif;
 }
 
-.badges__content-box {
+.dashboard__lower {
+    width: 120%;
+    background-color: var(--light-red-10);
+    padding: 20px;
+}
+
+
+
+.table {
     display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 0.8rem;
+}
+
+.table__col1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 20%;
     gap: 10px;
 }
 
-/*##### CSS VOOR (CARD-CONTENT) STAAT NU GROTENDEELS IN PLAYCARD.CSS OM HET TE LATEN WERKEN, TERWIJL
-DIT ELEMENT + CSS IN PLAY.JS/CSS STAAT, KAN DIT BETER/NETTER? #####*/
+.table__col2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 40%;
+    gap: 10px;
+}
 
+.table__col3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 15%;
+    gap: 10px;
+}
+
+.table__col4 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 10%;
+    gap: 10px;
+}
+
+.table__col4 button {
+    margin: 0;
+    width: 50px;
+    height: 15px;
+    font-size: 0.7rem;
+}
+
+/*##### CSS voor dynamic card content in CardSection, MOET DIT HIER? #####################*/
 .card-section__link-img {
-    filter: saturate(40%);
+    filter: saturate(40%) drop-shadow(0px 2px 4px hsla(0, 0%, 0%, 0.25));
     width: 2rem;
     height: 2rem;
 }
+/*########################################################################*/
+
 
 /***** BUTTONS *****/
 
 .button-box {
     display: flex;
     width: 900px;
+    align-items: flex-start;
     justify-content: space-between;
 }
 

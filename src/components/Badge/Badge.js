@@ -2,15 +2,12 @@ import React from 'react';
 import ProgressBar from "../ProgressBar/ProgressBar";
 import styles from "../Badge/Badge.module.css"
 
-function Badge({image, progress, children}) {
+function Badge({image, progress, text}) {
     return (
         <div className={styles["badge"]}>
-            {/*<div className={styles["badge__inner"]}/>*/}
-            {/*<div className={styles["badge__circle"]}>*/}
             <img src={image} alt="" className={styles["badge__image"]}/>
-            <ProgressBar progress={progress}/>
-            <h5>{children}</h5>
-            {/*</div>*/}
+            <h5 className={styles["badge__text"]}>{text}</h5>
+            <div className={styles["badge__bar"]}><ProgressBar progress={progress} barColor="hsl(213, 40%, 85%)"/></div>
         </div>
     );
 }

@@ -12,7 +12,7 @@ import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   return (
-    <div>
+    <div className="page-container">
         {/*<img src={logo} className="App-logo" alt="logo" />*/}
         <Header/>
         <Navbar/>

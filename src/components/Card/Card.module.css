@@ -1,0 +1,35 @@
+.card {
+    display: flex;
+    justify-content: flex-start;
+    height: 480px;
+    width: 900px;
+    flex: 0 0 auto;
+    background-color: var(--light-yellow-20);
+    background-image: url("../../assets/wind.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow: 0 4px 15px 4px hsla(0,0%,0%,0.25);
+}
+
+.card__content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.card__image {
+    filter: saturate(40%) opacity(30%);
+    height: 240px;
+    align-self: flex-end;
+    margin-bottom: -50px;
+}
+
+.card__section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 10rem;
+}
+

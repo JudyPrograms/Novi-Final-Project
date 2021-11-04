@@ -78,16 +78,19 @@ export const userData = {
                     mainTask: "Paperwork",
                     subtask: "pay bills",
                     slice: "get and open all envelopes",
+                    startDate: "11/1/2021 2:28",
                 },
                 {
                     mainTask: "Paperwork",
                     subtask: "organize mail",
                     slice: "write 'action' on all action pile letters",
+                    startDate: "11/2/2021  2:28",
                 },
                 {
                     mainTask: "Socialize",
                     subtask: "congratulate a friend",
                     slice: "write down 10 names of friends",
+                    startDate: "11/3/2021  2:28",
                 }
             ],
             completedTasks: [
@@ -117,6 +120,13 @@ export const userData = {
             coinsTotal: 26,
             level: "Hurricane",
             leaderboardPosition: 110,
+        },
+        {
+            username: "Piet",
+            email: "judithkats@gmail.com",
+            password: "encryptedCode",
+            avatar: avatar,
+            leaderboardPosition: 112,
         }
     ]
 }

@@ -11,10 +11,10 @@ function Header() {
     console.log(progress)
 
     return (
-        <header className={styles.header}>
+        <header className={styles["header"]}>
             <div className={styles["header__player"]}>
                 <img src={avatar} alt="avatar" className={styles["header__avatar"]}/>
-                <ProgressBar progress={progress}/>
+                <ProgressBar progress={progress} barColor="hsl(216, 40%, 39%)"/>
             </div>
             <img src={logo} alt="logo" className={styles["header__app-logo"]}/>
         </header>
