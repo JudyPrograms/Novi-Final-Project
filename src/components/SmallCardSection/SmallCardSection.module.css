@@ -1,8 +1,7 @@
 /***** SMALL-CARD-SECTION *****/
 
 .card-section ul {
-    margin: 0;
-    padding: 0 0 0 15rem;
+    margin: 40px 0 0 15rem;
     list-style: none;
 }
 

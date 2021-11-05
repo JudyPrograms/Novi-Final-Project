@@ -12,6 +12,11 @@ function Play() {
 
     const [userData, setUserData] = useState({})
     const [sliceAmount, setSliceAmount] = useState(0);
+    const [activeTask, setActiveTask] = useState(null)
+
+    // function handleTaskClick (task) {
+    //     setActiveTask(task)
+    // }
 
     useEffect(() => {
         setUserData(allUsersData.users[1])
@@ -41,10 +46,12 @@ function Play() {
                             return (
                                 <li key={item.taskName}>
                                     <img src={arch} alt="arch" className="card-section__link-img"/>
-                                    <h2><a href="">{item.taskName}</a></h2>
+                                    {/*HIER BEN IK GEBLEVEN BIJ DE ONCLICK FUNCTIE, PROBEER TE CONSOLE LOGGEN*/}
+                                    <h2 onClick={() => setActiveTask(item.taskName)}><a href="">{item.taskName}</a></h2>
                                 </li>)
                         })}
                     </ul>
+                    {activeTask && <p>er is een active task</p>}
                 </SmallCardSection>
             </Card>
             }

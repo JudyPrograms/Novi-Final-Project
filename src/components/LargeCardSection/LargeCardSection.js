@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './SmallCardSection.module.css';
+import styles from './LargeCardSection.module.css';
 
 
 function LargeCardSection({children}) {

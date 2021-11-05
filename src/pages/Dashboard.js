@@ -9,6 +9,7 @@ import letter from "../assets/badges/opener.png";
 import mortar from "../assets/badges/remedy.png";
 import fuji from "../assets/fuji.png";
 import windSign from "../assets/before-icons/windsock.png";
+import LargeCardSection from "../components/LargeCardSection/LargeCardSection";
 
 const DAYS_TILL_ALERT = 3
 
@@ -48,7 +49,7 @@ function Dashboard() {
                 width="1100px"
                 height="auto">
 
-                <div className="dashboard">
+                <LargeCardSection>
 
                     {userData.currentTasks && (
                         <>
@@ -123,7 +124,7 @@ function Dashboard() {
                             </section>
                         </>)}
 
-                </div>
+                </LargeCardSection>
 
             </Card>
 

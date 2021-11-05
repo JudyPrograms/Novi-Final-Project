@@ -60,27 +60,19 @@ body {
 }
 
 .play-container {
-    padding-bottom: 80px;
-}
-
-.dashboard-container {
-    display: flex;
-    justify-content: center;
     margin-bottom: 80px;
 }
 
-.dashboard {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 40px;
-    padding-bottom: 80px;
+.dashboard-container {
+    margin-bottom: 80px;
 }
+
+/***** DASHBOARD *****/
 
 .dashboard__upper {
     width: 100%;
     background-color: var(--light-yellow-S70-10);
-    padding: 20px;
+    padding: 0 20px 20px 20px;
 }
 
 .dashboard__middle {
@@ -90,10 +82,17 @@ body {
     gap: 40px;
 }
 
+.dashboard__lower {
+    width: 60%;
+    background-color: var(--light-red-10);
+    padding: 0 20px 20px 20px;
+    margin-right: auto;
+}
+
 .dashboard__badge-section {
     width: 50%;
     background-color: var(--light-blue-40);
-    padding: 20px;
+    padding: 0 20px 20px 20px;
     text-align: center;
 }
 
@@ -107,7 +106,8 @@ body {
 .dashboard__leaderboard {
     width: 30%;
     background-color: var(--light-yellow-80);
-    padding: 30px;
+    padding: 0 20px 20px 20px;
+    text-align: center;
 }
 
 .leader-row {
@@ -124,20 +124,14 @@ body {
     font-family: "Ubuntu", sans-serif;
 }
 
-.dashboard__lower {
-    width: 100%;
-    background-color: var(--light-red-10);
-    padding: 20px;
-}
-
-
-
 .table {
     display: flex;
     justify-content: space-between;
     width: 100%;
     font-size: 0.8rem;
 }
+
+/***** TABLE *****/
 
 .table__col1 {
     display: flex;
