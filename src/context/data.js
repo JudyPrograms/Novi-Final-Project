@@ -1,4 +1,3 @@
-import React from 'react';
 import avatar from "../assets/avatars/kusunoki.png"
 
 // FRONTEND >> Moet dit in een context in de frontend? Of moet dit ook in de backend?:
@@ -14,55 +13,54 @@ export const gameInfo = {
         {
             taskName: "Paperwork",
             badge: "Paper Slayer",
-            subtasks: [
-                {
-                    "pay bills": [
-                        "get and open all envelopes",
-                        "sort out bills only",
-                        "pile up other mail and leave for later",
-                        "pay one bill",
-                    ]
-                },
-                {
-                    "organize mail": [
-                        "get and open all envelopes",
-                        "create four piles: 'action', 'wait', 'store', 'bin'",
-                        "throw out 'bin' pile",
-                        "put 'store' pile in organizer",
-                        "put 'wait' pile on top in organizer",
-                        "write 'action' on all action pile letters",
-                        "execute one action from action pile",
-                    ]
-                }]
+            subtasks: {
+                "pay bills": [
+                    "get and open all envelopes",
+                    "sort out bills only",
+                    "pile up other mail and leave for later",
+                    "pay one bill",
+                ],
+                "organize mail": [
+                    "get and open all envelopes",
+                    "create four piles: 'action', 'wait', 'store', 'bin'",
+                    "throw out 'bin' pile",
+                    "put 'store' pile in organizer",
+                    "put 'wait' pile on top in organizer",
+                    "write 'action' on all action pile letters",
+                    "execute one action from action pile",
+                ],
+            }
         },
         {
             taskName: "Declutter",
             badge: "Tidy Prince",
-            subtasks: [
-                {"wash clothes": ["slice1", "slice2", "slice3", "slice4"]},
-                {"clean dishes": ["slice1", "slice2", "slice3", "slice4"]},
-                {"tidy closet": ["slice1", "slice2", "slice3", "slice4"]},
-                {"tidy room": ["slice1", "slice2", "slice3", "slice4"]}]
+            subtasks: {
+                "wash clothes": ["slice1", "slice2", "slice3", "slice4"],
+                "clean dishes": ["slice1", "slice2", "slice3", "slice4"],
+                "tidy closet": ["slice1", "slice2", "slice3", "slice4"],
+                "tidy room": ["slice1", "slice2", "slice3", "slice4"],
+            }
         },
         {
             taskName: "Socialize",
-            badge: "Scoial Hero",
-            subtasks: [
-                {"congratulate a friend": []},
-                {"subtask2": []},
-                {"subtask3": []}],
+            badge: "Social Hero",
+            subtasks: {
+                "bond with friends": [],
+                "subtask2": [],
+                "subtask3": [],
+            },
         },
         {
             taskName: "Selfcare",
             badge: "Happy Soul",
-            subtasks: [
-                {"shop groceries": []},
-                {"subtask2": []},
-                {"subtask3": []}]
+            subtasks: {
+                "shop groceries": [],
+                "subtask2": [],
+                "subtask3": [],
+            }
         },
     ]
 }
-
 
 
 // BACKEND:

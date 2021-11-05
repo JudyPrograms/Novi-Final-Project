@@ -16,7 +16,6 @@ const DAYS_TILL_ALERT = 3
 function Dashboard() {
 
     const [userData, setUserData] = useState({});
-    console.log(userData)
 
     useEffect(() => {
         function fetchUserData() {
@@ -27,7 +26,6 @@ function Dashboard() {
                 // hieronder moet een axios.get() request komen
                 // token met user info meegeven in headers: {authorization: `Bearer ${token}`}
                 const result = allUsersData.users[0]
-                console.log(result)
                 setUserData(result);
             } catch (e) {
                 console.error(e);
@@ -36,8 +34,6 @@ function Dashboard() {
 
         fetchUserData();
     }, [])
-
-    console.log(userData)
 
     return (
         <div className="dashboard-container">
@@ -60,27 +56,27 @@ function Dashboard() {
                                     <div className="table__col1">
                                         <h4>task</h4>
                                         {userData.currentTasks.map((item) => {
-                                            return (<><span>{item.subtask}</span></>);
+                                            return (<><span key={item.subtask}>{item.subtask}</span></>);
                                         })}
                                     </div>
 
                                     <div className="table__col2">
                                         <h4>to do</h4>
                                         {userData.currentTasks.map((item) => {
-                                            return (<span>{item.slice}</span>);
+                                            return (<span key={item.slice}>{item.slice}</span>);
                                         })}
                                     </div>
                                     <div className="table__col3">
                                         <h4>finish in</h4>
                                         {userData.currentTasks.map((item) => {
                                             const daysAgo = calcDaysAgo(item.startDate)
-                                            return (<span>{DAYS_TILL_ALERT - daysAgo} days</span>);
+                                            return (<span key={item.startDate}>{DAYS_TILL_ALERT - daysAgo} days</span>);
                                         })}
                                     </div>
                                     <div className="table__col4">
                                         <h4>do now!</h4>
                                         {userData.currentTasks.map((item) => {
-                                            return (<button type="button">DONE</button>);
+                                            return (<button key={item.subtask} type="button">DONE</button>);
                                         })}
                                     </div>
                                 </div>
@@ -104,10 +100,10 @@ function Dashboard() {
                                     <h2 className=".dashboard__subtitle">Leaderboard</h2>
                                     {allUsersData.users.map((item) => {
                                         return (
-                                            <div className="leader-row">
-                                                <span>{item.leaderboardPosition}.</span>
-                                                <span>{item.username}</span>
-                                                <img className="leader-img" src={item.avatar} alt=""/>
+                                            <div key={item.username} className="leader-row">
+                                                <span key={item.leaderboardPosition}>{item.leaderboardPosition}.</span>
+                                                <span key={item.username}>{item.username}</span>
+                                                <img key={item.avatar} className="leader-img" src={item.avatar} alt=""/>
                                             </div>
                                         );
                                     })}
@@ -118,7 +114,7 @@ function Dashboard() {
                                 <h2 className=".dashboard__subtitle">Accomplished</h2>
                                 <div>
                                     {userData.completedTasks.map((item) => {
-                                        return (<p>{item.subtask} | {item.slice}</p>);
+                                        return (<p key={item.slice}>{item.subtask} | {item.slice}</p>);
                                     })}
                                 </div>
                             </section>

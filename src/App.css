@@ -39,11 +39,12 @@
 
 * {
     box-sizing: border-box;
+
 }
 
 body {
-    margin: 0 5vw 0 5vw;
     padding: 0;
+    margin: 0 5vw 0 5vw;
     background-image: url("./assets/white-wave.png"), linear-gradient(var(--light-yellow-80), var(--light-yellow-80));
     background-size: cover;
     background-blend-mode: overlay;
@@ -78,8 +79,8 @@ body {
 .dashboard__middle {
     width: 100%;
     display: flex;
-    justify-content: space-between;
-    gap: 40px;
+    justify-content: space-around;
+    gap: 5%;
 }
 
 .dashboard__lower {
@@ -99,7 +100,7 @@ body {
 .dashboard__badges-box {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 2vw;
     flex-wrap: wrap;
 }
 
@@ -113,32 +114,33 @@ body {
 .leader-row {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 10px;
+    margin-bottom: 0.5rem;
 }
 
 .leader-img {
-    width: 20px;
+    width: 1.5rem;
 }
 
 .dashboard__subtitle {
     font-family: "Ubuntu", sans-serif;
 }
 
+/***** TABLE *****/
+
 .table {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
+    gap: 2vw;
 }
-
-/***** TABLE *****/
 
 .table__col1 {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 20%;
-    gap: 10px;
+    row-gap: 1rem;
 }
 
 .table__col2 {
@@ -146,7 +148,6 @@ body {
     flex-direction: column;
     justify-content: space-between;
     width: 40%;
-    gap: 10px;
 }
 
 .table__col3 {
@@ -155,7 +156,6 @@ body {
     justify-content: space-between;
     align-items: center;
     width: 15%;
-    gap: 10px;
 }
 
 .table__col4 {
@@ -164,21 +164,33 @@ body {
     justify-content: space-between;
     align-items: flex-end;
     width: 10%;
-    gap: 10px;
 }
 
 .table__col4 button {
     margin: 0;
-    width: 50px;
-    height: 15px;
-    font-size: 0.7rem;
+    width: 4rem;
+    height: 1.2rem;
+    font-size: 0.8rem;
 }
 
 /*##### CSS voor dynamic card content in SmallCardSection, MOET DIT HIER? #####################*/
-.card-section__link-img {
+.card-section__list-img {
     filter: saturate(40%) drop-shadow(0px 2px 4px hsla(0, 0%, 0%, 0.25));
     width: 2rem;
     height: 2rem;
+}
+
+.card-section__active-task {
+    margin: 80px 0 0 10rem;
+    text-shadow: 0 2px 4px hsla(0, 0%, 0%, 0.25);
+}
+
+.card-section__arch {
+    position: absolute;
+    bottom: 60px;
+    left: 10rem;
+    width: 25%;
+    filter: saturate(40%) opacity(30%);
 }
 /*########################################################################*/
 

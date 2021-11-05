@@ -9,7 +9,7 @@
             "T T T T T"
             "B B B B B";
     height: 120px;
-    width: 100px;
+    width: 120px;
     flex: 0 0 auto;
     background-color: var(--dark-blue);
     border: var(--accent-blue-L85) dashed 5px;
