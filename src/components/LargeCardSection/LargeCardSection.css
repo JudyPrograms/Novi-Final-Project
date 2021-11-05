@@ -1,0 +1,24 @@
+/***** LARGE-CARD-SECTION *****/
+
+.card-section ul {
+    margin: 0;
+    padding: 0 0 0 5rem;
+    list-style: none;
+}
+
+.card-section li {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+}
+
+.card-section a {
+    text-decoration: none;
+    color: var(--dark-grey);
+    font-weight: lighter;
+}
+
+.card-section a:focus {
+    font-weight: bolder;
+}

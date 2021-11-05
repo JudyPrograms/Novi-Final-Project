@@ -14,8 +14,8 @@ function Card({children, title, titleImg, cardImg, width, height}) {
             <div className={styles["card__content"]}>
                 <TitleBar title={title} titleImg={titleImg}/>
                 <div className={styles["card__section"]}>
-                {children}
-                <img src={cardImg} alt={title} className={styles["card__image"]}/>
+                    {children}
+                    {cardImg && <img src={cardImg} alt={cardImg.split(".")[0]} className={styles["card__image"]}/>}
                 </div>
             </div>
         </div>

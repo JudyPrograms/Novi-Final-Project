@@ -66,7 +66,7 @@ export const gameInfo = {
 
 
 // BACKEND:
-export const userData = {
+export const allUsersData = {
     users: [
         {
             username: "Judith",
@@ -122,10 +122,20 @@ export const userData = {
             leaderboardPosition: 110,
         },
         {
-            username: "Piet",
+            username: "Nieuwe User",
             email: "judithkats@gmail.com",
             password: "encryptedCode",
             avatar: avatar,
+            currentTasks: [],
+            completedTasks: [],
+            badgeProgress: {
+                tidyPrince: 0,
+                socialHero: 0,
+                paperSlayer: 0,
+                happySoul: 0,
+            },
+            coinsTotal: 0,
+            level: "Hurricane",
             leaderboardPosition: 112,
         }
     ]

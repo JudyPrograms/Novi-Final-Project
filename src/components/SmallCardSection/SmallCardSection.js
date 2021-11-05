@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from './CardSection.module.css';
+import styles from './SmallCardSection.module.css';
 
 
-function CardSection({children}) {
+function SmallCardSection({children}) {
     return (
             <div className={styles["card-section"]}>
                 {children}
@@ -10,4 +10,4 @@ function CardSection({children}) {
     );
 }
 
-export default CardSection;
+export default SmallCardSection;

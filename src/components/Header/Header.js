@@ -3,12 +3,11 @@ import styles from './Header.module.css';
 import avatar from "../../assets/avatars/blanco-avatar.png";
 import logo from "../../assets/app-logo.png";
 import ProgressBar from "../ProgressBar/ProgressBar";
-import {userData, gameInfo} from "../../context/data.js";
+import {allUsersData, gameInfo} from "../../context/data.js";
 
 function Header() {
 
-    const progress = (userData.users[0].coinsTotal / gameInfo.coinsPerLevel * 100)
-    console.log(progress)
+    const progress = (allUsersData.users[0].coinsTotal / gameInfo.coinsPerLevel * 100)
 
     return (
         <header className={styles["header"]}>
