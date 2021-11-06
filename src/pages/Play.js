@@ -30,12 +30,15 @@ function Play() {
     }, [userData]);
 
     useEffect(() => {
-        gameInfo.tasks.map((item) => {
-            if (item.taskName === activeTask) {
-                const activeSubtasks = Object.keys(item.subtasks);
-                setSubtasks(activeSubtasks);
-            }
-        });
+        console.log("useEffect activeTask not null:" + (activeTask !== null))
+        if (activeTask !== null) {
+            gameInfo.tasks.map((item) => {
+                if (item.taskName === activeTask) {
+                    const tasks = Object.keys(item.subtasks);
+                    setSubtasks(tasks);
+                }
+            });
+        }
     }, [activeTask]);
 
 
@@ -77,13 +80,17 @@ function Play() {
                 titleImg={shuriken}>
                 <SmallCardSection>
                     <h1 className="card-section__active-task">{activeTask}</h1>
-                    <select name="drop-down" id="drop=down" className="drop-down">
+                    <select
+                        name="drop-down"
+                        id="drop-down"
+                        onChange={e => setActiveSubTask(e.target.value)}
+                        className="card-section__select">
                         <option defaultValue="pick">-- pick a task --</option>
                         {subtasks.length > 0 && subtasks.map((item) => {
                             return (
                                 <option
+                                    key={item}
                                     value={item}
-                                    selected={setActiveSubTask(item)}
                                     className="drop-down__option">
                                     {item}
                                 </option>
@@ -96,12 +103,22 @@ function Play() {
             }
 
             {/*als er een subtask wordt gekozen && op next wordt geklikt || of een slice meer dan 3 dagen open staat*/}
-            {subtasks.length > 0 && next === 2 &&
+            {activeSubtask !== null && next === 2 &&
             <Card
                 title="Slice it Up . . ."
                 titleImg={swords}>
-                <img src={arch} alt="arch" className="card-section__arch"/>
-                {activeSubtask && <p>{activeSubtask}</p>}
+                <SmallCardSection>
+                    <h1 className="card-section__active-task">{activeTask}</h1>
+                    <div className="card-section__slice-box">
+                    <span className="card-section__select" style={{width: "100%"}}>
+                        {activeSubtask}
+                    </span>
+                    <span>slice1</span>
+                    <span>slice2</span>
+                    <span>slice3</span>
+                    </div>
+                    <img src={arch} alt="arch" className="card-section__arch"/>
+                </SmallCardSection>
             </Card>
             }
 

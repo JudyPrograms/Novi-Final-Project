@@ -185,12 +185,34 @@ body {
     text-shadow: 0 2px 4px hsla(0, 0%, 0%, 0.25);
 }
 
+.card-section__active-task:first-letter {
+    text-transform:capitalize;
+}
+
 .card-section__arch {
     position: absolute;
     bottom: 60px;
     left: 10rem;
     width: 25%;
     filter: saturate(40%) opacity(30%);
+}
+
+.card-section__slice-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-section__select {
+    background-color: var(--light-red-10);
+    font-family: 'B612 Mono', monospace;
+    padding: 0;
+    margin: 80px 0 0 8vw;
+    border: none;
+    height: 3rem;
+    line-height: 3rem;
+    width: 40%;
+    text-align: center;
+    font-size: 1.2rem;
 }
 /*########################################################################*/
 
