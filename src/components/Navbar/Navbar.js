@@ -6,6 +6,7 @@ function Navbar() {
     return (
 
         <nav className={styles["navbar"]}>
+            <Link to="/" className={styles["navbar__link"]}>LOGIN</Link>
             <Link to="/play" className={styles["navbar__link"]}>PLAY</Link>
             <Link to="/dashboard" className={styles["navbar__link"]}>DASHBOARD</Link>
             <Link to="/settings" className={styles["navbar__link"]}>SETTINGS</Link>

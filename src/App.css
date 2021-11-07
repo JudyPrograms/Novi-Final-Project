@@ -35,6 +35,10 @@
     --accent-yellow-L85: hsl(42, 69%, 85%);
     --accent-blue-L85: hsl(213, 40%, 85%);
     --accent-red-L35: hsl(338, 40%, 35%);
+
+    /*fonts*/
+    --mono-b612: "B612 Mono", monospace;
+    --ubuntu: "Ubuntu", sans-serif;
 }
 
 * {
@@ -48,7 +52,7 @@ body {
     background-image: url("./assets/white-wave.png"), linear-gradient(var(--light-yellow-80), var(--light-yellow-80));
     background-size: cover;
     background-blend-mode: overlay;
-    font-family: "B612 Mono", monospace;
+    font-family: var(--mono-b612);
     color: var(--dark-grey);
 }
 
@@ -69,6 +73,14 @@ body {
 }
 
 /***** DASHBOARD *****/
+
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 40px;
+    margin: 0 40px 0 40px;
+}
 
 .dashboard__upper {
     width: 100%;
@@ -122,7 +134,7 @@ body {
 }
 
 .dashboard__subtitle {
-    font-family: "Ubuntu", sans-serif;
+    font-family: var(--ubuntu);
 }
 
 /***** TABLE *****/
@@ -173,47 +185,41 @@ body {
     font-size: 0.8rem;
 }
 
-/*##### CSS voor dynamic card content in SmallCardSection, MOET DIT HIER? #####################*/
-.card-section__list-img {
+/*##### SMALL-CARDS >>>MOET DIT HIER? #####################*/
+
+/***** PICK-A-CHALLENGE *****/
+
+.card-list {
+    margin: 0 0 0 15rem;
+    list-style: none;
+}
+
+.card-list__item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+}
+
+.card-list__img {
     filter: saturate(40%) drop-shadow(0px 2px 4px hsla(0, 0%, 0%, 0.25));
     width: 2rem;
     height: 2rem;
 }
 
-.card-section__active-task {
-    margin: 80px 0 0 10rem;
-    text-shadow: 0 2px 4px hsla(0, 0%, 0%, 0.25);
+.card-list__task:hover {
+    font-weight: bold;
+    cursor: pointer;
 }
 
-.card-section__active-task:first-letter {
-    text-transform:capitalize;
+.card-list__task--inactive {
+    font-weight: normal;
 }
 
-.card-section__arch {
-    position: absolute;
-    bottom: 60px;
-    left: 10rem;
-    width: 25%;
-    filter: saturate(40%) opacity(30%);
+.card-list__task--active {
+    font-weight: bolder;
 }
 
-.card-section__slice-box {
-    display: flex;
-    flex-direction: column;
-}
-
-.card-section__select {
-    background-color: var(--light-red-10);
-    font-family: 'B612 Mono', monospace;
-    padding: 0;
-    margin: 80px 0 0 8vw;
-    border: none;
-    height: 3rem;
-    line-height: 3rem;
-    width: 40%;
-    text-align: center;
-    font-size: 1.2rem;
-}
 /*########################################################################*/
 
 
@@ -226,8 +232,8 @@ body {
     justify-content: space-between;
 }
 
-button {
-    font-family: "B612 Mono", monospace;
+.nav-button {
+    font-family: var(--mono-b612);
     font-weight: bold;
     background-color: var(--accent-yellow-L85);
     color: var(--dark-blue);
@@ -240,12 +246,12 @@ button {
     transition-duration: 0.1s;
 }
 
-button:hover {
+.nav-button:hover {
     background-color: var(--accent-yellow-L70);
     cursor: pointer;
 }
 
-button:active {
+.nav-button:active {
     transform: translateY(1px);
     background-color: hsl(42, 69%, 75%);
 }

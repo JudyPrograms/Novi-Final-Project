@@ -22,7 +22,7 @@ export const gameInfo = {
                 ],
                 "organize mail": [
                     "get and open all envelopes",
-                    "create four piles: 'action', 'wait', 'store', 'bin'",
+                    "create four piles: 1:action, 2:wait, 3:store, 4:bin",
                     "throw out 'bin' pile",
                     "put 'store' pile in organizer",
                     "put 'wait' pile on top in organizer",
@@ -45,18 +45,18 @@ export const gameInfo = {
             taskName: "Socialize",
             badge: "Social Hero",
             subtasks: {
-                "bond with friends": [],
-                "subtask2": [],
-                "subtask3": [],
+                "bond with friends": ["slice1", "slice2", "slice3", "slice4"],
+                "subtask2": ["slice1", "slice2", "slice3", "slice4"],
+                "subtask3": ["slice1", "slice2", "slice3", "slice4"],
             },
         },
         {
             taskName: "Selfcare",
             badge: "Happy Soul",
             subtasks: {
-                "shop groceries": [],
-                "subtask2": [],
-                "subtask3": [],
+                "shop groceries": ["slice1", "slice2", "slice3", "slice4"],
+                "subtask2": ["slice1", "slice2", "slice3", "slice4"],
+                "subtask3": ["slice1", "slice2", "slice3", "slice4"],
             }
         },
     ]

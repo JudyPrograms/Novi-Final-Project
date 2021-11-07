@@ -5,18 +5,28 @@ import target from "../assets/before-icons/target.png";
 import swords from "../assets/before-icons/swords.png";
 import shuriken from "../assets/before-icons/shuriken.png";
 import {gameInfo, allUsersData} from "../context/data";
-import SmallCardSection from "../components/SmallCardSection/SmallCardSection";
 import Card from "../components/Card/Card";
+import Menu from "../components/Menu/Menu";
 
 // Deze pagina wordt altijd getoond na inloggen
 function Play() {
 
     const [userData, setUserData] = useState({});
     const [sliceAmount, setSliceAmount] = useState(0);
+
     const [activeTask, setActiveTask] = useState(null);
-    const [activeSubtask, setActiveSubTask] = useState(null)
-    const [subtasks, setSubtasks] = useState([])
+    const [subtasks, setSubtasks] = useState([]);
+    const [activeSubtask, setActiveSubTask] = useState(null);
+    const [slices, setSlices]= useState([])
+    const [activeSlice, setActiveSlice] = useState(null)
+
     const [next, setNext] = useState(0);
+
+
+    // function handleBackButton () {
+    //     setNext(next - 1)
+    //     subtask resetten
+    // }
 
 
     useEffect(() => {
@@ -41,6 +51,18 @@ function Play() {
         }
     }, [activeTask]);
 
+    useEffect(() => {
+        console.log("useEffect activeSubtask not null:" + (activeSubtask !== null))
+        if (activeSubtask !== null) {
+            gameInfo.tasks.map((item) => {
+                if (item.taskName === activeTask) {
+                    const tasks = item.subtasks[activeSubtask];
+                    setSlices(tasks);
+                }
+            });
+        }
+    }, [activeSubtask]);
+
 
     return (
         <div className="play-container">
@@ -51,82 +73,68 @@ function Play() {
                 title="Pick a Challenge . . ."
                 titleImg={target}
                 cardImg={mountain}>
-                <SmallCardSection>
-                    <ul>
-                        {gameInfo.tasks.map((item) => {
-                            return (
-                                <li key={item.taskName}>
-                                    <img src={arch} alt="arch" className="card-section__list-img"/>
-                                    {/* WAAROM WERKT :HOVER (CARD SECTION.CSS) HIER NIET MEER?*/}
-                                    <h2
-                                        className="card-section__task"
-                                        style={{fontWeight: activeTask === item.taskName ? "bold" : "normal"}}
-                                        onClick={() => setActiveTask(item.taskName)}>
-                                        {item.taskName}
-                                    </h2>
-                                </li>
-                            );
-                        })}
-                    </ul>
-
-                </SmallCardSection>
+                <ul className="card-list">
+                    {gameInfo.tasks.map((item) => {
+                        return (
+                            <li key={item.taskName}
+                                className="card-list__item">
+                                <img src={arch} alt="arch" className="card-list__img"/>
+                                {/* WAAROM WERKT :HOVER (CARD-LIST__TASK) HIER NIET MEER?*/}
+                                <h2
+                                    className={`card-list__task card-list__task--${activeTask === item.taskName ? "active" : "inactive"}`}
+                                    onClick={() => setActiveTask(item.taskName)}>
+                                    {item.taskName}
+                                </h2>
+                            </li>
+                        );
+                    })}
+                </ul>
             </Card>
             }
 
-            {/*als er een task wordt gekozen && op next wordt geklikt*/}
+            {/*als er een task wordt gekozen && op next wordt geklikt > break it down*/}
             {activeTask && next === 1 &&
             <Card
                 title="Break it Down . . ."
                 titleImg={shuriken}>
-                <SmallCardSection>
-                    <h1 className="card-section__active-task">{activeTask}</h1>
-                    <select
-                        name="drop-down"
-                        id="drop-down"
-                        onChange={e => setActiveSubTask(e.target.value)}
-                        className="card-section__select">
-                        <option defaultValue="pick">-- pick a task --</option>
-                        {subtasks.length > 0 && subtasks.map((item) => {
-                            return (
-                                <option
-                                    key={item}
-                                    value={item}
-                                    className="drop-down__option">
-                                    {item}
-                                </option>
-                            );
-                        })}
-                    </select>
-                    <img src={arch} alt="arch" className="card-section__arch"/>
-                </SmallCardSection>
+                <Menu menuTitle={activeSubtask ? activeSubtask : "-- pick a task --"}
+                      menuImg={arch}
+                      drop={true}
+                      active={activeTask}
+                      setActive={setActiveSubTask}
+                      array={subtasks}>
+                </Menu>
             </Card>
             }
 
-            {/*als er een subtask wordt gekozen && op next wordt geklikt || of een slice meer dan 3 dagen open staat*/}
+            {/*als er een subtask wordt gekozen && op next wordt geklikt
+            || of een slice meer dan 3 dagen open staat > slice it up*/}
             {activeSubtask !== null && next === 2 &&
             <Card
                 title="Slice it Up . . ."
                 titleImg={swords}>
-                <SmallCardSection>
-                    <h1 className="card-section__active-task">{activeTask}</h1>
-                    <div className="card-section__slice-box">
-                    <span className="card-section__select" style={{width: "100%"}}>
-                        {activeSubtask}
-                    </span>
-                    <span>slice1</span>
-                    <span>slice2</span>
-                    <span>slice3</span>
-                    </div>
-                    <img src={arch} alt="arch" className="card-section__arch"/>
-                </SmallCardSection>
+                <Menu menuTitle={activeSubtask}
+                      menuImg={arch}
+                      drop={false}
+                      active={activeTask}
+                      setActive={setActiveSlice}
+                      array={slices}>
+                </Menu>
+                <p>{activeSlice}</p>
             </Card>
             }
 
             <div className="button-box">
-                <button type="button" onClick={() => setNext(next - 1)}>
+                <button
+                    type="button"
+                    onClick={() => setNext(next - 1)}
+                    className="nav-button">
                     BACK
                 </button>
-                <button type="button" onClick={() => setNext(next + 1)}>
+                <button
+                    type="button"
+                    onClick={() => setNext(next + 1)}
+                    className="nav-button">
                     NEXT
                 </button>
             </div>

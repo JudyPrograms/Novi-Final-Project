@@ -1,6 +1,7 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
 import './App.css';
+import Login from "./pages/Login";
 import Play from "./pages/Play";
 import Account from "./pages/Account";
 import Dashboard from "./pages/Dashboard";
@@ -18,7 +19,7 @@ function App() {
         <Navbar/>
         <Switch>
             <Route exact path="/">
-                <Play/>
+                <Login/>
             </Route>
             <Route exact path="/play">
                 <Play/>
