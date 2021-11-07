@@ -1,9 +1,0 @@
-/***** LARGE-CARD-SECTION *****/
-
-.card-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
-    margin: 40px;
-}
