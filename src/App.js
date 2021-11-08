@@ -8,18 +8,21 @@ import Dashboard from "./pages/Dashboard";
 import Settings from "./pages/Settings";
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
+import Start from "./pages/Start";
 
 
 
 function App() {
   return (
     <div className="page-container">
-        {/*<img src={logo} className="App-logo" alt="logo" />*/}
         <Header/>
         <Navbar/>
         <Switch>
             <Route exact path="/">
                 <Login/>
+            </Route>
+            <Route exact path="/start">
+                <Start/>
             </Route>
             <Route exact path="/play">
                 <Play/>

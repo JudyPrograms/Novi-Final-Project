@@ -59,7 +59,30 @@ export const gameInfo = {
                 "subtask3": ["slice1", "slice2", "slice3", "slice4"],
             }
         },
-    ]
+    ],
+    avatars: [
+        {
+            name: "Kusunoki",
+            subName: "The Adventurous",
+        },
+        {
+            name: "Myamoto",
+            subName: "The Inspirator",
+        },
+        {
+            name: "Takeda",
+            subName: "The Persistant",
+        },
+        {
+            name: "Toyotomi",
+            subName: "The Embracing",
+        },
+    ],
+    startText: ["This is the story of NAME SUBNAME. She lives her life like a hurricane. Her mind is" +
+    " full" +
+    " of thundery plans and whirly thoughts.", "NAME wonders how she would feel if she could  focus," +
+    " priorotize and execute those plans from start to finish...",
+        "Will you help her temper the storm?"],
 }
 
 

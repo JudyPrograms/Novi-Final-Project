@@ -8,10 +8,12 @@ import {gameInfo, allUsersData} from "../context/data";
 import Card from "../components/Card/Card";
 import Menu from "../components/Menu/Menu";
 
+
 // Deze pagina wordt altijd getoond na inloggen
 function Play() {
 
     const [userData, setUserData] = useState({});
+
     const [sliceAmount, setSliceAmount] = useState(0);
 
     const [activeTask, setActiveTask] = useState(null);
@@ -28,10 +30,23 @@ function Play() {
     //     subtask resetten
     // }
 
-
     useEffect(() => {
-        setUserData(allUsersData.users[1])
-    }, []);
+        function fetchUserData() {
+
+            // const token = localStorage.getItem('token');
+
+            try {
+                // hieronder moet een axios.get() request komen
+                // token met user info meegeven in headers: {authorization: `Bearer ${token}`}
+                const result = allUsersData.users[1]
+                setUserData(result);
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
+        fetchUserData();
+    }, [])
 
     useEffect(() => {
         if (userData.currentTasks) {

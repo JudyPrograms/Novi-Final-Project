@@ -1,24 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=B612+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
-/*.App-logo {*/
-/*  height: 40vmin;*/
-/*  pointer-events: none;*/
-/*}*/
-
-/*@media (prefers-reduced-motion: no-preference) {*/
-/*  .App-logo {*/
-/*    animation: App-logo-spin infinite 20s linear;*/
-/*  }*/
-/*}*/
-
-/*@keyframes App-logo-spin {*/
-/*  from {*/
-/*    transform: rotate(0deg);*/
-/*  }*/
-/*  to {*/
-/*    transform: rotate(360deg);*/
-/*  }*/
-/*}*/
 
 :root {
     /*colors*/
@@ -59,6 +40,18 @@ body {
 /***** PAGES *****/
 
 .page-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+}
+
+.start-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -71,6 +64,7 @@ body {
 .dashboard-container {
     margin-bottom: 80px;
 }
+
 
 /***** DASHBOARD *****/
 
@@ -254,6 +248,119 @@ body {
 .nav-button:active {
     transform: translateY(1px);
     background-color: hsl(42, 69%, 75%);
+}
+
+
+/***** LOGIN FORM *****/
+
+.login-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+}
+
+form label {
+    color: var(--dark-red-L25);
+    font-weight: bold;
+}
+
+form input {
+    width: 100%;
+    height: 2rem;
+    padding: 4px 8px;
+    margin: 6px 0;
+    border: none;
+    background-color: var(--accent-yellow-L70);
+    filter: opacity(80%);
+    box-shadow: inset 0 2px 4px hsla(0, 0%, 0%, 0.25);
+    font-family: var(--mono-b612);
+}
+
+form input:focus {
+    outline: none;
+    border: var(--dark-red-L25) solid 1px;
+    background-color: var(--accent-yellow-L70);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    box-shadow: inset 0 2px 4px hsla(0, 0%, 0%, 0.25);
+    -webkit-box-shadow: 0 0 0 30px var(--accent-yellow-L70) inset !important;
+}
+
+input:-webkit-autofill {
+    -webkit-text-fill-color: var(--dark-grey) !important;
+}
+
+.form-button {
+    align-self: center;
+    margin-top: 50px;
+    width: 40%;
+    background-color: var(--dark-blue);
+    color: var(--accent-yellow-L85);
+}
+
+.form-button:hover {
+    background-color: var(--accent-yellow-L70);
+    color: var(--dark-blue);
+}
+
+.register-link a {
+    font-family: var(--ubuntu);
+    color: var(--dark-grey);
+    cursor: pointer;
+}
+
+.error-text {
+    font-family: var(--ubuntu);
+    color: var(--accent-red-L35);
+    margin-bottom: 12px;
+}
+
+/***** FIRST-LOGIN *****/
+
+.avatar-slider-box {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.avatar-slider {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 65%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.avatar-slider--next {
+    justify-content: flex-end;
+}
+
+.nav-arrow {
+    cursor: pointer;
+    font-size: 4rem;
+    color: var(--dark-grey);
+    vertical-align: middle;
+    margin: auto;
+}
+
+.start-text__box {
+    display: flex;
+    flex-direction: column;
+    padding: 0 10rem;
+    font-size: 1.2rem;
+    font-weight: bolder;
 }
 
 

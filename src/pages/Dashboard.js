@@ -93,6 +93,7 @@ function Dashboard() {
                                            progress={userData.badgeProgress.happySoul * 100}/>
                                 </div>
                             </section>
+
                             <section className="dashboard__leaderboard">
                                 <h2 className=".dashboard__subtitle">Leaderboard</h2>
                                 {allUsersData.users.map((item) => {

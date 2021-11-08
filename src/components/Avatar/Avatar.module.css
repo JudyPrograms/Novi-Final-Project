@@ -1,0 +1,43 @@
+.avatar__box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 40px 20px 0 20px;
+}
+
+.avatar__img {
+    width: 140px;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0px 8px 10px hsla(0, 0%, 0%, 0.45));
+    transition: 0.3s ease;
+}
+
+.avatar__name {
+    margin: 0;
+    padding: 0;
+    text-shadow: 0 4px 5px hsla(0, 0%, 0%, 0.25);
+}
+
+.avatar__sub-name {
+    margin: 0;
+    padding: 0;
+    text-shadow: 0 4px 5px hsla(0, 0%, 0%, 0.25);
+}
+
+.avatar__img--active {
+    width: 170px;
+    margin-bottom: 1.3rem;
+    filter: drop-shadow(0px 8px 10px hsla(0, 0%, 0%, 0.45));
+}
+
+.avatar__name--active {
+    margin: 0;
+    padding: 0;
+    text-shadow: 0 4px 5px hsla(0, 0%, 0%, 0.25);
+    font-size: 1.2rem;
+}
+
+.avatar__img:hover {
+    transform: scale(1.1);
+}
