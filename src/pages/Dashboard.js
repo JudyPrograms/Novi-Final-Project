@@ -41,8 +41,7 @@ function Dashboard() {
                 title="DASHBOARD"
                 titleImg={windSign}
                 cardImg={fuji}
-                width="1100px"
-                height="auto">
+                large>
 
                 {userData.currentTasks && (
                     <div className="dashboard">
@@ -81,7 +80,7 @@ function Dashboard() {
 
                         <div className="dashboard__middle">
                             <section className="dashboard__badge-section">
-                                <h2 className=".dashboard__subtitle">Badges</h2>
+                                <h2 className="dashboard__subtitle">Badges</h2>
                                 <div className="dashboard__badges-box">
                                     <Badge text="TIDY PRINCE" image={broom}
                                            progress={userData.badgeProgress.tidyPrince * 100}/>
@@ -119,6 +118,7 @@ function Dashboard() {
                     </div>)}
 
             </Card>
+            <div className="footer-hidden">footer</div>
 
         </div>
     );

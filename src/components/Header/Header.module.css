@@ -1,11 +1,22 @@
 /***** HEADER *****/
 
+.header-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 90%;
+    height: 150px;
+    flex: 0 1 auto;
+}
+
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 90px;
+    height: 80px;
+    flex: 1 0 auto;
 
     /*dashed line:*/
     background-image: linear-gradient(to right, var(--dark-blue) 50%, var(--light-yellow-20) 0%);

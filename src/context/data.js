@@ -81,7 +81,7 @@ export const gameInfo = {
     startText: ["This is the story of NAME SUBNAME. She lives her life like a hurricane. Her mind is" +
     " full" +
     " of thundery plans and whirly thoughts.", "NAME wonders how she would feel if she could  focus," +
-    " priorotize and execute those plans from start to finish...",
+    " prioritize and execute those plans from start to finish...",
         "Will you help her temper the storm?"],
 }
 

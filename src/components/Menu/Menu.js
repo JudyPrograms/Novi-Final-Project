@@ -21,10 +21,11 @@ function Menu({menuTitle, menuImg, active, setActive, array, drop}) {
                     {menuTitle}
                 </button>
                 {drop ?
-                    <div className={styles["menu__content" + (dropdown ? "--active" : "")]}>
+                    <div className={`${styles["menu__content"]} ${styles["menu__content" + (dropdown ? "--active" : "")]}`}>
                         {array.length > 0 && dropdown && array.map((item) => {
                             return (
                                 <button
+                                    key={item.split(" ")[2]}
                                     value={item}
                                     onClick={() => handleFieldClick(item)}
                                     className={styles["menu__field"]}>
@@ -40,9 +41,7 @@ function Menu({menuTitle, menuImg, active, setActive, array, drop}) {
                                 <>
                                     <button
                                         value={item}
-                                        /*#### ALLEEN WIDTH AANPASSEN WERKT NIET MET: styles["menu__field
-                                         menu__field--long"] DUS ALLE STYLING GEKOPIEERD IN ALLEEN DEZE*/
-                                        className={styles["menu__field--long"]}
+                                        className={`${styles["menu__field"]} ${styles["menu__field--long"]}`}
                                         style={{content:{"&:before":{content: index+1}}}}>
                                         {`>> ${index+1}. ${item}`}
                                     </button>

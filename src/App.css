@@ -24,12 +24,11 @@
 
 * {
     box-sizing: border-box;
-
+    padding: 0;
+    margin: 0;
 }
 
 body {
-    padding: 0;
-    margin: 0 5vw 0 5vw;
     background-image: url("./assets/white-wave.png"), linear-gradient(var(--light-yellow-80), var(--light-yellow-80));
     background-size: cover;
     background-blend-mode: overlay;
@@ -37,32 +36,49 @@ body {
     color: var(--dark-grey);
 }
 
+h2 {
+    margin: 1rem 0;
+}
+
 /***** PAGES *****/
 
 .page-container {
-    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
+    height: 100vh;
 }
 
-.login-container {
+.login-container, .play-container, .start-container {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-}
-
-.start-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.play-container {
+    height: 700px;
+    flex: 0 1 auto;
     margin-bottom: 80px;
 }
 
 .dashboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 70%;
+    width: 80%;
+    flex: 1 0 auto;
     margin-bottom: 80px;
+}
+
+.footer-hidden {
+    height: 80px;
+    flex: 0 0 auto;
+    visibility: hidden;
+}
+
+.footer-hidden--small {
+    height: 40px;
 }
 
 
@@ -73,13 +89,13 @@ body {
     flex-direction: column;
     width: 100%;
     gap: 40px;
-    margin: 0 40px 0 40px;
+    margin: 0 40px;
 }
 
 .dashboard__upper {
     width: 100%;
     background-color: var(--light-yellow-S70-10);
-    padding: 0 20px 20px 20px;
+    padding: 20px;
 }
 
 .dashboard__middle {
@@ -92,28 +108,28 @@ body {
 .dashboard__lower {
     width: 60%;
     background-color: var(--light-red-10);
-    padding: 0 20px 20px 20px;
+    padding: 20px;
     margin-right: auto;
 }
 
 .dashboard__badge-section {
     width: 50%;
     background-color: var(--light-blue-40);
-    padding: 0 20px 20px 20px;
+    padding: 20px;
     text-align: center;
 }
 
 .dashboard__badges-box {
     display: flex;
     justify-content: center;
-    gap: 2vw;
+    gap: 20px;
     flex-wrap: wrap;
 }
 
 .dashboard__leaderboard {
     width: 30%;
     background-color: var(--light-yellow-80);
-    padding: 0 20px 20px 20px;
+    padding: 20px;
     text-align: center;
 }
 
@@ -138,7 +154,7 @@ body {
     justify-content: space-between;
     width: 100%;
     font-size: 0.9rem;
-    gap: 2vw;
+    gap: 2%;
 }
 
 .table__col1 {
@@ -314,10 +330,18 @@ input:-webkit-autofill {
     color: var(--dark-blue);
 }
 
+.register-link {
+    cursor: pointer;
+    margin: 20px 0;
+}
+
 .register-link a {
     font-family: var(--ubuntu);
     color: var(--dark-grey);
-    cursor: pointer;
+}
+
+.register-link a:hover {
+    color: var(--dark-blue)
 }
 
 .error-text {
@@ -355,12 +379,27 @@ input:-webkit-autofill {
     margin: auto;
 }
 
-.start-text__box {
+.start-text__box, .how-to__box {
     display: flex;
     flex-direction: column;
     padding: 0 10rem;
-    font-size: 1.2rem;
+}
+
+.start-text__par, .how-to__par {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
     font-weight: bolder;
+    line-height: 1.5;
+    word-spacing: 5px;
+    letter-spacing: 0.5px;
+}
+
+.how-to__box {
+    margin-top: 40px;
+}
+
+.how-to__par {
+    margin-bottom: 60px;
 }
 
 

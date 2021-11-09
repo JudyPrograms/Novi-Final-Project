@@ -33,7 +33,7 @@ function Login() {
 
     return (
         <div className="login-container">
-            <Card width="600px">
+            <Card small>
                 <div className="login-box">
                     <form onSubmit={handleSubmit(handleFormSubmit)}>
 
@@ -69,7 +69,7 @@ function Login() {
                     <p className="register-link"><Link to="/account">Register new account here</Link></p>
                 </div>
             </Card>
-
+            <div className="footer-hidden footer-hidden--small">footer</div>
         </div>
     );
 }

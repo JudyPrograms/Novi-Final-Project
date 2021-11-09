@@ -8,40 +8,32 @@ import takeda from "../assets/avatars/takeda.png";
 import toyotomi from "../assets/avatars/toyotomi.png";
 import gong from "../assets/before-icons/gong.png";
 import fuji from "../assets/fuji.png";
+import lightning from "../assets/before-icons/lightning.png";
 import {allUsersData, gameInfo} from "../context/data.js";
 
 function Start() {
 
     const history = useHistory();
-
-    const avatars = gameInfo.avatars
-
+    const user = allUsersData.users[1];
+    const avatars = gameInfo.avatars;
 
     const [avatar, setAvatar] = useState(null)
-    const [nextSet, setNextSet] = useState(0)
-    const [next, setNext] = useState(0)
+    const [nextAvatars, setNextAvatars] = useState(0)
     const [nextPage, setNextPage] = useState(0)
-
-    // Deze is niet handig voor doorklikken:
-    function handleButtonClick() {
-        if (avatar !== null) {
-            setNext(next + 1)
-            setAvatar(avatar)
-        }
-    }
 
     useEffect(() => {
         function postData() {
             // const token = localStorage.getItem('token');
-            if (avatar !== null && next > 0) {
+            if (avatar !== null && nextPage === 1) {
                 try {
+                    setAvatar(avatar)
                     // hieronder moet een axios.post() request komen
-                    // token met user info meegeven in headers: {authorization: `Bearer ${token}`}
-                    const result = "avatar posted successfully"
-                    console.log(result, avatar, next)
-                    // avatar wordt dan ook in de Header geladen als het goed is.
-                    // daarna door naar volgende kaartje:
-                    setNextPage(nextPage + 1)
+                    //     const result = await axios.post("http://endpoint", {
+                    //         authorization: `Bearer ${token}`
+                    //     });
+                    const result = "avatar posted successfully for: " + user
+                    console.log(result, avatar, nextPage)
+                    // avatar wordt dan ook in de Header geladen
                 } catch (e) {
                     console.error(e);
                 }
@@ -49,7 +41,13 @@ function Start() {
         }
 
         postData();
-    }, [avatar, next])
+    }, [avatar, nextPage])
+
+    useEffect(() => {
+        if (nextPage === 3) {
+            history.push("/play")
+        }
+    }, [nextPage])
 
     return (
         <div className="start-container">
@@ -58,13 +56,13 @@ function Start() {
             <Card title="Select your Warrior . . .">
                 <div className="avatar-slider-box">
                 <span
-                    onClick={() => setNextSet(nextSet - 1)}
+                    onClick={() => setNextAvatars(nextAvatars - 1)}
                     className="nav-arrow">
                         &#10094;
                 </span>
-                    <div className={nextSet <= 0 ? "avatar-slider" : "avatar-slider avatar-slider--next"}>
+                    <div className={nextAvatars <= 0 ? "avatar-slider" : "avatar-slider avatar-slider--next"}>
 
-                        {/* misschien moeten deze infos in de gameInfo komen zodat dit met map gedaan kan worden:*/}
+                        {/* deze infos uit de gameInfo halen en met map doen::*/}
                         <Avatar img={kusunoki}
                                 name="Kusunoki"
                                 subname="The Adventurous"
@@ -90,7 +88,7 @@ function Start() {
                                 setAvatar={setAvatar}>
                         </Avatar>
                     </div>
-                    <span onClick={() => setNextSet(nextSet + 1)}
+                    <span onClick={() => setNextAvatars(nextAvatars + 1)}
                           className="nav-arrow">
                         &#10095;
                 </span>
@@ -120,11 +118,23 @@ function Start() {
             </Card>
             }
 
+            {nextPage === 2 &&
+            <Card
+                title="How to Play . . ."
+                titleImg={lightning}
+                cardImg={fuji}>
+                <div className="how-to__box">
+                    <p className="how-to__par">Earn yin coins by bringing tasks to an end</p>
+                    <p className="how-to__par">Level up each 40 yin coins</p>
+                    <p className="how-to__par">Acquire special badges along the way</p>
+                </div>
+            </Card>
+            }
 
             <button
                 className="nav-button"
                 type="button"
-                onClick={handleButtonClick}>
+                onClick={() => setNextPage(nextPage + 1)}>
                 NEXT
             </button>
 

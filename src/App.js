@@ -16,7 +16,6 @@ function App() {
   return (
     <div className="page-container">
         <Header/>
-        <Navbar/>
         <Switch>
             <Route exact path="/">
                 <Login/>

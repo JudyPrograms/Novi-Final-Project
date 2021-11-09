@@ -4,6 +4,7 @@ import avatar from "../../assets/avatars/blanco-avatar.png";
 import logo from "../../assets/app-logo.png";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import {allUsersData, gameInfo} from "../../context/data.js";
+import Navbar from "../Navbar/Navbar";
 
 function Header() {
 
@@ -30,13 +31,16 @@ function Header() {
 
 
     return (
-        <header className={styles["header"]}>
-            <div className={styles["header__player"]}>
-                <img src={avatar} alt="avatar" className={styles["header__avatar"]}/>
-                <ProgressBar progress={progress} barColor="hsl(216, 40%, 39%)"/>
-            </div>
-            <img src={logo} alt="logo" className={styles["header__app-logo"]}/>
-        </header>
+        <div className={styles["header-box"]}>
+            <header className={styles["header"]}>
+                <div className={styles["header__player"]}>
+                    <img src={userData.avatar ? userData.avatar : avatar} alt="avatar" className={styles["header__avatar"]}/>
+                    <ProgressBar progress={progress} barColor="hsl(216, 40%, 39%)"/>
+                </div>
+                <img src={logo} alt="logo" className={styles["header__app-logo"]}/>
+            </header>
+            <Navbar/>
+        </div>
     );
 }
 

@@ -2,10 +2,11 @@
 
 .navbar {
     display: flex;
-    height: 60px;
     justify-content: center;
     align-items: center;
     gap: 20px;
+    height: 40px;
+    flex: 1 0 auto;
 }
 
 .navbar__link {

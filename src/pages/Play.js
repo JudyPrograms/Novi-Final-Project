@@ -32,9 +32,7 @@ function Play() {
 
     useEffect(() => {
         function fetchUserData() {
-
             // const token = localStorage.getItem('token');
-
             try {
                 // hieronder moet een axios.get() request komen
                 // token met user info meegeven in headers: {authorization: `Bearer ${token}`}
