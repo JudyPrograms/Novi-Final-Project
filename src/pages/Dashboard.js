@@ -83,13 +83,15 @@ function Dashboard() {
                                 <h2 className="dashboard__subtitle">Badges</h2>
                                 <div className="dashboard__badges-box">
                                     <Badge text="TIDY PRINCE" image={broom}
-                                           progress={userData.badgeProgress.tidyPrince * 100}/>
+                                            // deze factor '/3*100' is afhankelijk van gameInfo: ergens als state*/}
+                                            // variabele opslaan?:*/
+                                           progress={userData.badgeProgress.declutter / 3 * 100}/>
                                     <Badge text="SOCIAL HERO" image={handshake}
-                                           progress={userData.badgeProgress.socialHero * 100}/>
+                                           progress={userData.badgeProgress.socialize / 3 * 100}/>
                                     <Badge text="PAPER SLAYER" image={letter}
-                                           progress={userData.badgeProgress.paperSlayer * 100}/>
+                                           progress={userData.badgeProgress.paperwork / 3 * 100}/>
                                     <Badge text="HAPPY SOUL" image={mortar}
-                                           progress={userData.badgeProgress.happySoul * 100}/>
+                                           progress={userData.badgeProgress.selfcare / 3 * 100}/>
                                 </div>
                             </section>
 
@@ -100,7 +102,7 @@ function Dashboard() {
                                         <div key={item.username} className="leader-row">
                                             <span key={item.leaderboardPosition}>{item.leaderboardPosition}.</span>
                                             <span key={item.username}>{item.username}</span>
-                                            <img key={item.avatar} className="leader-img" src={item.avatar} alt=""/>
+                                            <img key={item.avatarImg} className="leader-img" src={item.avatarImg} alt=""/>
                                         </div>
                                     );
                                 })}

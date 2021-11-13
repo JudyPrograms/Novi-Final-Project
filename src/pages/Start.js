@@ -17,7 +17,7 @@ function Start() {
     const user = allUsersData.users[1];
     const avatars = gameInfo.avatars;
 
-    const [avatar, setAvatar] = useState(null)
+    const [avatar, setAvatar] = useState("Myamoto")
     const [nextAvatars, setNextAvatars] = useState(0)
     const [nextPage, setNextPage] = useState(0)
 
@@ -125,6 +125,7 @@ function Start() {
                 cardImg={fuji}>
                 <div className="how-to__box">
                     <p className="how-to__par">Earn yin coins by bringing tasks to an end</p>
+                    <p className="how-to__par">Double coins when completing a set of 6 subtasks</p>
                     <p className="how-to__par">Level up each 40 yin coins</p>
                     <p className="how-to__par">Acquire special badges along the way</p>
                 </div>

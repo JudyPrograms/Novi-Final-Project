@@ -20,6 +20,12 @@
     /*fonts*/
     --mono-b612: "B612 Mono", monospace;
     --ubuntu: "Ubuntu", sans-serif;
+
+    /*standard sizing*/
+    --half-margin: 20px;
+    --single-margin: 40px;
+    --double-margin: 80px;
+    --normal-icon: 60px;
 }
 
 * {
@@ -57,7 +63,7 @@ h2 {
     justify-content: center;
     height: 700px;
     flex: 0 1 auto;
-    margin-bottom: 80px;
+    margin-bottom: var(--double-margin);
 }
 
 .dashboard-container {
@@ -68,17 +74,17 @@ h2 {
     height: 70%;
     width: 80%;
     flex: 1 0 auto;
-    margin-bottom: 80px;
+    margin-bottom: var(--double-margin);
 }
 
 .footer-hidden {
-    height: 80px;
+    height: var(--double-margin);
     flex: 0 0 auto;
     visibility: hidden;
 }
 
 .footer-hidden--small {
-    height: 40px;
+    height: var(--single-margin);
 }
 
 
@@ -88,14 +94,14 @@ h2 {
     display: flex;
     flex-direction: column;
     width: 100%;
-    gap: 40px;
-    margin: 0 40px;
+    gap: var(--single-margin);
+    margin: 0 var(--single-margin);
 }
 
 .dashboard__upper {
     width: 100%;
     background-color: var(--light-yellow-S70-10);
-    padding: 20px;
+    padding: var(--half-margin);
 }
 
 .dashboard__middle {
@@ -108,28 +114,28 @@ h2 {
 .dashboard__lower {
     width: 60%;
     background-color: var(--light-red-10);
-    padding: 20px;
+    padding: var(--half-margin);
     margin-right: auto;
 }
 
 .dashboard__badge-section {
     width: 50%;
     background-color: var(--light-blue-40);
-    padding: 20px;
+    padding: var(--half-margin);
     text-align: center;
 }
 
 .dashboard__badges-box {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: var(--half-margin);
     flex-wrap: wrap;
 }
 
 .dashboard__leaderboard {
     width: 30%;
     background-color: var(--light-yellow-80);
-    padding: 20px;
+    padding: var(--half-margin);
     text-align: center;
 }
 
@@ -237,7 +243,7 @@ h2 {
 
 .button-box {
     display: flex;
-    width: 900px;
+    width: 100%;
     align-items: flex-start;
     justify-content: space-between;
 }
@@ -319,7 +325,7 @@ input:-webkit-autofill {
 
 .form-button {
     align-self: center;
-    margin-top: 50px;
+    margin-top: var(--single-margin);
     width: 40%;
     background-color: var(--dark-blue);
     color: var(--accent-yellow-L85);
@@ -332,7 +338,7 @@ input:-webkit-autofill {
 
 .register-link {
     cursor: pointer;
-    margin: 20px 0;
+    margin: var(--half-margin) 0;
 }
 
 .register-link a {
@@ -386,7 +392,7 @@ input:-webkit-autofill {
 }
 
 .start-text__par, .how-to__par {
-    margin-bottom: 20px;
+    margin-bottom: var(--half-margin);
     font-size: 1.1rem;
     font-weight: bolder;
     line-height: 1.5;
@@ -395,11 +401,11 @@ input:-webkit-autofill {
 }
 
 .how-to__box {
-    margin-top: 40px;
+    margin-top: var(--single-margin);
 }
 
 .how-to__par {
-    margin-bottom: 60px;
+    margin-bottom: var(--half-margin);
 }
 
 

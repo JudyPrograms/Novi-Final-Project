@@ -34,7 +34,7 @@ function Header() {
         <div className={styles["header-box"]}>
             <header className={styles["header"]}>
                 <div className={styles["header__player"]}>
-                    <img src={userData.avatar ? userData.avatar : avatar} alt="avatar" className={styles["header__avatar"]}/>
+                    <img src={userData.avatarImg ? userData.avatarImg : avatar} alt="avatar" className={styles["header__avatar"]}/>
                     <ProgressBar progress={progress} barColor="hsl(216, 40%, 39%)"/>
                 </div>
                 <img src={logo} alt="logo" className={styles["header__app-logo"]}/>

@@ -1,6 +1,7 @@
 .menu-topic {
-    margin: 40px 0 0 10rem;
-    text-shadow: 0 2px 4px hsla(0, 0%, 0%, 0.25);
+    margin: var(--single-margin) 0 0 10rem;
+    text-shadow: 0 0.2rem 0.4rem hsla(0, 0%, 0%, 0.25);
+    z-index: 1;
 }
 
 /*.card-menu__active-task:first-letter {*/
@@ -9,7 +10,7 @@
 
 .menu-topic__img {
     position: absolute;
-    bottom: 60px;
+    bottom: 12.5%;
     left: 10rem;
     width: 25%;
     filter: saturate(40%) opacity(30%);
@@ -17,19 +18,16 @@
 
 .menu {
     position: relative;
-    margin: 40px 0 0 3rem;
+    margin: var(--single-margin) 0 0 3rem;
     width: 50%;
 }
 
 .menu__content {
-    position: absolute;
     width: 100%;
-    top: 60px;
     opacity: 0;
     visibility: hidden;
     transform: translateY(-20px);
     transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
-    max-height: 200px;
 }
 
 .menu__content--active {
@@ -41,7 +39,7 @@
 }
 
 .menu__content--scroll {
-    max-height: 200px;
+    max-height: 12.8rem;
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -55,7 +53,6 @@
     font-family: var(--mono-b612);
     text-align: center;
     font-size: 1.2rem;
-    line-height: 40px;
     cursor: pointer;
 }
 
@@ -64,12 +61,11 @@
 }
 
 .menu__field {
-    margin-bottom: 2px;
+    margin-bottom: 0.2rem;
 }
 
 .menu__field--long {
     padding: 0 0 0 1rem;
-    margin-bottom: 2px;
     font-family: var(--ubuntu);
     text-align: left;
     font-size: 1rem;

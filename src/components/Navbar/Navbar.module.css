@@ -4,8 +4,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
-    height: 40px;
+    gap: var(--half-margin);
+    height: var(--single-margin);
     flex: 1 0 auto;
 }
 

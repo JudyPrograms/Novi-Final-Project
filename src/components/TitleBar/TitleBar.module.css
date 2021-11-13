@@ -4,18 +4,19 @@
     display: flex;
     align-items: center;
     padding-left: 10rem;
-    min-height: 70px;
-    margin-top: 40px;
+    min-height: var(--double-margin);
+    margin-top: var(--single-margin);
     font-family: "Ubuntu", sans-serif;
     background-color: var(--light-yellow-80);
     color: var(--dark-red-L25);
-    gap: 20px;
+    gap: var(--half-margin);
 }
 
 .title-bar__title-icon {
-    height: 60px;
+    height: var(--normal-icon);
     filter: saturate(40%) drop-shadow(0px 4px 4px hsla(0, 0%, 0%, 0.25));
 }
 
 .title-bar__title {
+    filter: drop-shadow(0px 4px 4px hsla(0, 0%, 0%, 0.25));
 }

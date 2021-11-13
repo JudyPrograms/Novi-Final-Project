@@ -4,7 +4,7 @@ import mountain from "../assets/mountain.png";
 import target from "../assets/before-icons/target.png";
 import swords from "../assets/before-icons/swords.png";
 import shuriken from "../assets/before-icons/shuriken.png";
-import {gameInfo, allUsersData} from "../context/data";
+import {allUsersData, gameInfo} from "../context/data";
 import Card from "../components/Card/Card";
 import Menu from "../components/Menu/Menu";
 
@@ -67,12 +67,14 @@ function Play() {
     useEffect(() => {
         console.log("useEffect activeSubtask not null:" + (activeSubtask !== null))
         if (activeSubtask !== null) {
-            gameInfo.tasks.map((item) => {
+            // ############### pakt de goeie taken nog niet
+            const tasks = gameInfo.tasks.map((item) => {
                 if (item.taskName === activeTask) {
-                    const tasks = item.subtasks[activeSubtask];
-                    setSlices(tasks);
+                    return item.subtasks[activeSubtask]
+                    // setSlices(tasks);
                 }
             });
+            setSlices(tasks)
         }
     }, [activeSubtask]);
 
@@ -104,6 +106,8 @@ function Play() {
                 </ul>
             </Card>
             }
+
+
 
             {/*als er een task wordt gekozen && op next wordt geklikt > break it down*/}
             {activeTask && next === 1 &&

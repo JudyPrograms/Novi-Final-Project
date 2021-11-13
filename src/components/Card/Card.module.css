@@ -33,15 +33,15 @@
     position: absolute;
     bottom: 0;
     right: 0;
-    filter: saturate(40%) opacity(30%);
-    height: 240px;
+    filter: saturate(40%) opacity(40%);
+    height: 50%;
     z-index: -1;
 }
 
 .card__section {
     display: flex;
     align-items: flex-start;
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin-top: var(--single-margin);
+    margin-bottom: var(--single-margin);
 }
 
