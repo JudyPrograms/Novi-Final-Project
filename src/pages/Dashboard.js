@@ -22,7 +22,7 @@ function Dashboard() {
             // const token = localStorage.getItem('token');
 
             try {
-                // hieronder moet een axios.get() request komen
+                // >>TO DO: hieronder moet een axios.get() request komen
                 // token met user info meegeven in headers: {authorization: `Bearer ${token}`}
                 const result = allUsersData.users[0]
                 setUserData(result);
@@ -71,8 +71,14 @@ function Dashboard() {
                                 </div>
                                 <div className="table__col4">
                                     <h4>do now!</h4>
+                                    {/* TO DO: onClick event PATCHt currentTasks en completedTasks in userData*/}
                                     {userData.currentTasks.map((item) => {
-                                        return (<button key={item.subtask} type="button">DONE</button>);
+                                        return (<button
+                                            key={item.subtask}
+                                            type="button"
+                                            className="nav-button nav-button--tiny">
+                                            DONE
+                                        </button>);
                                     })}
                                 </div>
                             </div>
@@ -83,8 +89,8 @@ function Dashboard() {
                                 <h2 className="dashboard__subtitle">Badges</h2>
                                 <div className="dashboard__badges-box">
                                     <Badge text="TIDY PRINCE" image={broom}
-                                            // deze factor '/3*100' is afhankelijk van gameInfo: ergens als state*/}
-                                            // variabele opslaan?:*/
+                                            // >>TO DO: deze factor '/3*100' is afhankelijk van gameInfo: ergens als
+                                        // state variabele opslaan?
                                            progress={userData.badgeProgress.declutter / 3 * 100}/>
                                     <Badge text="SOCIAL HERO" image={handshake}
                                            progress={userData.badgeProgress.socialize / 3 * 100}/>

@@ -9,7 +9,7 @@ function Account() {
         title="ACCOUNT"
         titleImg={account}
         cardImg={opener}>
-            <div className="start-text__box">Pagina voor speler: aanpassen username, password etc.</div>
+            <p>Pagina voor speler: aanpassen username, password etc.</p>
         </Card>
     );
 }

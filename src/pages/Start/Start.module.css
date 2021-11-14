@@ -1,0 +1,51 @@
+/***** ON-FIRST-LOGIN *****/
+
+.avatar-slider-box {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.avatar-slider {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 65%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.avatar-slider--next {
+    justify-content: flex-end;
+}
+
+.nav-arrow {
+    cursor: pointer;
+    font-size: 4rem;
+    color: var(--dark-grey);
+    vertical-align: middle;
+    margin: auto;
+}
+
+.start-text__box, .how-to__box {
+    display: flex;
+    flex-direction: column;
+    padding: 0 10rem;
+}
+
+.start-text__par, .how-to__par {
+    margin-bottom: var(--half-margin);
+    font-size: 1.1rem;
+    font-weight: bolder;
+    line-height: 1.5;
+    word-spacing: 5px;
+    letter-spacing: 0.5px;
+}
+
+.how-to__box {
+    margin-top: var(--single-margin);
+}
+
+.how-to__par {
+    margin-bottom: var(--half-margin);
+}

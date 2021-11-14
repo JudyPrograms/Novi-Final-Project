@@ -21,6 +21,7 @@ function Menu({menuTitle, menuImg, active, setActive, array, drop}) {
                     {menuTitle}
                 </button>
                 {drop ?
+                    // wel dropdown:
                     <div className={`${styles["menu__content"]} ${styles["menu__content" + (dropdown ? "--active" : "")]}`}>
                         {array.length > 0 && dropdown && array.map((item) => {
                             return (
@@ -34,6 +35,7 @@ function Menu({menuTitle, menuImg, active, setActive, array, drop}) {
                             );
                         })}
                     </div>
+                    // geen dropdown:
                     :
                     <div className={styles[`menu__content--scroll`]}>
                         {array.length > 0 && array.map((item, index) => {

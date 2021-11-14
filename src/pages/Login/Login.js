@@ -3,11 +3,12 @@ import { useHistory } from 'react-router-dom';
 import axios from "axios";
 import {useForm} from "react-hook-form";
 import {Link} from "react-router-dom";
-import Card from "../components/Card/Card";
+import styles from "./Login.module.css";
+import Card from "../../components/Card/Card";
 
 function Login() {
 
-    // In de auth context zetten:
+    // >>TO DO: auth context maken, daar moet ook history.push in
     const history = useHistory();
 
     // const {loginFunction} = useContext(AuthContext);
@@ -34,7 +35,7 @@ function Login() {
     return (
         <div className="login-container">
             <Card small>
-                <div className="login-box">
+                <div className={styles["login-box"]}>
                     <form onSubmit={handleSubmit(handleFormSubmit)}>
 
                         <label htmlFor="email-field"> E-MAIL:
@@ -45,7 +46,7 @@ function Login() {
                                     {required: "E-mail address required"})}
                             />
                         </label>
-                        {errors.email && <span className="error-text">{errors.email.message}</span>}
+                        {errors.email && <span className={styles["error-text"]}>{errors.email.message}</span>}
 
                         <label htmlFor="password-field"> PASSWORD:
                             <input
@@ -54,19 +55,19 @@ function Login() {
                                 {...register("password",
                                     {required: "Password required"})}/>
                         </label>
-                        {errors.password && <span className="error-text">{errors.password.message}</span>}
+                        {errors.password && <span className={styles["error-text"]}>{errors.password.message}</span>}
 
                         <button
                             type="submit"
-                            className="form-button nav-button">
+                            className={styles["form-button"]}>
                             LOGIN
                         </button>
 
-                        {error && <span className="error-text">Inloggegevens onbekend</span>}
+                        {error && <span className={styles["error-text"]}>Inloggegevens onbekend</span>}
 
                     </form>
 
-                    <p className="register-link"><Link to="/account">Register new account here</Link></p>
+                    <p className={styles["register-link"]}><Link to="/account">Register new account here</Link></p>
                 </div>
             </Card>
             <div className="footer-hidden footer-hidden--small">footer</div>

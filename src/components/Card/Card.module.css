@@ -5,8 +5,8 @@
     height: 480px;
     width: 900px;
     flex: 0 0 auto;
-    background-color: var(--light-yellow-20);
     background-image: url("../../assets/wind.png");
+    background-color: var(--light-yellow-20);
     background-size: cover;
     background-repeat: no-repeat;
     box-shadow: 0 4px 15px 4px hsla(0,0%,0%,0.25);

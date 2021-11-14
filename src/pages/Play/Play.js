@@ -1,15 +1,16 @@
 import React, {useEffect, useState} from 'react';
-import arch from "../assets/before-icons/arch.png";
-import mountain from "../assets/mountain.png";
-import target from "../assets/before-icons/target.png";
-import swords from "../assets/before-icons/swords.png";
-import shuriken from "../assets/before-icons/shuriken.png";
-import {allUsersData, gameInfo} from "../context/data";
-import Card from "../components/Card/Card";
-import Menu from "../components/Menu/Menu";
+import {useHistory} from 'react-router-dom';
+import styles from './Play.module.css';
+import arch from "../../assets/before-icons/arch.png";
+import mountain from "../../assets/mountain.png";
+import target from "../../assets/before-icons/target.png";
+import swords from "../../assets/before-icons/swords.png";
+import shuriken from "../../assets/before-icons/shuriken.png";
+import {allUsersData, gameInfo} from "../../context/data";
+import Card from "../../components/Card/Card";
+import Menu from "../../components/Menu/Menu";
 
 
-// Deze pagina wordt altijd getoond na inloggen
 function Play() {
 
     const [userData, setUserData] = useState({});
@@ -19,17 +20,21 @@ function Play() {
     const [activeTask, setActiveTask] = useState(null);
     const [subtasks, setSubtasks] = useState([]);
     const [activeSubtask, setActiveSubTask] = useState(null);
-    const [slices, setSlices]= useState([])
+    const [slices, setSlices] = useState([])
     const [activeSlice, setActiveSlice] = useState(null)
+    // Zie regel 93 voor activeSlice
 
     const [next, setNext] = useState(0);
 
+    const history = useHistory();
 
+    // >>TO DO: back button moet ook activeSubtask resetten:
     // function handleBackButton () {
     //     setNext(next - 1)
     //     subtask resetten
     // }
 
+    // userdata binnenhalen on mount
     useEffect(() => {
         function fetchUserData() {
             // const token = localStorage.getItem('token');
@@ -46,12 +51,14 @@ function Play() {
         fetchUserData();
     }, [])
 
+    // openstaande taken binnenhalen als userdata er is
     useEffect(() => {
         if (userData.currentTasks) {
             setSliceAmount(userData.currentTasks.length)
         }
     }, [userData]);
 
+    // subtaken instellen als hoofdtaak geactiveerd wordt
     useEffect(() => {
         console.log("useEffect activeTask not null:" + (activeTask !== null))
         if (activeTask !== null) {
@@ -64,39 +71,50 @@ function Play() {
         }
     }, [activeTask]);
 
+    // slices instellen als subtaak geactiveerd wordt
     useEffect(() => {
         console.log("useEffect activeSubtask not null:" + (activeSubtask !== null))
         if (activeSubtask !== null) {
-            // ############### pakt de goeie taken nog niet
-            const tasks = gameInfo.tasks.map((item) => {
+            // >>TO DO: pakt de goeie taken nog niet
+            gameInfo.tasks.map((item) => {
                 if (item.taskName === activeTask) {
-                    return item.subtasks[activeSubtask]
-                    // setSlices(tasks);
+                    const tasks = item.subtasks[activeSubtask]
+                    setSlices(tasks);
                 }
             });
-            setSlices(tasks)
+            // >>TO DO: dit moet eigenlijk aan de hand van dynamische userData.completedTasks:
+            setActiveSlice(slices[0])
         }
     }, [activeSubtask]);
+
+    // eerstvolgende slice activeren en doorsturen naar dashboard als 3x next is geklikt
+    useEffect(() => {
+        if (next === 3) {
+            // >>TO DO: PATCH request waarin userData.currentTasks wordt aangepast met activeSlice
+            history.push("/dashboard")
+        }
+    }, [next]);
 
 
     return (
         <div className="play-container">
 
-            {/*als er minder dan 3 slices open staan > pick a challenge */}
-            {sliceAmount < 3 && next === 0 &&
+            {/*als er geen slices open staan > pick a challenge */}
+            {sliceAmount < 1 && next === 0 &&
             <Card
                 title="Pick a Challenge . . ."
                 titleImg={target}
                 cardImg={mountain}>
-                <ul className="card-list">
+                <ul className={styles["card-list"]}>
                     {gameInfo.tasks.map((item) => {
                         return (
                             <li key={item.taskName}
-                                className="card-list__item">
-                                <img src={arch} alt="arch" className="card-list__img"/>
-                                {/* WAAROM WERKT :HOVER (CARD-LIST__TASK) HIER NIET MEER?*/}
+                                className={styles["card-list__item"]}>
+                                <img src={arch} alt="arch" className={styles["card-list__img"]}/>
+                                {/* >>TO DO: WAAROM WERKT :HOVER (CARD-LIST__TASK) HIER NIET MEER?*/}
                                 <h2
-                                    className={`card-list__task card-list__task--${activeTask === item.taskName ? "active" : "inactive"}`}
+                                    className={`${styles["card-list__task"]} ${styles[`card-list__task--${activeTask ===
+                                    item.taskName ? "active" : "inactive"}`]}`}
                                     onClick={() => setActiveTask(item.taskName)}>
                                     {item.taskName}
                                 </h2>
@@ -106,7 +124,6 @@ function Play() {
                 </ul>
             </Card>
             }
-
 
 
             {/*als er een task wordt gekozen && op next wordt geklikt > break it down*/}
@@ -130,6 +147,7 @@ function Play() {
             <Card
                 title="Slice it Up . . ."
                 titleImg={swords}>
+                {/* >>TO DO: activeSlice stijlen met 'bold'*/}
                 <Menu menuTitle={activeSubtask}
                       menuImg={arch}
                       drop={false}
@@ -137,11 +155,10 @@ function Play() {
                       setActive={setActiveSlice}
                       array={slices}>
                 </Menu>
-                <p>{activeSlice}</p>
             </Card>
             }
 
-            <div className="button-box">
+            <div className={styles["button-box"]}>
                 <button
                     type="button"
                     onClick={() => setNext(next - 1)}
