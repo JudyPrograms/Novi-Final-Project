@@ -1,36 +1,38 @@
-import React, {useState} from 'react';
-import { useHistory } from 'react-router-dom';
-import axios from "axios";
+import React, {useState, useContext} from 'react';
+// import axios from "axios";
 import {useForm} from "react-hook-form";
 import {Link} from "react-router-dom";
+import {AuthContext} from "../../context/AuthContext";
+import {allUsersData} from "../../context/data";
 import styles from "./Login.module.css";
 import Card from "../../components/Card/Card";
 
 function Login() {
 
-    // >>TO DO: auth context maken, daar moet ook history.push in
-    const history = useHistory();
-
-    // const {loginFunction} = useContext(AuthContext);
+    const {loginTemp} = useContext(AuthContext);
     const {register, handleSubmit, formState: {errors}} = useForm();
     const [error, setError] = useState(false);
 
     async function handleFormSubmit(data) {
-
         try {
+
+        // //    Email en password posten naar backend en token opvragen:
         //     const result = await axios.post("http://endpoint", {
         //         email: data.email,
         //         password: data.password,
         //     });
-        //     loginFunction(result.data.accessToken);
-        //
-            // In de login functie in de auth context zetten:
-            history.push('/start');
+        //     login(result.data.accessToken);
+            const userIndex = allUsersData.users.findIndex(user => user.email === data.email)
+            const user = allUsersData.users[userIndex]
+
+            loginTemp(user)
+
         } catch (e) {
             console.error(e);
             setError(true);
         }
     }
+
 
     return (
         <div className="login-container">
@@ -63,11 +65,11 @@ function Login() {
                             LOGIN
                         </button>
 
-                        {error && <span className={styles["error-text"]}>Inloggegevens onbekend</span>}
-
                     </form>
 
-                    <p className={styles["register-link"]}><Link to="/account">Register new account here</Link></p>
+                    <div className={styles["register-link"]}>
+                        {error && <span className={styles["error-text"]}>Account not found</span>}
+                        <Link to="/account">Register new account here</Link></div>
                 </div>
             </Card>
             <div className="footer-hidden footer-hidden--small">footer</div>

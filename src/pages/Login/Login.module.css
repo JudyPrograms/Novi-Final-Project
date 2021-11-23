@@ -76,6 +76,9 @@ input:-webkit-autofill {
 }
 
 .register-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     cursor: pointer;
     margin: var(--half-margin) 0;
 }

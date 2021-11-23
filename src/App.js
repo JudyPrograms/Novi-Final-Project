@@ -7,9 +7,7 @@ import Account from "./pages/Account";
 import Dashboard from "./pages/Dashboard";
 import Settings from "./pages/Settings";
 import Header from "./components/Header/Header";
-import Navbar from "./components/Navbar/Navbar";
 import Start from "./pages/Start/Start";
-
 
 
 function App() {

@@ -1,4 +1,5 @@
 import avatar from "../assets/avatars/myamoto.png"
+import blanco from "../assets/avatars/blanco-avatar.png"
 
 // FRONTEND >> Moet dit in een context in de frontend? Of moet dit ook in de backend?:
 
@@ -103,6 +104,8 @@ export const allUsersData = {
             username: "Judith",
             email: "judithkats@gmail.com",
             password: "encryptedCode",
+            token: "token0 here",
+            admin: false,
             avatarImg: avatar,
             avatarName: ["Kusunoki", "The Adventurous"],
             currentTasks: [
@@ -158,9 +161,12 @@ export const allUsersData = {
         },
         {
             username: "Nieuwe User",
-            email: "judithkats@gmail.com",
+            email: "judith@melkweg.nl",
             password: "encryptedCode",
-            avatar: avatar,
+            token: "token1 here",
+            admin: true,
+            avatarImg: blanco,
+            avatarName: "Anonymous Warrior",
             currentTasks: [],
             completedTasks: [],
             badgeProgress: {

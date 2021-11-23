@@ -46,6 +46,15 @@ h2 {
     margin: 1rem 0;
 }
 
+.loading {
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    color: var(--dark-red-L25);
+    font-weight: bold;
+}
+
+
 /***** PAGES *****/
 
 .page-container {
