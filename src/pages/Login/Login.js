@@ -22,10 +22,8 @@ function Login() {
         //         password: data.password,
         //     });
         //     login(result.data.accessToken);
-            const userIndex = allUsersData.users.findIndex(user => user.email === data.email)
-            const user = allUsersData.users[userIndex]
-
-            loginTemp(user)
+            const result = allUsersData.users.find(userObj => userObj.email === data.email)
+            loginTemp(result)
 
         } catch (e) {
             console.error(e);

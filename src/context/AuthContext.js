@@ -70,8 +70,6 @@ function AuthContextProvider({children}) {
             user: null,
             status: 'done',
         });
-
-        console.log('user logged out');
     }
 
     // Omdat we deze functie in login- en het mounting-effect gebruiken, staat hij hier gedeclareerd!

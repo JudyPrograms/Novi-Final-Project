@@ -2,6 +2,7 @@ import React from 'react';
 import {Switch, Route} from 'react-router-dom';
 import './App.css';
 import Login from "./pages/Login/Login";
+import About from "./pages/About/About";
 import Play from "./pages/Play/Play";
 import Account from "./pages/Account";
 import Dashboard from "./pages/Dashboard";
@@ -17,6 +18,9 @@ function App() {
         <Switch>
             <Route exact path="/">
                 <Login/>
+            </Route>
+            <Route exact path="/about">
+                <About/>
             </Route>
             <Route exact path="/start">
                 <Start/>

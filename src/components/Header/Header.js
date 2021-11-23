@@ -23,14 +23,14 @@ function Header() {
             try {
                 // hieronder moet een axios.get() request komen
                 // token met user info meegeven in headers: {authorization: `Bearer ${token}`}
-                const index = allUsersData.users.findIndex(person => person.email === user.email)
-                const result = allUsersData.users[index]
+                const result = allUsersData.users.find(userObj => userObj.email === user.email)
                 setUserData(result);
             } catch (e) {
                 console.error(e);
             }
         }
-            isAuth && fetchUserData();
+
+        isAuth && fetchUserData();
 
     }, [user, isAuth])
 
@@ -39,12 +39,16 @@ function Header() {
         <div className={styles["header-box"]}>
             <header className={styles["header"]}>
                 <div className={styles["header__player"]}>
-                    {isAuth &&
-                    <>
-                        <img src={userData.avatarImg} alt="avatar"
-                             className={styles["header__avatar"]}/>
-                        <ProgressBar progress={progress} barColor="hsl(216, 40%, 39%)"/>
-                    </>
+                    {isAuth ?
+                        <>
+                            <img src={userData.avatarImg} alt="avatar"
+                                 className={styles["header__avatar"]}/>
+                            <ProgressBar progress={progress} barColor="hsl(216, 40%, 39%)"/>
+                        </>
+                        :
+                        <div className={styles["header__slogan"]}>
+                            Making life easy, has never been easier.
+                        </div>
                     }
                 </div>
                 <img src={logo} alt="logo" className={styles["header__app-logo"]}/>

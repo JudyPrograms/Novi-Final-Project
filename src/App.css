@@ -65,7 +65,7 @@ h2 {
     height: 100vh;
 }
 
-.login-container, .play-container, .start-container {
+.login-container, .about-container, .play-container, .start-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -211,7 +211,7 @@ h2 {
 }
 
 
-/***** BUTTONS *****/
+/***** NAV-BUTTONS *****/
 
 .nav-button {
     font-family: var(--mono-b612);

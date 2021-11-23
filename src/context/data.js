@@ -1,5 +1,9 @@
 import avatar from "../assets/avatars/myamoto.png"
 import blanco from "../assets/avatars/blanco-avatar.png"
+import kusunoki from "../assets/avatars/kusunoki.png";
+import myamoto from "../assets/avatars/myamoto.png";
+import takeda from "../assets/avatars/takeda.png";
+import toyotomi from "../assets/avatars/toyotomi.png";
 
 // FRONTEND >> Moet dit in een context in de frontend? Of moet dit ook in de backend?:
 
@@ -75,18 +79,22 @@ export const gameInfo = {
         {
             name: "Kusunoki",
             subName: "The Adventurous",
+            image: kusunoki,
         },
         {
             name: "Myamoto",
             subName: "The Inspirator",
+            image: myamoto,
         },
         {
             name: "Takeda",
             subName: "The Persistent",
+            image: takeda,
         },
         {
             name: "Toyotomi",
             subName: "The Embracing",
+            image: toyotomi,
         },
     ],
     startText: ["This is the story of NAME SUBNAME. She lives her life like a hurricane. Her mind is" +

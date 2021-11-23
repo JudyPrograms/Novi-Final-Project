@@ -1,15 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import styles from "./Start.module.css";
 import Card from "../../components/Card/Card";
 import Avatar from "../../components/Avatar/Avatar";
-import kusunoki from "../../assets/avatars/kusunoki.png";
-import myamoto from "../../assets/avatars/myamoto.png";
-import takeda from "../../assets/avatars/takeda.png";
-import toyotomi from "../../assets/avatars/toyotomi.png";
 import gong from "../../assets/before-icons/gong.png";
 import fuji from "../../assets/fuji.png";
 import lightning from "../../assets/before-icons/lightning.png";
+import {AuthContext} from "../../context/AuthContext";
 import {allUsersData, gameInfo} from "../../context/data.js";
 
 
@@ -17,7 +14,8 @@ import {allUsersData, gameInfo} from "../../context/data.js";
 function Start() {
 
     const history = useHistory();
-    const user = allUsersData.users[1];
+    const {user} = useContext(AuthContext);
+
     const avatars = gameInfo.avatars;
 
     const [avatar, setAvatar] = useState("Myamoto")
@@ -35,7 +33,7 @@ function Start() {
                     //     const result = await axios.post("http://endpoint", {
                     //         authorization: `Bearer ${token}`
                     //     });
-                    const result = "avatar posted successfully for: " + user
+                    const result = "avatar posted successfully for: " + user.username
                     console.log(result, avatar, nextPage)
                 } catch (e) {
                     console.error(e);
@@ -68,32 +66,18 @@ function Start() {
                         &#10094;
                 </span>
                     <div className={`${styles["avatar-slider"]} ${nextAvatars > 0 && `${styles["avatar-slider--next"]}`}`}>
-
-                        {/* >>TO DO: deze infos uit de gameInfo halen en met map renderen::*/}
-                        <Avatar img={kusunoki}
-                                name="Kusunoki"
-                                subname="The Adventurous"
-                                avatar={avatar}
-                                setAvatar={setAvatar}>
-                        </Avatar>
-                        <Avatar img={myamoto}
-                                name="Myamoto"
-                                subname="The Inspirator"
-                                avatar={avatar}
-                                setAvatar={setAvatar}>
-                        </Avatar>
-                        <Avatar img={takeda}
-                                name="Takeda"
-                                subname="The Persistant"
-                                avatar={avatar}
-                                setAvatar={setAvatar}>
-                        </Avatar>
-                        <Avatar img={toyotomi}
-                                name="Toyotomi"
-                                subname="The Embracing"
-                                avatar={avatar}
-                                setAvatar={setAvatar}>
-                        </Avatar>
+                        {avatars.map((item)=>{
+                            return(
+                                <Avatar
+                                        key={item.name}
+                                        img={item.image}
+                                        name={item.name}
+                                        subname={item.subName}
+                                        avatar={avatar}
+                                        setAvatar={setAvatar}
+                                />
+                            );
+                        })}
                     </div>
                     <span onClick={() => setNextAvatars(nextAvatars + 1)}
                           className={styles["nav-arrow"]}>
