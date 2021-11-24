@@ -147,18 +147,21 @@ export const allUsersData = {
                     subtask: "organize mail",
                     slice: "put 'wait' pile on top in organizer",
                     finishDate: "10/31/2021  2:28",
+                    coins: 2,
                 },
                 {
                     mainTask: "Paperwork",
                     subtask: "organize mail",
                     slice: "put 'store' pile in organizer",
                     finishDate: "10/30/2021  2:28",
+                    coins: 3,
                 },
                 {
                     mainTask: "Paperwork",
                     subtask: "organize mail",
                     slice: "throw out 'bin' pile",
                     finishDate: "10/29/2021  2:28",
+                    coins: 2,
                 },
             ],
             badgeProgress: {
@@ -168,7 +171,7 @@ export const allUsersData = {
                 selfcare: 0.33,
             },
             // (2.25 + 1) * 8 = 26
-            coinsTotal: 26,
+            coinsTotal: 97,
             level: "Hurricane",
             leaderboardPosition: 110,
         },

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import styles from './Play.module.css';
 import arch from "../../assets/before-icons/arch.png";
@@ -9,11 +9,13 @@ import shuriken from "../../assets/before-icons/shuriken.png";
 import {allUsersData, gameInfo} from "../../context/data";
 import Card from "../../components/Card/Card";
 import Menu from "../../components/Menu/Menu";
+import {AuthContext} from "../../context/AuthContext";
 
 
 function Play() {
 
     const history = useHistory();
+    const {user} = useContext(AuthContext);
 
     const [userData, setUserData] = useState({});
 
@@ -24,9 +26,9 @@ function Play() {
     const [activeSubtask, setActiveSubTask] = useState(null);
     const [slices, setSlices] = useState([])
     const [activeSlice, setActiveSlice] = useState(null)
-    // Zie regel 93 voor activeSlice
+    // TODO: activeSlice naar userData posten
 
-    // state voor bijhouden welk scherm (1, 2 of 3)
+    // State voor bijhouden welk scherm (1, 2 of 3)
     const [next, setNext] = useState(1);
 
     function handleNextButton () {
@@ -52,14 +54,14 @@ function Play() {
         setNext(next - 1)
     }
 
-    // userdata binnenhalen on mount
+    // Userdata binnenhalen on mount
     useEffect(() => {
         function fetchUserData() {
             // const token = localStorage.getItem('token');
             try {
-                // hieronder moet een axios.get() request komen
+                // TODO: axios.get() request voor userData
                 // token met user info meegeven in headers: {authorization: `Bearer ${token}`}
-                const result = allUsersData.users[1]
+                const result = allUsersData.users.find(userObj => userObj.email === user.email)
                 setUserData(result);
             } catch (e) {
                 console.error(e);
@@ -69,17 +71,23 @@ function Play() {
         fetchUserData();
     }, [])
 
-    // (aantal) openstaande taken binnenhalen als userdata er is
+    // (Aantal) Openstaande taken binnenhalen als userdata er is
     useEffect(() => {
         if (userData.currentTasks) {
+            console.log("slice amount:", userData.currentTasks.length)
             setSliceAmount(userData.currentTasks.length)
         }
     }, [userData]);
 
-    // subtaken instellen als hoofdtaak geactiveerd wordt
+    // Als er al 3 openstaande taken zijn kan er geen nieuwe taak gekozen worden
     useEffect(() => {
-        console.log("useEffect activeTask not null:" + (activeTask !== null))
-        console.log("next:", next)
+        if (sliceAmount > 2) {
+            history.push("/dashboard")
+        }
+    }, [sliceAmount])
+
+    // Subtaken instellen als hoofdtaak geactiveerd wordt
+    useEffect(() => {
         if (activeTask !== null) {
             const task = gameInfo.tasks.find(task => task.taskName === activeTask)
             const tasks = Object.keys(task.subtasks)
@@ -87,10 +95,8 @@ function Play() {
         }
     }, [activeTask]);
 
-    // slices instellen als subtaak geactiveerd wordt
+    // Slices instellen als subtaak geactiveerd wordt
     useEffect(() => {
-        console.log("useEffect activeSubtask not null:" + (activeSubtask !== null))
-        console.log("next:", next)
         if (activeSubtask !== null && next === 2) {
             const task = gameInfo.tasks.find(task => task.taskName === activeTask)
             const tasks = task.subtasks[activeSubtask]
@@ -98,12 +104,14 @@ function Play() {
         }
     }, [activeSubtask]);
 
-    // eerstvolgende slice activeren en doorsturen naar dashboard als 3x next is geklikt
+    // Eerstvolgende slice activeren en doorsturen naar dashboard als next is geklikt
     useEffect(() => {
-        if (next === 4 || next === 0) {
-            // >>TO DO: PATCH request waarin userData.currentTasks wordt aangepast met activeSlice
-            // >>TO DO: dit moet eigenlijk aan de hand van dynamische userData.completedTasks:
+        if (next === 4) {
+            // TODO: PATCH request waarin userData.currentTasks wordt aangepast met activeSlice
             setActiveSlice(slices[0])
+            history.push("/dashboard")
+        }
+        if (next === 0) {
             history.push("/dashboard")
         }
     }, [next]);
@@ -112,8 +120,8 @@ function Play() {
     return (
         <div className="play-container">
 
-            {/*als er geen slices open staan > pick a challenge */}
-            {sliceAmount < 1 && next === 1 &&
+            {/*als er geen slices open staan > scherm: pick a challenge */}
+            {sliceAmount < 3 && next === 1 &&
             <Card
                 title="Pick a Challenge . . ."
                 titleImg={target}
@@ -124,7 +132,6 @@ function Play() {
                             <li key={item.taskName}
                                 className={styles["card-list__item"]}>
                                 <img src={arch} alt="arch" className={styles["card-list__img"]}/>
-                                {/* >>TO DO: WAAROM WERKT :HOVER (CARD-LIST__TASK) HIER NIET MEER?*/}
                                 <h2
                                     className={`${styles["card-list__task"]} ${styles[`card-list__task--${activeTask ===
                                     item.taskName ? "active" : "inactive"}`]}`}
@@ -139,7 +146,7 @@ function Play() {
             }
 
 
-            {/*als er een task wordt gekozen && op next wordt geklikt > break it down*/}
+            {/*als er een task wordt gekozen && op next wordt geklikt > scherm: break it down*/}
             {activeTask && next === 2 &&
             <Card
                 title="Break it Down . . ."
@@ -154,8 +161,8 @@ function Play() {
             </Card>
             }
 
-            {/*als er een subtask wordt gekozen && op next wordt geklikt
-            || >>TO DO: of een slice meer dan 3 dagen open staat > slice it up*/}
+            {/*als er een subtask wordt gekozen && op next wordt geklikt > scherm: slice it up
+            || >>TODO: of als een slice meer dan 3 dagen open staat*/}
             {slices.length > 0 && next === 3 &&
             <Card
                 title="Slice it Up . . ."

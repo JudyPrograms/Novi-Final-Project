@@ -15,13 +15,12 @@ function Login() {
 
     async function handleFormSubmit(data) {
         try {
-
-        // //    Email en password posten naar backend en token opvragen:
-        //     const result = await axios.post("http://endpoint", {
-        //         email: data.email,
-        //         password: data.password,
-        //     });
-        //     login(result.data.accessToken);
+        // TODO: Email en password posten naar backend en token opvragen
+            //     const result = await axios.post("http://endpoint", {
+            //         email: data.email,
+            //         password: data.password,
+            //     });
+            //     login(result.data.accessToken);
             const result = allUsersData.users.find(userObj => userObj.email === data.email)
             loginTemp(result)
 

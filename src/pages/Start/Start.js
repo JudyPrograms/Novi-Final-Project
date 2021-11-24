@@ -7,7 +7,7 @@ import gong from "../../assets/before-icons/gong.png";
 import fuji from "../../assets/fuji.png";
 import lightning from "../../assets/before-icons/lightning.png";
 import {AuthContext} from "../../context/AuthContext";
-import {allUsersData, gameInfo} from "../../context/data.js";
+import {gameInfo} from "../../context/data.js";
 
 
 // Wordt alleen getoond na eerste keer inloggen gebruiker
@@ -22,17 +22,18 @@ function Start() {
     const [nextAvatars, setNextAvatars] = useState(0)
     const [nextPage, setNextPage] = useState(0)
 
-    // gekozen avatar in userData posten en in header zetten
+    // Gekozen avatar in userData posten en in header zetten
     useEffect(() => {
         function postData() {
+            // TODO: token uit local storage halen
             // const token = localStorage.getItem('token');
             if (nextPage === 1) {
                 try {
                     setAvatar(avatar)
-                    // >>TO DO: axios.post() request:
-                    //     const result = await axios.post("http://endpoint", {
-                    //         authorization: `Bearer ${token}`
-                    //     });
+                    // TODO: axios.patch() request om avatar aan te passen
+                    // const result = await axios.patch("http://endpoint", {
+                    //     authorization: `Bearer ${token}`
+                    // });
                     const result = "avatar posted successfully for: " + user.username
                     console.log(result, avatar)
                 } catch (e) {
@@ -45,7 +46,7 @@ function Start() {
     }, [avatar, nextPage])
 
 
-    // Na 3 keer klikken doorsturen naar 'Play'
+    // Na doorlopen van Start (= 3 keer klikken), doorsturen naar 'Play'
     useEffect(() => {
         if (nextPage === 3) {
             history.push("/play")
@@ -116,6 +117,7 @@ function Start() {
                 titleImg={lightning}
                 cardImg={fuji}>
                 <div className={styles["how-to__box"]}>
+                    {/*TODO: icons bij tekst plaatsen*/}
                     <p className={styles["how-to__par"]}>Earn yin coins by bringing tasks to an end</p>
                     <p className={styles["how-to__par"]}>Double coins when completing a set of 6 subtasks</p>
                     <p className={styles["how-to__par"]}>Level up each 40 yin coins</p>

@@ -23,7 +23,7 @@ function Header() {
             // const token = localStorage.getItem('token');
 
             try {
-                // hieronder moet een axios.get() request komen
+                // TODO: axios.get() request voor userData
                 // token met user info meegeven in headers: {authorization: `Bearer ${token}`}
                 // result is userdata met welke avatar en info over progress in level
                 const result = allUsersData.users.find(userObj => userObj.email === user.email)
@@ -46,7 +46,7 @@ function Header() {
 
     useEffect(()=>{
         if (Object.keys(level).length > 0) {
-            setProgress(((gameInfo.coinsPerLevel - (level.maxPoints - userData.coinsTotal)) / gameInfo.coinsPerLevel * 100))
+            setProgress(Math.ceil(((gameInfo.coinsPerLevel - (level.maxPoints - userData.coinsTotal)) / gameInfo.coinsPerLevel * 100)))
         }
     }, [level, userData])
 
