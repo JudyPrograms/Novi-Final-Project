@@ -13,6 +13,8 @@ import Menu from "../../components/Menu/Menu";
 
 function Play() {
 
+    const history = useHistory();
+
     const [userData, setUserData] = useState({});
 
     const [sliceAmount, setSliceAmount] = useState(0);
@@ -24,15 +26,31 @@ function Play() {
     const [activeSlice, setActiveSlice] = useState(null)
     // Zie regel 93 voor activeSlice
 
-    const [next, setNext] = useState(0);
+    // state voor bijhouden welk scherm (1, 2 of 3)
+    const [next, setNext] = useState(1);
 
-    const history = useHistory();
+    function handleNextButton () {
+        if (next === 1 && activeTask != null) {
+            setNext(next + 1)
+        }
+        if (next ===2 && activeSubtask != null) {
+            setNext(next + 1)
+        }
+        if (next === 3) {
+            setNext(next + 1)
+        }
+    }
 
-    // >>TO DO: back button moet ook activeSubtask resetten:
-    // function handleBackButton () {
-    //     setNext(next - 1)
-    //     subtask resetten
-    // }
+    function handleBackButton () {
+        if (next === 3) {
+            setActiveSubTask(null)
+            setSlices([])
+        }
+        if (next === 2) {
+            setActiveTask(null)
+        }
+        setNext(next - 1)
+    }
 
     // userdata binnenhalen on mount
     useEffect(() => {
@@ -51,7 +69,7 @@ function Play() {
         fetchUserData();
     }, [])
 
-    // openstaande taken binnenhalen als userdata er is
+    // (aantal) openstaande taken binnenhalen als userdata er is
     useEffect(() => {
         if (userData.currentTasks) {
             setSliceAmount(userData.currentTasks.length)
@@ -61,36 +79,31 @@ function Play() {
     // subtaken instellen als hoofdtaak geactiveerd wordt
     useEffect(() => {
         console.log("useEffect activeTask not null:" + (activeTask !== null))
+        console.log("next:", next)
         if (activeTask !== null) {
-            gameInfo.tasks.map((item) => {
-                if (item.taskName === activeTask) {
-                    const tasks = Object.keys(item.subtasks);
-                    setSubtasks(tasks);
-                }
-            });
+            const task = gameInfo.tasks.find(task => task.taskName === activeTask)
+            const tasks = Object.keys(task.subtasks)
+            setSubtasks(tasks)
         }
     }, [activeTask]);
 
     // slices instellen als subtaak geactiveerd wordt
     useEffect(() => {
         console.log("useEffect activeSubtask not null:" + (activeSubtask !== null))
-        if (activeSubtask !== null) {
-            // >>TO DO: pakt de goeie taken nog niet
-            gameInfo.tasks.map((item) => {
-                if (item.taskName === activeTask) {
-                    const tasks = item.subtasks[activeSubtask]
-                    setSlices(tasks);
-                }
-            });
-            // >>TO DO: dit moet eigenlijk aan de hand van dynamische userData.completedTasks:
-            setActiveSlice(slices[0])
+        console.log("next:", next)
+        if (activeSubtask !== null && next === 2) {
+            const task = gameInfo.tasks.find(task => task.taskName === activeTask)
+            const tasks = task.subtasks[activeSubtask]
+            setSlices(tasks)
         }
     }, [activeSubtask]);
 
     // eerstvolgende slice activeren en doorsturen naar dashboard als 3x next is geklikt
     useEffect(() => {
-        if (next === 3) {
+        if (next === 4 || next === 0) {
             // >>TO DO: PATCH request waarin userData.currentTasks wordt aangepast met activeSlice
+            // >>TO DO: dit moet eigenlijk aan de hand van dynamische userData.completedTasks:
+            setActiveSlice(slices[0])
             history.push("/dashboard")
         }
     }, [next]);
@@ -100,7 +113,7 @@ function Play() {
         <div className="play-container">
 
             {/*als er geen slices open staan > pick a challenge */}
-            {sliceAmount < 1 && next === 0 &&
+            {sliceAmount < 1 && next === 1 &&
             <Card
                 title="Pick a Challenge . . ."
                 titleImg={target}
@@ -127,7 +140,7 @@ function Play() {
 
 
             {/*als er een task wordt gekozen && op next wordt geklikt > break it down*/}
-            {activeTask && next === 1 &&
+            {activeTask && next === 2 &&
             <Card
                 title="Break it Down . . ."
                 titleImg={shuriken}>
@@ -142,8 +155,8 @@ function Play() {
             }
 
             {/*als er een subtask wordt gekozen && op next wordt geklikt
-            || of een slice meer dan 3 dagen open staat > slice it up*/}
-            {activeSubtask !== null && next === 2 &&
+            || >>TO DO: of een slice meer dan 3 dagen open staat > slice it up*/}
+            {slices.length > 0 && next === 3 &&
             <Card
                 title="Slice it Up . . ."
                 titleImg={swords}>
@@ -161,13 +174,13 @@ function Play() {
             <div className={styles["button-box"]}>
                 <button
                     type="button"
-                    onClick={() => setNext(next - 1)}
+                    onClick={handleBackButton}
                     className="nav-button">
                     BACK
                 </button>
                 <button
                     type="button"
-                    onClick={() => setNext(next + 1)}
+                    onClick={handleNextButton}
                     className="nav-button">
                     NEXT
                 </button>

@@ -34,7 +34,7 @@ function Start() {
                     //         authorization: `Bearer ${token}`
                     //     });
                     const result = "avatar posted successfully for: " + user.username
-                    console.log(result, avatar, nextPage)
+                    console.log(result, avatar)
                 } catch (e) {
                     console.error(e);
                 }

@@ -56,27 +56,27 @@ export const gameInfo = {
             taskName: "Declutter",
             badge: "Tidy Prince",
             subtasks: {
-                "wash clothes": ["slice1", "slice2", "slice3", "slice4"],
-                "clean dishes": ["slice1", "slice2", "slice3", "slice4"],
-                "tidy space": ["slice1", "slice2", "slice3", "slice4"],
+                "wash clothes": ["D1_slice1", "slice2", "slice3", "slice4"],
+                "clean dishes": ["D2_slice1", "slice2", "slice3", "slice4"],
+                "tidy space": ["D3_slice1", "slice2", "slice3", "slice4"],
             }
         },
         {
             taskName: "Socialize",
             badge: "Social Hero",
             subtasks: {
-                "be attentive": ["slice1", "slice2", "slice3", "slice4"],
-                "contact family": ["slice1", "slice2", "slice3", "slice4"],
-                "get on time": ["slice1", "slice2", "slice3", "slice4"],
+                "be attentive": ["S1_slice1", "slice2", "slice3", "slice4"],
+                "contact family": ["S2_slice1", "slice2", "slice3", "slice4"],
+                "get on time": ["S3_slice1", "slice2", "slice3", "slice4"],
             },
         },
         {
             taskName: "Selfcare",
             badge: "Happy Soul",
             subtasks: {
-                "eat well": ["slice1", "slice2", "slice3", "slice4"],
-                "get rest": ["slice1", "slice2", "slice3", "slice4"],
-                "exercise": ["slice1", "slice2", "slice3", "slice4"],
+                "eat well": ["C1_slice1", "slice2", "slice3", "slice4"],
+                "get rest": ["C2_slice1", "slice2", "slice3", "slice4"],
+                "exercise": ["C3_slice1", "slice2", "slice3", "slice4"],
             }
         },
     ],
