@@ -18,7 +18,7 @@ function Start() {
 
     const avatars = gameInfo.avatars;
 
-    const [avatar, setAvatar] = useState("Myamoto")
+    const [avatar, setAvatar] = useState(avatars[1])
     const [nextAvatars, setNextAvatars] = useState(0)
     const [nextPage, setNextPage] = useState(0)
 
@@ -26,7 +26,7 @@ function Start() {
     useEffect(() => {
         function postData() {
             // const token = localStorage.getItem('token');
-            if (avatar !== null && nextPage === 1) {
+            if (nextPage === 1) {
                 try {
                     setAvatar(avatar)
                     // >>TO DO: axios.post() request:
@@ -65,16 +65,18 @@ function Start() {
                     className={styles["nav-arrow"]}>
                         &#10094;
                 </span>
-                    <div className={`${styles["avatar-slider"]} ${nextAvatars > 0 && `${styles["avatar-slider--next"]}`}`}>
-                        {avatars.map((item)=>{
-                            return(
+                    <div
+                        className={`${styles["avatar-slider"]} ${nextAvatars > 0 && `${styles["avatar-slider--next"]}`}`}>
+                        {avatars.map((item) => {
+                            return (
                                 <Avatar
-                                        key={item.name}
-                                        img={item.image}
-                                        name={item.name}
-                                        subname={item.subName}
-                                        avatar={avatar}
-                                        setAvatar={setAvatar}
+                                    key={item.name}
+                                    img={item.image}
+                                    name={item.name}
+                                    subname={item.subName}
+                                    avatar={avatar}
+                                    setAvatar={setAvatar}
+                                    object={item}
                                 />
                             );
                         })}
@@ -93,16 +95,13 @@ function Start() {
                   titleImg={gong}
                   cardImg={fuji}>
                 <div className={styles["start-text__box"]}>
-                    {avatar !== null && gameInfo.startText.map((item) => {
-                        let par = item
-                        console.log(avatars[0].name, avatars[0].subName)
-                        // #######################################   waarom werkt deze replace niet?
-                        par.replace("NAME", avatars[0].name)
-                        par.replace("SUBNAME", avatars[0].subName)
+                    {gameInfo.startText.map((item) => {
+                        item = item.replace("NAME", avatar.name)
+                        item = item.replace("SUBNAME", avatar.subName)
                         return (
-                            <p key={par.split(" ")[0]}
+                            <p key={item.split(" ")[0]}
                                className={styles["start-text__par"]}>
-                                {par}
+                                {item}
                             </p>
                         );
                     })}

@@ -13,7 +13,9 @@ function Header() {
     const {isAuth, user} = useContext(AuthContext);
 
     const [userData, setUserData] = useState({});
-    const progress = (userData.coinsTotal / gameInfo.coinsPerLevel * 100)
+    const [level, setLevel] = useState({})
+    const [nextLevel, setNextLevel] = useState({})
+    const [progress, setProgress] = useState(null)
 
     useEffect(() => {
         function fetchUserData() {
@@ -23,6 +25,7 @@ function Header() {
             try {
                 // hieronder moet een axios.get() request komen
                 // token met user info meegeven in headers: {authorization: `Bearer ${token}`}
+                // result is userdata met welke avatar en info over progress in level
                 const result = allUsersData.users.find(userObj => userObj.email === user.email)
                 setUserData(result);
             } catch (e) {
@@ -34,16 +37,48 @@ function Header() {
 
     }, [user, isAuth])
 
+    useEffect(() => {
+        if (Object.keys(userData).length > 0) {
+            setLevel(gameInfo.levels.find(levelObj => (levelObj.maxPoints >= userData.coinsTotal)))
+            setNextLevel(gameInfo.levels.find(levelObj => (levelObj.maxPoints >= userData.coinsTotal + gameInfo.coinsPerLevel +1)))
+        }
+    }, [userData])
+
+    useEffect(()=>{
+        if (Object.keys(level).length > 0) {
+            setProgress(((gameInfo.coinsPerLevel - (level.maxPoints - userData.coinsTotal)) / gameInfo.coinsPerLevel * 100))
+        }
+    }, [level, userData])
 
     return (
         <div className={styles["header-box"]}>
             <header className={styles["header"]}>
-                <div className={styles["header__player"]}>
+                <div className={styles["header__player-box"]}>
                     {isAuth ?
                         <>
-                            <img src={userData.avatarImg} alt="avatar"
-                                 className={styles["header__avatar"]}/>
-                            <ProgressBar progress={progress} barColor="hsl(216, 40%, 39%)"/>
+                            {userData.avatarImg &&
+                            <div className={styles["header__avatar-box"]}>
+                                <img src={userData.avatarImg} alt="avatar"
+                                     className={styles["header__avatar"]}/>
+                                <p className={styles["header__name"]}>{userData.avatarName[0]}</p>
+                            </div>
+                            }
+                            {progress !== null &&
+                            <div className={styles["header__progress-box"]}>
+                                <ProgressBar progress={progress} barColor="hsl(216, 20%, 59%)"/>
+                                <div className={styles["header__progress-text"]}>
+
+                                    <div className="text-left">
+                                        <p>Level: {level.levelName}</p>
+                                        <p>Total Coins: {userData.coinsTotal}</p>
+                                    </div>
+                                    <div className={styles["text-right"]}>
+                                        <p>Next Level: {nextLevel.levelName}</p>
+                                        <p>Coins To Earn: {level.maxPoints - userData.coinsTotal}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            }
                         </>
                         :
                         <div className={styles["header__slogan"]}>

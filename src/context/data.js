@@ -15,7 +15,12 @@ export const gameInfo = {
     coinsPerSubtask: 9,
     completedSubtaskBonus: 9,
     subtasksPerBadge: 3,
-    levels: [{"Hurricane": 39, "Tornado": 79, "Thunderstorm": 119, "Whirlwind": 159, "Breeze": 199}],
+    levels: [
+        {levelName: "Hurricane", maxPoints: 40},
+        {levelName: "Tornado", maxPoints: 80},
+        {levelName: "Thunderstorm", maxPoints: 120},
+        {levelName: "Whirlwind", maxPoints: 160},
+        {levelName: "Breeze", maxPoints: 200}],
     tasks: [
         {
             taskName: "Paperwork",
@@ -78,29 +83,29 @@ export const gameInfo = {
     avatars: [
         {
             name: "Kusunoki",
-            subName: "The Adventurous",
+            subName: "the Adventurous",
             image: kusunoki,
         },
         {
             name: "Myamoto",
-            subName: "The Inspirator",
+            subName: "the Inspirator",
             image: myamoto,
         },
         {
             name: "Takeda",
-            subName: "The Persistent",
+            subName: "the Persistent",
             image: takeda,
         },
         {
             name: "Toyotomi",
-            subName: "The Embracing",
+            subName: "the Embracing",
             image: toyotomi,
         },
     ],
     startText: ["This is the story of NAME SUBNAME. She lives her life like a hurricane. Her mind is" +
     " full" +
-    " of thundery plans and whirly thoughts.", "NAME wonders how she would feel if she could  focus," +
-    " prioritize and execute those plans from start to finish...",
+    " of thundery plans and whirly thoughts.", "NAME wonders how she would feel if she could focus" +
+    " and execute her plans from start to finish...",
         "Will you help her temper the storm?"],
 }
 
@@ -114,7 +119,7 @@ export const allUsersData = {
             password: "encryptedCode",
             token: "token0 here",
             admin: false,
-            avatarImg: avatar,
+            avatarImg: kusunoki,
             avatarName: ["Kusunoki", "The Adventurous"],
             currentTasks: [
                 {
@@ -174,7 +179,7 @@ export const allUsersData = {
             token: "token1 here",
             admin: true,
             avatarImg: blanco,
-            avatarName: "Anonymous Warrior",
+            avatarName: ["Anonymous", "Warrior"],
             currentTasks: [],
             completedTasks: [],
             badgeProgress: {

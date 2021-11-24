@@ -9,6 +9,8 @@ import letter from "../assets/badges/opener.png";
 import mortar from "../assets/badges/remedy.png";
 import fuji from "../assets/fuji.png";
 import windSign from "../assets/before-icons/windsock.png";
+import styles from "../components/Navbar/Navbar.module.css";
+import ProgressBar from "../components/ProgressBar/ProgressBar";
 
 const DAYS_TILL_ALERT = 3
 
@@ -45,6 +47,7 @@ function Dashboard() {
 
                 {userData.currentTasks && (
                     <div className="dashboard">
+
                         <section className="dashboard__upper">
                             <h2 className=".dashboard__subtitle">Current Tasks</h2>
 
@@ -89,7 +92,7 @@ function Dashboard() {
                                 <h2 className="dashboard__subtitle">Badges</h2>
                                 <div className="dashboard__badges-box">
                                     <Badge text="TIDY PRINCE" image={broom}
-                                            // >>TO DO: deze factor '/3*100' is afhankelijk van gameInfo: ergens als
+                                        // >>TO DO: deze factor '/3*100' is afhankelijk van gameInfo: ergens als
                                         // state variabele opslaan?
                                            progress={userData.badgeProgress.declutter / 3 * 100}/>
                                     <Badge text="SOCIAL HERO" image={handshake}
@@ -108,7 +111,8 @@ function Dashboard() {
                                         <div key={item.username} className="leader-row">
                                             <span key={item.leaderboardPosition}>{item.leaderboardPosition}.</span>
                                             <span key={item.username}>{item.username}</span>
-                                            <img key={item.avatarImg} className="leader-img" src={item.avatarImg} alt=""/>
+                                            <img key={item.avatarImg} className="leader-img" src={item.avatarImg}
+                                                 alt=""/>
                                         </div>
                                     );
                                 })}
@@ -123,7 +127,8 @@ function Dashboard() {
                                 })}
                             </div>
                         </section>
-                    </div>)}
+                    </div>
+                )}
 
             </Card>
             <div className="footer-hidden">footer</div>

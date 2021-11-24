@@ -56,7 +56,7 @@ function AuthContextProvider({children}) {
             },
             status: 'done',
         });
-        if (result.avatarName === "Anonymous Warrior") {
+        if (result.avatarName[0] === "Anonymous") {
             history.push('/start');
         } else {
             history.push('/play');
