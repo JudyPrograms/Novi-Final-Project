@@ -20,6 +20,8 @@ function Settings() {
     const [activeSlice, setActiveSlice] = useState(null)
 
     const [newText, setNewText] = useState(null)
+    const [newAvatar, setNewAvatar] = useState(null)
+
 
     // Subtaken instellen als hoofdtaak geactiveerd wordt
     useEffect(() => {
@@ -39,13 +41,20 @@ function Settings() {
         }
     }, [activeSubtask]);
 
+    useEffect(() => {
+        // TODO: PATCH text in gameInfo
+        console.log("old text: ", activeSlice)
+        console.log("new text: ", newText)
+    }, [newText])
+
     return (
         <>
             <Card large
                   title="GAME SETTINGS"
                   titleImg={pencil}
                   cardImg={broom}>
-                <div className={styles["settings__menus-box"]}>
+                <div className={styles["settings__task-adjust-box"]}>
+                    <h2 className={styles["settings__subtitle"]}>Adjust a Task</h2>
                     <Menu topic="Main Task:"
                           menuTitle={activeTask ? activeTask : "-- pick a task --"}
                           setActive={setActiveTask}
@@ -69,12 +78,22 @@ function Settings() {
                     />
                     }
                     {activeSlice != null &&
-                    <Menu topic="Adjust Text:"
+                    <Menu topic="Adjust Slice:"
                           setActive={setNewText}
                           placeholder="-- enter new slice text --"
+                          type="text"
                           input
                     />
                     }
+                    <div className={styles["settings__avatar-adjust-box"]}>
+                        <h2 className={styles["settings__subtitle"]}>Upload new Avatar</h2>
+                        <Menu topic="Select Image:"
+                              setActive={setNewAvatar}
+                              placeholder="-- select file --"
+                              type="file"
+                              input
+                        />
+                    </div>
                 </div>
             </Card>
             <div className="footer-hidden footer-hidden--small">footer</div>

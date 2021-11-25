@@ -1,8 +1,16 @@
-.settings__menus-box {
+.settings__task-adjust-box {
     display: flex;
     flex-direction: column;
     width: 100%;
     font-size: small;
 }
 
-.settings{}
+.settings__avatar-adjust-box {
+    margin-top: var(--single-margin);
+}
+
+.settings__subtitle {
+    font-family: var(--ubuntu);
+    font-size: 2rem;
+    margin: var(--half-margin) 10rem;
+}
