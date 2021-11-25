@@ -6,16 +6,6 @@ form {
 
 form label {
     margin-bottom: var(--half-margin);
-    font-weight: bold;
-}
-
-.login__form-label {
-    color: var(--dark-red-L25);
-}
-
-.account__form-label {
-    font-weight: normal;
-    color: var(--dark-blue);
 }
 
 form input {

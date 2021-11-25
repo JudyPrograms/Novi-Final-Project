@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {useHistory} from 'react-router-dom';
-import styles from './Play.module.css';
+import styles from './Challenge.module.css';
 import arch from "../../assets/before-icons/arch.png";
 import mountain from "../../assets/mountain.png";
 import target from "../../assets/before-icons/target.png";
@@ -12,7 +12,7 @@ import Menu from "../../components/Menu/Menu";
 import {AuthContext} from "../../context/AuthContext";
 
 
-function Play() {
+function Challenge() {
 
     const history = useHistory();
     const {user} = useContext(AuthContext);
@@ -31,11 +31,11 @@ function Play() {
     // State voor bijhouden welk scherm (1, 2 of 3)
     const [next, setNext] = useState(1);
 
-    function handleNextButton () {
+    function handleNextButton() {
         if (next === 1 && activeTask != null) {
             setNext(next + 1)
         }
-        if (next ===2 && activeSubtask != null) {
+        if (next === 2 && activeSubtask != null) {
             setNext(next + 1)
         }
         if (next === 3) {
@@ -43,13 +43,14 @@ function Play() {
         }
     }
 
-    function handleBackButton () {
+    function handleBackButton() {
         if (next === 3) {
             setActiveSubTask(null)
             setSlices([])
         }
         if (next === 2) {
             setActiveTask(null)
+            setActiveSubTask(null)
         }
         setNext(next - 1)
     }
@@ -74,7 +75,6 @@ function Play() {
     // (Aantal) Openstaande taken binnenhalen als userdata er is
     useEffect(() => {
         if (userData.currentTasks) {
-            console.log("slice amount:", userData.currentTasks.length)
             setSliceAmount(userData.currentTasks.length)
         }
     }, [userData]);
@@ -84,6 +84,7 @@ function Play() {
     useEffect(() => {
         if (sliceAmount > 2) {
             // TODO: Pop-Up: "Your warrior needs to finish a task before a new one can be started"
+            console.log("not allowed to pick new challenge yet, slice amount:", userData.currentTasks.length)
             history.push("/dashboard")
         }
     }, [sliceAmount])
@@ -156,7 +157,7 @@ function Play() {
                 <Menu menuTitle={activeSubtask ? activeSubtask : "-- pick a task --"}
                       menuImg={arch}
                       drop={true}
-                      active={activeTask}
+                      topic={activeTask}
                       setActive={setActiveSubTask}
                       array={subtasks}>
                 </Menu>
@@ -169,13 +170,13 @@ function Play() {
             <Card
                 title="Slice it Up . . ."
                 titleImg={swords}>
-                {/* >>TO DO: activeSlice stijlen met 'bold'*/}
+                {/* >>TODO: activeSlice stijlen met 'bold'*/}
                 <Menu menuTitle={activeSubtask}
                       menuImg={arch}
-                      drop={false}
-                      active={activeTask}
+                      topic={activeTask}
                       setActive={setActiveSlice}
-                      array={slices}>
+                      array={slices}
+                      scroll>
                 </Menu>
             </Card>
             }
@@ -199,4 +200,4 @@ function Play() {
     );
 }
 
-export default Play;
+export default Challenge;

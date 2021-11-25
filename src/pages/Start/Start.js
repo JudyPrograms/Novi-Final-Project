@@ -46,7 +46,7 @@ function Start() {
     }, [avatar, nextPage])
 
 
-    // Na doorlopen van Start (= 3 keer klikken), doorsturen naar 'Play'
+    // Na doorlopen van Start (= 3 keer klikken), doorsturen naar 'Challenge'
     useEffect(() => {
         if (nextPage === 3) {
             history.push("/play")

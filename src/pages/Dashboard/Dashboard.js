@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {allUsersData} from "../../context/data";
 import styles from "./Dashboard.module.css";
 import Badge from "../../components/Badge/Badge";
@@ -10,12 +10,14 @@ import letter from "../../assets/badges/opener.png";
 import mortar from "../../assets/badges/remedy.png";
 import fuji from "../../assets/fuji.png";
 import windSign from "../../assets/before-icons/windsock.png";
+import {AuthContext} from "../../context/AuthContext";
 
 
 const DAYS_TILL_ALERT = 3
 
 function Dashboard() {
 
+    const {user} = useContext(AuthContext);
     const [userData, setUserData] = useState({});
 
     useEffect(() => {
@@ -27,7 +29,7 @@ function Dashboard() {
             try {
                 // TODO: axios.get() request voor userData
                 // token met user info meegeven in headers: {authorization: `Bearer ${token}`}
-                const result = allUsersData.users[0]
+                const result = allUsersData.users.find(userObj => userObj.email === user.email)
                 setUserData(result);
             } catch (e) {
                 console.error(e);
@@ -36,6 +38,13 @@ function Dashboard() {
 
         fetchUserData();
     }, [])
+
+    function handleDoneClick(task) {
+        console.log("task is done: ", task)
+        // TODO: onClick event PATCHt currentTasks en completedTasks in userData
+        // TODO: direct volgende slice ophalen en tonen > refresht dat vanzelf als current tasks veranderen?
+        //  Of useEffect nodig?
+    }
 
     return (
         <div className="dashboard-container">
@@ -57,6 +66,7 @@ function Dashboard() {
                                    col2={"slice"}
                                    dateColumn={"startDate"}
                                    buttonColumn={"slice"}
+                                   handleClick={handleDoneClick}
                                    alert={DAYS_TILL_ALERT}
                                    titles={["task", "to do", "finish in", "do now!"]}/>
                         </section>
@@ -80,7 +90,9 @@ function Dashboard() {
                             </section>
                             <section className={styles["dashboard__leaderboard"]}>
                                 <h2 className={styles["dashboard__subtitle"]}>Leaderboard</h2>
-                                <Table data={allUsersData.users}
+                                <Table
+                                    className={styles["dashboard__leaderboard-table"]}
+                                    data={allUsersData.users}
                                        col1={"leaderboardPosition"}
                                        col2={"username"}
                                        col3={"level"}

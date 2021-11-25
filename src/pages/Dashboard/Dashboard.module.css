@@ -53,3 +53,7 @@
     padding: var(--half-margin);
     text-align: center;
 }
+
+.dashboard__leaderboard-table {
+    font-size: 0.8rem;
+}

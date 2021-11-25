@@ -2,23 +2,19 @@ import React from 'react';
 import calcDaysAgo from "../../helpers/calcDaysAgo";
 import styles from "./Table.module.css"
 
-function Table({data, col1, col2, col3, col4, dateColumn, buttonColumn, alert, imgColumn, titles}) {
+function Table({className, data, col1, col2, col3, col4, buttonColumn, handleClick, dateColumn, alert, imgColumn, titles}) {
 
-    function handleDoneClick(item) {
-        console.log(item[buttonColumn] + " done")
-        // TODO: slice PATCHen naar userData
-        // TODO: direct volgende slice ophalen en tonen
-    }
+
 
     return (
-        <div className={styles["table"]}>
+        <div className={className ? `${styles["table"]} ${className}` : styles["table"]}>
 
             {col1 &&
             <>
                 <div className={styles["table__col1"]}>
                     <h4>{titles[0]}</h4>
                     {data.map((item) => {
-                        return (<><span key={item[col1]}>{item[col1]}</span></>);
+                        return (<span key={item[col2]}>{item[col1]}</span>);
                     })}
                 </div>
             </>
@@ -40,7 +36,7 @@ function Table({data, col1, col2, col3, col4, dateColumn, buttonColumn, alert, i
                 <div className={styles["table__col3"]}>
                     <h4>{titles[2]}</h4>
                     {data.map((item) => {
-                        return (<span key={item[col3]}>{item[col3]}</span>);
+                        return (<span key={item[col2]}>{item[col3]}</span>);
                     })}
                 </div>
             </>
@@ -51,7 +47,7 @@ function Table({data, col1, col2, col3, col4, dateColumn, buttonColumn, alert, i
                 <div className={styles["table__col4"]}>
                     <h4>{titles[3]}</h4>
                     {data.map((item) => {
-                        return (<span key={item[col4]}>{item[col4]}</span>);
+                        return (<span key={item[col2]}>{item[col4]}</span>);
                     })}
                 </div>
             </>
@@ -63,7 +59,7 @@ function Table({data, col1, col2, col3, col4, dateColumn, buttonColumn, alert, i
                     <h4>{titles[2]}</h4>
                     {data.map((item) => {
                         const daysAgo = calcDaysAgo(item[dateColumn])
-                        return (<span key={item[dateColumn]}>{alert - daysAgo} days</span>);
+                        return (<span key={item[col2]}>{alert - daysAgo} days</span>);
                     })}
                 </div>
             </>
@@ -73,12 +69,11 @@ function Table({data, col1, col2, col3, col4, dateColumn, buttonColumn, alert, i
             <>
                 <div className={styles["table__col4"]}>
                     <h4>{titles[3]}</h4>
-                    {/* TODO: onClick event PATCHt currentTasks en completedTasks in userData*/}
                     {data.map((item) => {
                         return (<button
-                            key={item[buttonColumn]}
+                            key={item[col2]}
                             type="button"
-                            onClick={() => handleDoneClick(item)}
+                            onClick={()=>handleClick(item[col2])}
                             className="nav-button nav-button--tiny">
                             DONE
                         </button>);
@@ -93,7 +88,7 @@ function Table({data, col1, col2, col3, col4, dateColumn, buttonColumn, alert, i
                     <h4>{titles[3]}</h4>
                     {data.map((item) => {
                         return (
-                            <img key={item[imgColumn]} className={styles["table-img"]} src={item[imgColumn]}
+                            <img key={item[col2]} className={styles["table-img"]} src={item[imgColumn]}
                                  alt=""/>
                         )
                     })}

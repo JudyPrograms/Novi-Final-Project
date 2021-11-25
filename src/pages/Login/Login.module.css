@@ -7,6 +7,16 @@
     width: 100%;
 }
 
+.login__form-label {
+    font-weight: bold;
+    color: var(--dark-red-L25);
+}
+
+.create__form-label {
+    font-weight: normal;
+    color: var(--dark-grey);
+}
+
 .register-link {
     display: flex;
     flex-direction: column;
@@ -16,6 +26,7 @@
 }
 
 .register-link a {
+    text-decoration: underline;
     font-family: var(--ubuntu);
     color: var(--dark-grey);
 }

@@ -1,0 +1,8 @@
+.settings__menus-box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    font-size: small;
+}
+
+.settings{}

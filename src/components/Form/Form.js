@@ -16,19 +16,21 @@ function Form({
         <form onSubmit={handleSubmit(handleFormSubmit)}>
 
             {fields.map((item) => {
-                return(
-                    <>
-                        <label className={className} htmlFor={item.name}>{item.name.toUpperCase()}:
-                            <input
-                                type={item.type}
-                                id={item.name}
-                                {...register(item.name,
-                                    {required: item.name + " required"})}
-                                placeholder={item.name}
-                            />
-                            {errors[item.name] && <span className="error-text">{errors[item.name].message}</span>}
-                        </label>
-                    </>
+                return (
+                    <label key={item.name}
+                           className={className}
+                           htmlFor={item.name}>
+                        {item.name.toUpperCase()}:
+                        <input
+                            key={item.name}
+                            type={item.type}
+                            id={item.name}
+                            {...register(item.name,
+                                {required: item.name + " required"})}
+                            placeholder={item.name}
+                        />
+                        {errors[item.name] && <span className="error-text">{errors[item.name].message}</span>}
+                    </label>
                 )
             })}
 

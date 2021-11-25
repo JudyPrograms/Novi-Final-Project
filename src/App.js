@@ -3,10 +3,10 @@ import {Switch, Route} from 'react-router-dom';
 import './App.css';
 import Login from "./pages/Login/Login";
 import About from "./pages/About/About";
-import Play from "./pages/Play/Play";
+import Challenge from "./pages/Challenge/Challenge";
 import Account from "./pages/Account/Account";
 import Dashboard from "./pages/Dashboard/Dashboard";
-import Settings from "./pages/Settings";
+import Settings from "./pages/Settings/Settings";
 import Header from "./components/Header/Header";
 import Start from "./pages/Start/Start";
 
@@ -26,7 +26,7 @@ function App() {
                 <Start/>
             </Route>
             <Route exact path="/play">
-                <Play/>
+                <Challenge/>
             </Route>
             <Route exact path="/dashboard">
                 <Dashboard/>

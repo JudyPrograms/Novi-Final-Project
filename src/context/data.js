@@ -1,9 +1,10 @@
-import avatar from "../assets/avatars/myamoto.png"
 import blanco from "../assets/avatars/blanco-avatar.png"
 import kusunoki from "../assets/avatars/kusunoki.png";
 import myamoto from "../assets/avatars/myamoto.png";
 import takeda from "../assets/avatars/takeda.png";
 import toyotomi from "../assets/avatars/toyotomi.png";
+
+let date = new Date()
 
 // FRONTEND >> Moet dit in een context in de frontend? Of moet dit ook in de backend?:
 
@@ -28,8 +29,8 @@ export const gameInfo = {
             subtasks: {
                 "organize mail": [
                     "get and open all envelopes",
-                    "create four piles: 1:action, 2:wait, 3:store, 4:bin",
-                    "throw out 'bin' pile",
+                    "create four piles: action / wait / store / trash",
+                    "throw out 'trash' pile",
                     "put 'store' letters in organizer",
                     "put 'wait' letters on top in organizer",
                     "write 'action' on all other letters",
@@ -126,19 +127,19 @@ export const allUsersData = {
                     mainTask: "Paperwork",
                     subtask: "pay bills",
                     slice: "get and open all envelopes",
-                    startDate: "11/1/2021 2:28",
+                    startDate: date.setDate(date.getDate()-2),
                 },
                 {
                     mainTask: "Paperwork",
                     subtask: "organize mail",
                     slice: "write 'action' on all action pile letters",
-                    startDate: "11/2/2021  2:28",
+                    startDate: date.setDate(date.getDate()+1),
                 },
                 {
                     mainTask: "Socialize",
                     subtask: "congratulate a friend",
                     slice: "write down 10 names of friends",
-                    startDate: "11/3/2021  2:28",
+                    startDate: date.setDate(date.getDate()+1),
                 }
             ],
             completedTasks: [
@@ -180,10 +181,15 @@ export const allUsersData = {
             email: "judith@melkweg.nl",
             password: "encryptedCode",
             token: "token1 here",
-            admin: true,
+            admin: false,
             avatarImg: blanco,
             avatarName: ["Anonymous", "Warrior"],
-            currentTasks: [],
+            currentTasks: [{
+                mainTask: "Paperwork",
+                subtask: "organize mail",
+                slice: "get and open all envelopes",
+                startDate: new Date(),
+            },],
             completedTasks: [],
             badgeProgress: {
                 paperwork: 0,
@@ -194,6 +200,26 @@ export const allUsersData = {
             coinsTotal: 0,
             level: "Hurricane",
             leaderboardPosition: 112,
+        },
+        {
+            username: "Administrator",
+            email: "hello@judyprograms.io",
+            password: "encryptedCode",
+            token: "token1 here",
+            admin: true,
+            avatarImg: myamoto,
+            avatarName: ["Administrator", "Warrior"],
+            currentTasks: [],
+            completedTasks: [],
+            badgeProgress: {
+                paperwork: 0,
+                declutter: 0,
+                socialize: 0,
+                selfcare: 0,
+            },
+            coinsTotal: 0,
+            level: "Hurricane",
+            leaderboardPosition: 0,
         }
     ]
 }
