@@ -37,7 +37,7 @@ function Table({data, col1, col2, col3, col4, dateColumn, buttonColumn, alert, i
 
             {col3 &&
             <>
-                <div className={styles["table__col2"]}>
+                <div className={styles["table__col3"]}>
                     <h4>{titles[2]}</h4>
                     {data.map((item) => {
                         return (<span key={item[col3]}>{item[col3]}</span>);
@@ -48,7 +48,7 @@ function Table({data, col1, col2, col3, col4, dateColumn, buttonColumn, alert, i
 
             {col4 &&
             <>
-                <div className={styles["table__col3"]}>
+                <div className={styles["table__col4"]}>
                     <h4>{titles[3]}</h4>
                     {data.map((item) => {
                         return (<span key={item[col4]}>{item[col4]}</span>);
@@ -89,11 +89,11 @@ function Table({data, col1, col2, col3, col4, dateColumn, buttonColumn, alert, i
 
             {imgColumn &&
             <>
-                <div className={styles["table__col3"]}>
+                <div className={styles["table__col4"]}>
                     <h4>{titles[3]}</h4>
                     {data.map((item) => {
                         return (
-                            <img key={item[imgColumn]} className="leader-img" src={item[imgColumn]}
+                            <img key={item[imgColumn]} className={styles["table-img"]} src={item[imgColumn]}
                                  alt=""/>
                         )
                     })}

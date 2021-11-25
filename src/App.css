@@ -42,10 +42,6 @@ body {
     color: var(--dark-grey);
 }
 
-h2 {
-    margin: 1rem 0;
-}
-
 .loading {
     position: absolute;
     left: 50%;
@@ -97,72 +93,6 @@ h2 {
 }
 
 
-/***** DASHBOARD *****/
-
-.dashboard {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: var(--single-margin);
-    margin: 0 var(--single-margin);
-}
-
-.dashboard__upper {
-    width: 100%;
-    background-color: var(--light-yellow-S70-10);
-    padding: var(--half-margin);
-}
-
-.dashboard__middle {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    gap: 5%;
-}
-
-.dashboard__lower {
-    width: 85%;
-    background-color: var(--light-red-10);
-    padding: var(--half-margin);
-    margin-right: auto;
-}
-
-.dashboard__badge-section {
-    width: 40%;
-    background-color: var(--light-blue-40);
-    padding: var(--half-margin);
-    text-align: center;
-}
-
-.dashboard__badges-box {
-    display: flex;
-    justify-content: center;
-    gap: var(--half-margin);
-    flex-wrap: wrap;
-}
-
-.dashboard__leaderboard {
-    width: 40%;
-    background-color: var(--light-yellow-80);
-    padding: var(--half-margin);
-    text-align: center;
-}
-
-.leader-row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.5rem;
-}
-
-.leader-img {
-    width: 1.5rem;
-}
-
-.dashboard__subtitle {
-    font-family: var(--ubuntu);
-}
-
-
 /***** NAV-BUTTONS *****/
 
 .nav-button {
@@ -193,6 +123,15 @@ h2 {
     border-radius: 5px;
 }
 
+
+/***** ERRORS *****/
+
+.error-text {
+    font-family: var(--ubuntu);
+    font-weight: normal;
+    color: var(--accent-red-L35);
+    margin-bottom: 12px;
+}
 
 
 

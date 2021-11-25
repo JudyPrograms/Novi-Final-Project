@@ -6,6 +6,7 @@ import {AuthContext} from "../../context/AuthContext";
 import {allUsersData} from "../../context/data";
 import styles from "./Login.module.css";
 import Card from "../../components/Card/Card";
+import Form from "../../components/Form/Form";
 
 function Login() {
 
@@ -15,7 +16,7 @@ function Login() {
 
     async function handleFormSubmit(data) {
         try {
-        // TODO: Email en password posten naar backend en token opvragen
+            // TODO: Email en password posten naar backend en token opvragen
             //     const result = await axios.post("http://endpoint", {
             //         email: data.email,
             //         password: data.password,
@@ -35,37 +36,21 @@ function Login() {
         <div className="login-container">
             <Card small>
                 <div className={styles["login-box"]}>
-                    <form onSubmit={handleSubmit(handleFormSubmit)}>
-
-                        <label htmlFor="email-field"> E-MAIL:
-                            <input
-                                type="email"
-                                id="email-field"
-                                {...register("email",
-                                    {required: "E-mail address required"})}
-                            />
-                        </label>
-                        {errors.email && <span className={styles["error-text"]}>{errors.email.message}</span>}
-
-                        <label htmlFor="password-field"> PASSWORD:
-                            <input
-                                type="password"
-                                id="password-field"
-                                {...register("password",
-                                    {required: "Password required"})}/>
-                        </label>
-                        {errors.password && <span className={styles["error-text"]}>{errors.password.message}</span>}
-
-                        <button
-                            type="submit"
-                            className={styles["form-button"]}>
-                            LOGIN
-                        </button>
-
-                    </form>
+                    <Form
+                        className={"login__form-label"}
+                        handleFormSubmit={handleFormSubmit}
+                        handleSubmit={handleSubmit}
+                        errors={errors}
+                        register={register}
+                        buttonText={"LOGIN"}
+                        fields={[
+                            {type: "email", name: "email"},
+                            {type: "password", name: "password"},
+                        ]}
+                    />
 
                     <div className={styles["register-link"]}>
-                        {error && <span className={styles["error-text"]}>Account not found</span>}
+                        {error && <span className="error-text">Account not found</span>}
                         <Link to="/account">Register new account here</Link></div>
                 </div>
             </Card>

@@ -7,74 +7,6 @@
     width: 100%;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    max-width: 500px;
-}
-
-form label {
-    color: var(--dark-red-L25);
-    font-weight: bold;
-}
-
-form input {
-    width: 100%;
-    height: 2rem;
-    padding: 4px 8px;
-    margin: 6px 0;
-    border: none;
-    background-color: var(--accent-yellow-L70);
-    filter: opacity(80%);
-    box-shadow: inset 0 2px 4px hsla(0, 0%, 0%, 0.25);
-    font-family: var(--mono-b612);
-}
-
-form input:focus {
-    outline: none;
-    border: var(--dark-red-L25) solid 1px;
-    background-color: var(--accent-yellow-L70);
-}
-
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-    box-shadow: inset 0 2px 4px hsla(0, 0%, 0%, 0.25);
-    -webkit-box-shadow: 0 0 0 30px var(--accent-yellow-L70) inset !important;
-}
-
-input:-webkit-autofill {
-    -webkit-text-fill-color: var(--dark-grey) !important;
-}
-
-.form-button {
-    align-self: center;
-    margin-top: var(--single-margin);
-    height: 30px;
-    width: 40%;
-    background-color: var(--dark-blue);
-    color: var(--accent-yellow-L85);
-    font-family: var(--mono-b612);
-    font-weight: bold;
-
-    border-style: none;
-    border-radius: 10px;
-    filter: drop-shadow(0px 4px 4px hsla(0, 0%, 0%, 0.25));
-    transition-duration: 0.1s;
-}
-
-.form-button:hover {
-    background-color: var(--accent-yellow-L70);
-    color: var(--dark-blue);
-    cursor: pointer;
-}
-
-.form-button:active {
-    transform: translateY(1px);
-    background-color: hsl(42, 69%, 75%);
-}
-
 .register-link {
     display: flex;
     flex-direction: column;
@@ -90,10 +22,4 @@ input:-webkit-autofill {
 
 .register-link a:hover {
     color: var(--dark-blue)
-}
-
-.error-text {
-    font-family: var(--ubuntu);
-    color: var(--accent-red-L35);
-    margin-bottom: 12px;
 }

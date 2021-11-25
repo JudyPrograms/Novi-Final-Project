@@ -5,14 +5,15 @@
     justify-content: space-between;
     width: 100%;
     font-size: 0.9rem;
-    gap: 2%;
+    padding: 0 1rem;
 }
 
 .table__col1 {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 20%;
+    align-items: flex-start;
+    width: 25%;
     row-gap: 1rem;
 }
 
@@ -20,7 +21,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 40%;
+    align-items: flex-start;
+    width: 45%;
 }
 
 .table__col3 {
@@ -28,15 +30,16 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    width: 15%;
+    width: 20%;
 }
 
 .table__col4 {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
     width: 10%;
+    margin-left: 2rem;
 }
 
 .table__col4 button {
@@ -44,6 +47,10 @@
     width: 4rem;
     height: 1.2rem;
     font-size: 0.8rem;
+}
+
+.table-img {
+    width: 1.5rem;
 }
 
 

@@ -1,14 +1,15 @@
 import React, {useEffect, useState} from 'react';
-import {allUsersData} from "../context/data";
-import Badge from "../components/Badge/Badge";
-import Card from "../components/Card/Card";
-import Table from "../components/Table/Table";
-import broom from "../assets/badges/broom.png";
-import handshake from "../assets/badges/handshake.png";
-import letter from "../assets/badges/opener.png";
-import mortar from "../assets/badges/remedy.png";
-import fuji from "../assets/fuji.png";
-import windSign from "../assets/before-icons/windsock.png";
+import {allUsersData} from "../../context/data";
+import styles from "./Dashboard.module.css";
+import Badge from "../../components/Badge/Badge";
+import Card from "../../components/Card/Card";
+import Table from "../../components/Table/Table";
+import broom from "../../assets/badges/broom.png";
+import handshake from "../../assets/badges/handshake.png";
+import letter from "../../assets/badges/opener.png";
+import mortar from "../../assets/badges/remedy.png";
+import fuji from "../../assets/fuji.png";
+import windSign from "../../assets/before-icons/windsock.png";
 
 
 const DAYS_TILL_ALERT = 3
@@ -46,10 +47,10 @@ function Dashboard() {
                 large>
 
                 {userData.currentTasks && (
-                    <div className="dashboard">
+                    <div className={styles["dashboard"]}>
 
-                        <section className="dashboard__upper">
-                            <h2 className=".dashboard__subtitle">Current Tasks</h2>
+                        <section className={styles["dashboard__upper"]}>
+                            <h2 className={styles["dashboard__subtitle"]}>Current Tasks</h2>
                             {/* TODO: als een slice completed wordt, automatisch volgende slice laden*/}
                             <Table data={userData.currentTasks}
                                    col1={"subtask"}
@@ -60,10 +61,10 @@ function Dashboard() {
                                    titles={["task", "to do", "finish in", "do now!"]}/>
                         </section>
 
-                        <div className="dashboard__middle">
-                            <section className="dashboard__badge-section">
-                                <h2 className="dashboard__subtitle">Badges</h2>
-                                <div className="dashboard__badges-box">
+                        <div className={styles["dashboard__middle"]}>
+                            <section className={styles["dashboard__badge-section"]}>
+                                <h2 className={styles["dashboard__subtitle"]}>Badges</h2>
+                                <div className={styles["dashboard__badges-box"]}>
                                     {/*TODO: factor '/3*100' voor badges is afhankelijk van gameInfo (coinsPerSubtask):
                                      state maken?*/}
                                     {/*TODO: Badges kunnen ook met mapping*/}
@@ -77,32 +78,31 @@ function Dashboard() {
                                            progress={Math.ceil(userData.badgeProgress.selfcare / 3 * 100)}/>
                                 </div>
                             </section>
-
-                            <section className="dashboard__leaderboard">
-                                <h2 className=".dashboard__subtitle">Leaderboard</h2>
+                            <section className={styles["dashboard__leaderboard"]}>
+                                <h2 className={styles["dashboard__subtitle"]}>Leaderboard</h2>
                                 <Table data={allUsersData.users}
                                        col1={"leaderboardPosition"}
                                        col2={"username"}
                                        col3={"level"}
                                        imgColumn={"avatarImg"}
-                                       titles={["no.", "player", "level", "warrior"]}
-                                />
+                                       titles={["no.", "player", "level", "warrior"]}/>
                             </section>
-
                         </div>
 
-                        <section className="dashboard__lower">
-                            <h2 className=".dashboard__subtitle">Accomplished</h2>
+                        <section className={styles["dashboard__lower"]}>
+                            <h2 className={styles["dashboard__subtitle"]}>Accomplished</h2>
                             <Table data={userData.completedTasks}
                                    col1={"subtask"}
-                                   col3={"slice"}
+                                   col2={"slice"}
                                    col4={"coins"}
-                                   titles={["task", "", "done", "coins"]}/>
+                                   titles={["task", "done", "coins", "coins"]}/>
                         </section>
+
                     </div>
                 )}
 
             </Card>
+
             <div className="footer-hidden">footer</div>
 
         </div>

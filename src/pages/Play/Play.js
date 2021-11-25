@@ -80,8 +80,10 @@ function Play() {
     }, [userData]);
 
     // Als er al 3 openstaande taken zijn kan er geen nieuwe taak gekozen worden
+    // TODO: User feedback geven over waarom navigatie niet kan
     useEffect(() => {
         if (sliceAmount > 2) {
+            // TODO: Pop-Up: "Your warrior needs to finish a task before a new one can be started"
             history.push("/dashboard")
         }
     }, [sliceAmount])

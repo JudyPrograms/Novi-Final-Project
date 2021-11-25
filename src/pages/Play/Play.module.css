@@ -18,6 +18,10 @@
     height: 2rem;
 }
 
+.card-list__task {
+    margin: 1rem 0;
+}
+
 .card-list__task:hover {
     font-weight: bold;
     cursor: pointer;
