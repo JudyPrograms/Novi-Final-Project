@@ -55,9 +55,11 @@ function Dashboard() {
                 titleImg={windSign}
                 cardImg={fuji}
                 large>
-                <PopUp/>
+
                 {userData.currentTasks && (
                     <div className={styles["dashboard"]}>
+
+                        <PopUp/>
 
                         <section className={styles["dashboard__upper"]}>
                             <h2 className={styles["dashboard__subtitle"]}>Current Tasks</h2>
