@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import Card from "../../components/Card/Card";
 import Menu from "../../components/Menu/Menu";
+import Button from "../../components/Button/Button";
 import {gameInfo} from "../../context/data";
 import broom from "../../assets/badges/broom.png";
 import pencil from "../../assets/symbols/pencil.png";
@@ -47,13 +48,18 @@ function Settings() {
         console.log("new text: ", newText)
     }, [newText])
 
+    useEffect(() => {
+        // TODO: POST avatar in gameInfo
+        console.log("new avatar: ", newAvatar)
+    }, [newAvatar])
+
     return (
         <>
             <Card large
                   title="GAME SETTINGS"
                   titleImg={pencil}
                   cardImg={broom}>
-                <div className={styles["settings__task-adjust-box"]}>
+                <div className={styles["settings__box"]}>
                     <h2 className={styles["settings__subtitle"]}>Adjust a Task</h2>
                     <Menu topic="Main Task:"
                           menuTitle={activeTask ? activeTask : "-- pick a task --"}
@@ -78,21 +84,28 @@ function Settings() {
                     />
                     }
                     {activeSlice != null &&
-                    <Menu topic="Adjust Slice:"
-                          setActive={setNewText}
-                          placeholder="-- enter new slice text --"
-                          type="text"
-                          input
-                    />
-                    }
-                    <div className={styles["settings__avatar-adjust-box"]}>
-                        <h2 className={styles["settings__subtitle"]}>Upload new Avatar</h2>
-                        <Menu topic="Select Image:"
-                              setActive={setNewAvatar}
-                              placeholder="-- select file --"
-                              type="file"
+                    <>
+                        <Menu topic="Adjust Slice:"
+                              setActive={setNewText}
+                              placeholder="-- enter new slice text --"
+                              type="text"
                               input
                         />
+                        <div className={styles["settings__button-box"]}>
+                            <Button form>ADJUST</Button>
+                        </div>
+                    </>
+                    }
+                    <h2 className={styles["settings__subtitle"]}>Upload new Avatar</h2>
+                    <Menu topic="Select Image:"
+                          setActive={setNewAvatar}
+                          value={newAvatar}
+                          placeholder="-- click here to select file --"
+                          type="file"
+                          input
+                    />
+                    <div className={styles["settings__button-box"]}>
+                        <Button form>UPLOAD</Button>
                     </div>
                 </div>
             </Card>

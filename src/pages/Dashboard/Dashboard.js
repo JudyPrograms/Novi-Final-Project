@@ -4,6 +4,7 @@ import styles from "./Dashboard.module.css";
 import Badge from "../../components/Badge/Badge";
 import Card from "../../components/Card/Card";
 import Table from "../../components/Table/Table";
+import PopUp from "../../components/PopUp/PopUp";
 import broom from "../../assets/badges/broom.png";
 import handshake from "../../assets/badges/handshake.png";
 import letter from "../../assets/badges/opener.png";
@@ -54,7 +55,7 @@ function Dashboard() {
                 titleImg={windSign}
                 cardImg={fuji}
                 large>
-
+                <PopUp/>
                 {userData.currentTasks && (
                     <div className={styles["dashboard"]}>
 

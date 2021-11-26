@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import styles from "./Menu.module.css"
 
 
-function Menu({menuTitle, menuImg, topic, setActive, array, drop, scroll, input, type, placeholder}) {
+function Menu({menuTitle, menuImg, topic, setActive, array, drop, scroll, input, type, placeholder, value}) {
 
     const [dropdown, toggleDropdown] = useState(false);
 
@@ -31,8 +31,7 @@ function Menu({menuTitle, menuImg, topic, setActive, array, drop, scroll, input,
                 }
 
                 {drop &&
-                <div
-                    className={`${styles["menu__content"]} ${styles["menu__content" + (dropdown ? "--active" : "")]}`}>
+                <div className={`${styles["menu__content"]} ${styles["menu__content" + (dropdown ? "--active" : "")]}`}>
                     {array && dropdown && array.map((item) => {
                         return (
                             <button
@@ -64,13 +63,22 @@ function Menu({menuTitle, menuImg, topic, setActive, array, drop, scroll, input,
                 }
 
                 {input &&
-                    <input type={type}
-                           id="new-text"
-                           name="new-text"
+                <div className={styles["menu__field-hide-box"]}>
+                    {type === "file" &&
+                    <input className={`${styles["menu__field"]} ${styles["menu__field--fake"]}`}
                            placeholder={placeholder}
-                           onBlur={handleInput}
-                           className={styles["menu__field"]}/>
+                           value={value}/>
+                    }
+                    <input type={type}
+                           id={type}
+                           name={type}
+                           placeholder={placeholder}
+                           onChange={handleInput}
+                           className={styles["menu__field"]}
+                    />
+                </div>
                 }
+
 
             </div>
             <img src={menuImg} alt="" className={styles["menu-topic__img"]}/>

@@ -129,14 +129,14 @@ function Challenge() {
                 title="Pick a Challenge . . ."
                 titleImg={target}
                 cardImg={mountain}>
-                <ul className={styles["card-list"]}>
+                <ul className={styles["challenge__task-list"]}>
                     {gameInfo.tasks.map((item) => {
                         return (
                             <li key={item.taskName}
-                                className={styles["card-list__item"]}>
-                                <img src={arch} alt="arch" className={styles["card-list__img"]}/>
+                                className={styles["challenge__list-item"]}>
+                                <img src={arch} alt="arch" className={styles["challenge__list-img"]}/>
                                 <h2
-                                    className={`${styles["card-list__task"]} ${styles[`card-list__task--${activeTask ===
+                                    className={`${styles["challenge__task"]} ${styles[`challenge__task--${activeTask ===
                                     item.taskName ? "active" : "inactive"}`]}`}
                                     onClick={() => setActiveTask(item.taskName)}>
                                     {item.taskName}
@@ -154,6 +154,7 @@ function Challenge() {
             <Card
                 title="Break it Down . . ."
                 titleImg={shuriken}>
+                <div className={styles["challenge__menu-box"]}>
                 <Menu menuTitle={activeSubtask ? activeSubtask : "-- pick a task --"}
                       menuImg={arch}
                       drop={true}
@@ -161,6 +162,7 @@ function Challenge() {
                       setActive={setActiveSubTask}
                       array={subtasks}>
                 </Menu>
+                </div>
             </Card>
             }
 
@@ -171,6 +173,7 @@ function Challenge() {
                 title="Slice it Up . . ."
                 titleImg={swords}>
                 {/* >>TODO: activeSlice stijlen met 'bold'*/}
+                <div className={styles["challenge__menu-box"]}>
                 <Menu menuTitle={activeSubtask}
                       menuImg={arch}
                       topic={activeTask}
@@ -178,10 +181,11 @@ function Challenge() {
                       array={slices}
                       scroll>
                 </Menu>
+                </div>
             </Card>
             }
 
-            <div className={styles["button-box"]}>
+            <div className={styles["challenge__button-box"]}>
                 <button
                     type="button"
                     onClick={handleBackButton}

@@ -1,16 +1,22 @@
-.settings__task-adjust-box {
+.settings__box {
     display: flex;
     flex-direction: column;
     width: 100%;
-    font-size: small;
 }
 
-.settings__avatar-adjust-box {
-    margin-top: var(--single-margin);
+.settings__box h1 {
+    font-size: 1.3rem;
+    line-height: 3rem;
 }
 
 .settings__subtitle {
     font-family: var(--ubuntu);
-    font-size: 2rem;
-    margin: var(--half-margin) 10rem;
+    font-size: 1.5rem;
+    margin: var(--single-margin) 10rem;
+}
+
+.settings__button-box {
+    display: flex;
+    justify-content: flex-end;
+    width: 90%;
 }
