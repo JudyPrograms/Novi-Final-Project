@@ -49,7 +49,7 @@ function Start() {
     // Na doorlopen van Start (= 3 keer klikken), doorsturen naar 'Challenge'
     useEffect(() => {
         if (nextPage === 3) {
-            history.push("/play")
+            history.push("/challenge")
         }
     }, [nextPage])
 

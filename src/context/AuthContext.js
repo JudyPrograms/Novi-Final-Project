@@ -10,6 +10,7 @@ function AuthContextProvider({children}) {
         isAuth: false,
         user: null,
         status: 'pending',
+        openTasks: 0,
     });
     const history = useHistory();
 
@@ -55,11 +56,12 @@ function AuthContextProvider({children}) {
                 admin: result.admin,
             },
             status: 'done',
+            openTasks: result.currentTasks.length,
         });
         if (result.avatarName[0] === "Anonymous") {
             history.push('/start');
         } else {
-            history.push('/play');
+            history.push('/challenge');
         }
     }
 

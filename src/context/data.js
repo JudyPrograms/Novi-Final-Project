@@ -6,8 +6,6 @@ import toyotomi from "../assets/avatars/toyotomi.png";
 
 let date = new Date()
 
-// FRONTEND >> Moet dit in een context in de frontend? Of moet dit ook in de backend?:
-
 export const gameInfo = {
     // 1 coin reward for slice 1, 2, 3 / 2 coins reward for slice 4, 5, 6
     // get 9 extra coins when completing all slices in a subtask
@@ -110,8 +108,6 @@ export const gameInfo = {
         "Will you help her temper the storm?"],
 }
 
-
-// BACKEND:
 export const allUsersData = {
     users: [
         {
@@ -120,8 +116,8 @@ export const allUsersData = {
             password: "encryptedCode",
             token: "token0 here",
             admin: false,
-            avatarImg: kusunoki,
-            avatarName: ["Kusunoki", "The Adventurous"],
+            avatarImg: gameInfo.avatars[0].image,
+            avatarName: [gameInfo.avatars[0].name, gameInfo.avatars[0].subName],
             currentTasks: [
                 {
                     mainTask: "Paperwork",
@@ -166,12 +162,12 @@ export const allUsersData = {
                 },
             ],
             badgeProgress: {
+                // 3 subtasks = 1 badge
                 paperwork: 2.33,
                 declutter: 0,
                 socialize: 0,
                 selfcare: 0.33,
             },
-            // (2.25 + 1) * 8 = 26
             coinsTotal: 97,
             level: "Hurricane",
             leaderboardPosition: 110,

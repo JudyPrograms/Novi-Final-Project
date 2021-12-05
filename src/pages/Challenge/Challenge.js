@@ -9,13 +9,14 @@ import shuriken from "../../assets/before-icons/shuriken.png";
 import {allUsersData, gameInfo} from "../../context/data";
 import Card from "../../components/Card/Card";
 import Menu from "../../components/Menu/Menu";
+import PopUp from "../../components/PopUp/PopUp";
 import {AuthContext} from "../../context/AuthContext";
 
 
 function Challenge() {
 
     const history = useHistory();
-    const {user} = useContext(AuthContext);
+    const {user, openTasks} = useContext(AuthContext);
 
     const [userData, setUserData] = useState({});
 
@@ -121,7 +122,7 @@ function Challenge() {
 
 
     return (
-        <div className="play-container">
+        <div className="challenge-container">
 
             {/*als er geen slices open staan > scherm: pick a challenge */}
             {sliceAmount < 3 && next === 1 &&

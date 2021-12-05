@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {allUsersData} from "../../context/data";
+import {allUsersData, gameInfo} from "../../context/data";
 import styles from "./Dashboard.module.css";
 import Badge from "../../components/Badge/Badge";
 import Card from "../../components/Card/Card";
@@ -20,6 +20,7 @@ function Dashboard() {
 
     const {user} = useContext(AuthContext);
     const [userData, setUserData] = useState({});
+    const [openTasks, setOpenTasks] = useState(0)
 
     useEffect(() => {
         function fetchUserData() {
@@ -32,6 +33,7 @@ function Dashboard() {
                 // token met user info meegeven in headers: {authorization: `Bearer ${token}`}
                 const result = allUsersData.users.find(userObj => userObj.email === user.email)
                 setUserData(result);
+                setOpenTasks(result.currentTasks.length)
             } catch (e) {
                 console.error(e);
             }
@@ -42,6 +44,7 @@ function Dashboard() {
 
     function handleDoneClick(task) {
         console.log("task is done: ", task)
+        setOpenTasks(openTasks-1)
         // TODO: onClick event PATCHt currentTasks en completedTasks in userData
         // TODO: direct volgende slice ophalen en tonen > refresht dat vanzelf als current tasks veranderen?
         //  Of useEffect nodig?
@@ -49,6 +52,27 @@ function Dashboard() {
 
     return (
         <div className="dashboard-container">
+
+            {userData.currentTasks && user.username && openTasks > 2 &&
+            <PopUp
+                id="popup2"
+                linkText="Not Allowed"
+                title="Stay focussed!"
+                text="You have 3 open tasks. You need to finish 1 before starting a new one."
+                greeting={`${userData.avatarName[0]} says come on, you can do this ${user.username}. 💪`}
+            />
+            }
+
+            {userData.currentTasks && user.username &&
+            <PopUp
+                id="popup1"
+                title={`Great work warrior!`}
+                text={`${user.username}, you finished another task. The storm is lying down. Your are now only 14 coins away from level
+                    'Whirlwind'. Please continue the fight.`}
+                greeting={`${userData.avatarName[0]} says thank you. 🙏`}
+                reward={2}
+            />
+            }
 
             <Card
                 title="DASHBOARD"
@@ -59,8 +83,6 @@ function Dashboard() {
                 {userData.currentTasks && (
                     <div className={styles["dashboard"]}>
 
-                        <PopUp/>
-
                         <section className={styles["dashboard__upper"]}>
                             <h2 className={styles["dashboard__subtitle"]}>Current Tasks</h2>
                             {/* TODO: als een slice completed wordt, automatisch volgende slice laden*/}
@@ -69,7 +91,8 @@ function Dashboard() {
                                    col2={"slice"}
                                    dateColumn={"startDate"}
                                    buttonColumn={"slice"}
-                                   handleClick={handleDoneClick}
+                                   handleButtonClick={handleDoneClick}
+                                   popupId={"popup1"}
                                    alert={DAYS_TILL_ALERT}
                                    titles={["task", "to do", "finish in", "do now!"]}/>
                         </section>
@@ -96,10 +119,10 @@ function Dashboard() {
                                 <Table
                                     className={styles["dashboard__leaderboard-table"]}
                                     data={allUsersData.users}
-                                       col1={"leaderboardPosition"}
-                                       col2={"username"}
-                                       col3={"level"}
-                                       imgColumn={"avatarImg"}
+                                       col1="leaderboardPosition"
+                                       col2="username"
+                                       col3="level"
+                                       imgColumn="avatarImg"
                                        titles={["no.", "player", "level", "warrior"]}/>
                             </section>
                         </div>

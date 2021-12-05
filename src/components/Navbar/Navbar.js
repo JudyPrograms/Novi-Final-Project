@@ -4,7 +4,7 @@ import {AuthContext} from '../../context/AuthContext';
 import styles from './Navbar.module.css';
 
 function Navbar() {
-    const {isAuth, logout, user} = useContext(AuthContext);
+    const {isAuth, logout, user, openTasks} = useContext(AuthContext);
 
     return (
 
@@ -14,7 +14,11 @@ function Navbar() {
                     {user.admin === true &&
                     <Link to="/start" className={styles["navbar__link"]}>START</Link>
                     }
-                    <Link to="/play" className={styles["navbar__link"]}>CHALLENGE</Link>
+                    {/*{openTasks < 3 ?*/}
+                    <Link to="/challenge" className={styles["navbar__link"]}>CHALLENGE</Link>
+                    {/*:*/}
+                    {/*<Link to="/dashboard" className={styles["navbar__link"]}>CHALLENGE</Link>*/}
+                    {/*}*/}
                     <Link to="/dashboard" className={styles["navbar__link"]}>DASHBOARD</Link>
                     <Link to="/account" className={styles["navbar__link"]}>ACCOUNT</Link>
                     {user.admin === true &&

@@ -16,6 +16,7 @@
     --accent-yellow-L85: hsl(42, 69%, 85%);
     --accent-blue-L85: hsl(213, 40%, 85%);
     --accent-red-L35: hsl(338, 40%, 35%);
+    --overlay-yellow: hsla(42, 69%, 70%, 0.8);
 
     /*fonts*/
     --mono-b612: "B612 Mono", monospace;
@@ -61,7 +62,7 @@ body {
     height: 100vh;
 }
 
-.login-container, .about-container, .play-container, .start-container {
+.login-container, .about-container, .challenge-container, .start-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -123,6 +124,11 @@ body {
     border-radius: 5px;
 }
 
+.button-link {
+    display: block;
+    width: 100%;
+    line-height: 1.2rem;
+}
 
 /***** ERRORS *****/
 

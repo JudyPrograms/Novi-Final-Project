@@ -25,7 +25,7 @@ function App() {
             <Route exact path="/start">
                 <Start/>
             </Route>
-            <Route exact path="/play">
+            <Route exact path="/challenge">
                 <Challenge/>
             </Route>
             <Route exact path="/dashboard">

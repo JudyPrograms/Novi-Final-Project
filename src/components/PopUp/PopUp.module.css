@@ -1,21 +1,28 @@
+a, a:active, a:visited, a:hover {
+    text-decoration: none;
+    color: var(--dark-blue);
+}
+
 .overlay {
     position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    background: rgba(0, 0, 0, 0.7);
+    background: var(--overlay-yellow);
     transition: opacity 500ms;
     visibility: hidden;
     opacity: 0;
 }
+
 .overlay:target {
     visibility: visible;
     opacity: 1;
+    z-index: 1;
 }
 
 .popup {
-    margin: var(--double-margin) auto;
+    margin: 25vh auto;
     padding: var(--half-margin);
     background: var(--light-yellow-100);
     border-radius: 5px;
@@ -24,12 +31,19 @@
     transition: all 5s ease-in-out;
 }
 
-.popup h2 {
+.popup__title {
     margin: var(--half-margin) 0;
     color: var(--dark-blue);
     font-family: var(--ubuntu);
 }
-.popup .close {
+
+.popup__content {
+    margin-bottom: 1rem;
+    max-height: 30%;
+    overflow: auto;
+}
+
+.popup__close-symbol {
     position: absolute;
     top: 1rem;
     right: 1.5rem;
@@ -40,20 +54,11 @@
     color: var(--accent-yellow-L70);
 }
 
-.popup .close:hover {
+.popup__close-symbol:hover {
     color: var(--accent-red-L35);
-}
-.popup .content {
-    margin-bottom: 1rem;
-    max-height: 30%;
-    overflow: auto;
 }
 
 .popup__img {
     width: 1rem;
     margin: 0 0.2rem;
-}
-
-a {
-    text-decoration: none;
 }

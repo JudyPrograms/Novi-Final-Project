@@ -1,9 +1,24 @@
 import React from 'react';
 import calcDaysAgo from "../../helpers/calcDaysAgo";
-import styles from "./Table.module.css"
+import styles from "./Table.module.css";
+import Button from "../Button/Button";
+import PopUp from "../PopUp/PopUp";
 
-function Table({className, data, col1, col2, col3, col4, buttonColumn, handleClick, dateColumn, alert, imgColumn, titles}) {
-
+function Table({
+                   className,
+                   data,
+                   col1,
+                   col2,
+                   col3,
+                   col4,
+                   buttonColumn,
+                   handleButtonClick,
+                   popupId,
+                   dateColumn,
+                   alert,
+                   imgColumn,
+                   titles
+               }) {
 
 
     return (
@@ -70,13 +85,18 @@ function Table({className, data, col1, col2, col3, col4, buttonColumn, handleCli
                 <div className={styles["table__col4"]}>
                     <h4>{titles[3]}</h4>
                     {data.map((item) => {
-                        return (<button
-                            key={item[col2]}
-                            type="button"
-                            onClick={()=>handleClick(item[col2])}
-                            className="nav-button nav-button--tiny">
-                            DONE
-                        </button>);
+                        return (
+                            <Button
+                                tiny
+                                key={item[col2]}
+                                handleButtonClick={() => handleButtonClick(item[col2])}>
+                                <PopUp
+                                    id={popupId}
+                                    linkText="DONE"
+                                    linkClass="button-link"
+                                />
+                            </Button>
+                        );
                     })}
                 </div>
             </>

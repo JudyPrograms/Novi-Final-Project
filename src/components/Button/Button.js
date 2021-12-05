@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from "./Button.module.css";
 
-function Button({nav, form, table, buttonKey, handleButtonClick, children}) {
+function Button({nav, form, tiny, key, handleButtonClick, children}) {
     return (
         <>
             {nav &&
@@ -20,9 +20,9 @@ function Button({nav, form, table, buttonKey, handleButtonClick, children}) {
                 {children}
             </button>
             }
-            {table &&
+            {tiny &&
             <button
-                key={buttonKey}
+                key={key}
                 type="button"
                 onClick={handleButtonClick}
                 className={`${styles["btn"]} ${styles["btn--tiny"]}`}>
