@@ -1,0 +1,59 @@
+/***** DASHBOARD *****/
+
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: var(--single-margin);
+    margin: 0 var(--single-margin);
+}
+
+.dashboard__subtitle {
+    font-family: var(--ubuntu);
+    margin-bottom: var(--single-margin);
+}
+
+.dashboard__upper {
+    width: 100%;
+    background-color: var(--light-yellow-S70-10);
+    padding: var(--half-margin);
+}
+
+.dashboard__middle {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    gap: 5%;
+}
+
+.dashboard__lower {
+    width: 85%;
+    background-color: var(--light-red-10);
+    padding: var(--half-margin);
+    margin-right: auto;
+}
+
+.dashboard__badge-section {
+    width: 40%;
+    background-color: var(--light-blue-40);
+    padding: var(--half-margin);
+    text-align: center;
+}
+
+.dashboard__badges-box {
+    display: flex;
+    justify-content: center;
+    gap: var(--half-margin);
+    flex-wrap: wrap;
+}
+
+.dashboard__leaderboard {
+    width: 40%;
+    background-color: var(--light-yellow-80);
+    padding: var(--half-margin);
+    text-align: center;
+}
+
+.dashboard__leaderboard-table {
+    font-size: 0.8rem !important;
+}

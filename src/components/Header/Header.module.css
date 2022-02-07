@@ -28,18 +28,54 @@
 .header__app-logo {
     width: 320px;
     flex: 0 1 auto;
+    margin-bottom: 0.5rem;
 }
 
-.header__player {
+.header__player-box {
     display: flex;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-end;
     flex: 0 1 50%;
     gap: var(--single-margin);
+    margin-bottom: 0.5rem;
+}
+
+.header__avatar-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .header__avatar {
     width: var(--normal-icon);
     flex: 0 0 auto;
+    margin-bottom: 0.3rem;
     filter: drop-shadow(0px 4px 10px hsla(0, 0%, 0%, 0.25));
+}
+
+.header__name {
+    font-family: var(--ubuntu);
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: var(--dark-grey);
+}
+
+.header__progress-box {
+    flex: 0.5 0 320px;
+}
+
+.header__progress-text {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.6rem;
+    word-spacing: -4px;
+    margin: 1% 2% 0 2%;
+}
+
+.text-right {
+    text-align: end;
+}
+
+.header__slogan {
+    color: var(--dark-red-L25);
 }

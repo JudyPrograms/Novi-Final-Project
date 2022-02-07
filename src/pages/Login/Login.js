@@ -1,73 +1,82 @@
-import React, {useState} from 'react';
-import { useHistory } from 'react-router-dom';
-import axios from "axios";
+import React, {useState, useContext} from 'react';
+// import axios from "axios";
 import {useForm} from "react-hook-form";
-import {Link} from "react-router-dom";
+import {AuthContext} from "../../context/AuthContext";
+import {allUsersData} from "../../context/data";
 import styles from "./Login.module.css";
 import Card from "../../components/Card/Card";
+import Form from "../../components/Form/Form";
 
 function Login() {
 
-    // >>TO DO: auth context maken, daar moet ook history.push in
-    const history = useHistory();
-
-    // const {loginFunction} = useContext(AuthContext);
+    const {loginTemp} = useContext(AuthContext);
     const {register, handleSubmit, formState: {errors}} = useForm();
     const [error, setError] = useState(false);
+    const [newAccount, toggleNewAccount] = useState(false);
 
     async function handleFormSubmit(data) {
-
         try {
-        //     const result = await axios.post("http://endpoint", {
-        //         email: data.email,
-        //         password: data.password,
-        //     });
-        //     loginFunction(result.data.accessToken);
-        //
-            // In de login functie in de auth context zetten:
-            history.push('/start');
+            if (!newAccount) {
+                // TODO: User opvragen met email en password en token opvragen
+                // const result = await axios.post(`http://localhost:8080/users/${username}`, {
+                //     email: data.email,
+                //     password: data.password,
+                // });
+                // login(result.data.accessToken);
+                const result = allUsersData.users.find(userObj => userObj.email === data.email)
+                loginTemp(result)
+            } else {
+            //    TODO: new username, email, password posten
+            //     const result = await axios.post
+                toggleNewAccount(!newAccount)
+            }
+
         } catch (e) {
             console.error(e);
             setError(true);
         }
     }
 
+
     return (
         <div className="login-container">
-            <Card small>
+            <Card small
+                  title={newAccount && "CREATE ACCOUNT"}>
                 <div className={styles["login-box"]}>
-                    <form onSubmit={handleSubmit(handleFormSubmit)}>
 
-                        <label htmlFor="email-field"> E-MAIL:
-                            <input
-                                type="email"
-                                id="email-field"
-                                {...register("email",
-                                    {required: "E-mail address required"})}
+                    {newAccount ?
+                        <Form
+                            className={styles["create__form-label"]}
+                            handleFormSubmit={handleFormSubmit}
+                            handleSubmit={handleSubmit}
+                            errors={errors}
+                            register={register}
+                            buttonText="CREATE"
+                            fields={[
+                                {type: "text", name: "unique username"},
+                                {type: "email", name: "email"},
+                                {type: "password", name: "password"},]}
+                        />
+                        :
+                        <>
+                            <Form
+                                className={styles["login__form-label"]}
+                                handleFormSubmit={handleFormSubmit}
+                                handleSubmit={handleSubmit}
+                                errors={errors}
+                                register={register}
+                                buttonText="LOGIN"
+                                fields={[
+                                    {type: "email", name: "email"},
+                                    {type: "password", name: "password"},]}
                             />
-                        </label>
-                        {errors.email && <span className={styles["error-text"]}>{errors.email.message}</span>}
 
-                        <label htmlFor="password-field"> PASSWORD:
-                            <input
-                                type="password"
-                                id="password-field"
-                                {...register("password",
-                                    {required: "Password required"})}/>
-                        </label>
-                        {errors.password && <span className={styles["error-text"]}>{errors.password.message}</span>}
-
-                        <button
-                            type="submit"
-                            className={styles["form-button"]}>
-                            LOGIN
-                        </button>
-
-                        {error && <span className={styles["error-text"]}>Inloggegevens onbekend</span>}
-
-                    </form>
-
-                    <p className={styles["register-link"]}><Link to="/account">Register new account here</Link></p>
+                            <div className={styles["register-link"]}>
+                                {error && <span className="error-text">Account not found</span>}
+                                <a onClick={() => toggleNewAccount(!newAccount)}>Register new account here</a>
+                            </div>
+                        </>
+                    }
                 </div>
             </Card>
             <div className="footer-hidden footer-hidden--small">footer</div>

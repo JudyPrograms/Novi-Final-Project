@@ -1,42 +1,41 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import styles from "./Start.module.css";
 import Card from "../../components/Card/Card";
 import Avatar from "../../components/Avatar/Avatar";
-import kusunoki from "../../assets/avatars/kusunoki.png";
-import myamoto from "../../assets/avatars/myamoto.png";
-import takeda from "../../assets/avatars/takeda.png";
-import toyotomi from "../../assets/avatars/toyotomi.png";
 import gong from "../../assets/before-icons/gong.png";
 import fuji from "../../assets/fuji.png";
 import lightning from "../../assets/before-icons/lightning.png";
-import {allUsersData, gameInfo} from "../../context/data.js";
+import {AuthContext} from "../../context/AuthContext";
+import {gameInfo} from "../../context/data.js";
 
 
 // Wordt alleen getoond na eerste keer inloggen gebruiker
 function Start() {
 
     const history = useHistory();
-    const user = allUsersData.users[1];
+    const {user} = useContext(AuthContext);
+
     const avatars = gameInfo.avatars;
 
-    const [avatar, setAvatar] = useState("Myamoto")
+    const [avatar, setAvatar] = useState(avatars[1])
     const [nextAvatars, setNextAvatars] = useState(0)
     const [nextPage, setNextPage] = useState(0)
 
-    // gekozen avatar in userData posten en in header zetten
+    // Gekozen avatar in userData posten en in header zetten
     useEffect(() => {
         function postData() {
+            // TODO: token uit local storage halen
             // const token = localStorage.getItem('token');
-            if (avatar !== null && nextPage === 1) {
+            if (nextPage === 1) {
                 try {
                     setAvatar(avatar)
-                    // >>TO DO: axios.post() request:
-                    //     const result = await axios.post("http://endpoint", {
-                    //         authorization: `Bearer ${token}`
-                    //     });
-                    const result = "avatar posted successfully for: " + user
-                    console.log(result, avatar, nextPage)
+                    // TODO: axios.patch() request om avatar aan te passen
+                    // const result = await axios.patch("http://endpoint", {
+                    //     authorization: `Bearer ${token}`
+                    // });
+                    const result = "avatar posted successfully for: " + user.username
+                    console.log(result, avatar)
                 } catch (e) {
                     console.error(e);
                 }
@@ -47,10 +46,10 @@ function Start() {
     }, [avatar, nextPage])
 
 
-    // Na 3 keer klikken doorsturen naar 'Play'
+    // Na doorlopen van Start (= 3 keer klikken), doorsturen naar 'Challenge'
     useEffect(() => {
         if (nextPage === 3) {
-            history.push("/play")
+            history.push("/challenge")
         }
     }, [nextPage])
 
@@ -67,33 +66,21 @@ function Start() {
                     className={styles["nav-arrow"]}>
                         &#10094;
                 </span>
-                    <div className={`${styles["avatar-slider"]} ${nextAvatars > 0 && `${styles["avatar-slider--next"]}`}`}>
-
-                        {/* >>TO DO: deze infos uit de gameInfo halen en met map renderen::*/}
-                        <Avatar img={kusunoki}
-                                name="Kusunoki"
-                                subname="The Adventurous"
-                                avatar={avatar}
-                                setAvatar={setAvatar}>
-                        </Avatar>
-                        <Avatar img={myamoto}
-                                name="Myamoto"
-                                subname="The Inspirator"
-                                avatar={avatar}
-                                setAvatar={setAvatar}>
-                        </Avatar>
-                        <Avatar img={takeda}
-                                name="Takeda"
-                                subname="The Persistant"
-                                avatar={avatar}
-                                setAvatar={setAvatar}>
-                        </Avatar>
-                        <Avatar img={toyotomi}
-                                name="Toyotomi"
-                                subname="The Embracing"
-                                avatar={avatar}
-                                setAvatar={setAvatar}>
-                        </Avatar>
+                    <div
+                        className={`${styles["avatar-slider"]} ${nextAvatars > 0 && `${styles["avatar-slider--next"]}`}`}>
+                        {avatars.map((item) => {
+                            return (
+                                <Avatar
+                                    key={item.name}
+                                    img={item.image}
+                                    name={item.name}
+                                    subname={item.subName}
+                                    avatar={avatar}
+                                    setAvatar={setAvatar}
+                                    object={item}
+                                />
+                            );
+                        })}
                     </div>
                     <span onClick={() => setNextAvatars(nextAvatars + 1)}
                           className={styles["nav-arrow"]}>
@@ -109,16 +96,13 @@ function Start() {
                   titleImg={gong}
                   cardImg={fuji}>
                 <div className={styles["start-text__box"]}>
-                    {avatar !== null && gameInfo.startText.map((item) => {
-                        let par = item
-                        console.log(avatars[0].name, avatars[0].subName)
-                        // #######################################   waarom werkt deze replace niet?
-                        par.replace("NAME", avatars[0].name)
-                        par.replace("SUBNAME", avatars[0].subName)
+                    {gameInfo.startText.map((item) => {
+                        item = item.replace("NAME", avatar.name)
+                        item = item.replace("SUBNAME", avatar.subName)
                         return (
-                            <p key={par.split(" ")[0]}
+                            <p key={item.split(" ")[0]}
                                className={styles["start-text__par"]}>
-                                {par}
+                                {item}
                             </p>
                         );
                     })}
@@ -133,6 +117,7 @@ function Start() {
                 titleImg={lightning}
                 cardImg={fuji}>
                 <div className={styles["how-to__box"]}>
+                    {/*TODO: icons bij tekst plaatsen*/}
                     <p className={styles["how-to__par"]}>Earn yin coins by bringing tasks to an end</p>
                     <p className={styles["how-to__par"]}>Double coins when completing a set of 6 subtasks</p>
                     <p className={styles["how-to__par"]}>Level up each 40 yin coins</p>

@@ -1,0 +1,22 @@
+.settings__box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.settings__box h1 {
+    font-size: 1.3rem;
+    line-height: 3rem;
+}
+
+.settings__subtitle {
+    font-family: var(--ubuntu);
+    font-size: 1.5rem;
+    margin: var(--single-margin) 10rem;
+}
+
+.settings__button-box {
+    display: flex;
+    justify-content: flex-end;
+    width: 90%;
+}

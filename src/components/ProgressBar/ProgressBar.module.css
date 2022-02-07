@@ -1,11 +1,11 @@
 .progress-bar {
-    flex: 0.5 0 320px;
+    flex: 0 0 auto;
+    height: var(--half-margin);
     border-radius: var(--half-margin);
     box-shadow: 0 4px 10px 1px hsla(0, 0%, 0%, 0.25);
 }
 
 .progress {
-    height: var(--half-margin);
     line-height: var(--half-margin);
     background-color: var(--accent-yellow-L70);
     border-radius: var(--half-margin);
