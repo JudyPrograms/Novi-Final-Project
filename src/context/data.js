@@ -111,8 +111,8 @@ export const gameInfo = {
 export const allUsersData = {
     users: [
         {
-            username: "Judith",
-            email: "judithkats@gmail.com",
+            username: "Experienced",
+            email: "exp@gmail.com",
             password: "encryptedCode",
             token: "token0 here",
             admin: false,
@@ -173,8 +173,8 @@ export const allUsersData = {
             leaderboardPosition: 110,
         },
         {
-            username: "Nieuwe User",
-            email: "judith@melkweg.nl",
+            username: "Newby",
+            email: "newby@gmail.com",
             password: "encryptedCode",
             token: "token1 here",
             admin: false,
@@ -198,8 +198,8 @@ export const allUsersData = {
             leaderboardPosition: 112,
         },
         {
-            username: "Administrator",
-            email: "hello@judyprograms.io",
+            username: "UserOne",
+            email: "user1@gmail.com",
             password: "encryptedCode",
             token: "token1 here",
             admin: true,

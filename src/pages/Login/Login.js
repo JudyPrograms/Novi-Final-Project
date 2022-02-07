@@ -18,7 +18,7 @@ function Login() {
         try {
             if (!newAccount) {
                 // TODO: User opvragen met email en password en token opvragen
-                // const result = await axios.post("http://endpoint", {
+                // const result = await axios.post(`http://localhost:8080/users/${username}`, {
                 //     email: data.email,
                 //     password: data.password,
                 // });
@@ -27,6 +27,7 @@ function Login() {
                 loginTemp(result)
             } else {
             //    TODO: new username, email, password posten
+            //     const result = await axios.post
                 toggleNewAccount(!newAccount)
             }
 
